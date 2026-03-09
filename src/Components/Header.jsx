@@ -5,7 +5,7 @@ import style from "./Header.module.css";
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <div className={style.container}>
+    <header className={style.container}>
       <div className="icon-container">
         <ToothIcon />
         <p>Manejamento Protético</p>
@@ -14,7 +14,7 @@ const Header = () => {
         <UserIcon />
         <Link>Minha Conta</Link>
       </div>
-    </div>
+    </header>
   );
 };
 
