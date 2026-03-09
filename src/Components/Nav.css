@@ -29,12 +29,22 @@ a {
   gap: 12px;
   font-size: 1.4rem;
   border-radius: 12px;
-  transition: color 0.75s ease-out, background-color 0.75s ease-out;
+  transition: color 0.5s ease-out, background-color 0.5s ease-out;
 
 }
 
+.link.active {
+  background-color: #0D9488;
+  color: #fff;
+
+}
+
+.link.active svg path {
+  fill: #fff;
+}
+
 svg path {
-  transition: fill 0.75s ease-out;
+  transition: fill 0.5s ease-out;
 }
 
 li svg {
