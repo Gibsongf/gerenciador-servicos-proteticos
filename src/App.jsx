@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Nav from "./Components/Nav";
+import MenuNav from "./Components/Nav/MenuNav";
 import Footer from "./Components/Footer";
 import Servicos from "./Components/Servicos/Servicos";
 import Clientes from "./Components/Clientes/Clientes";
@@ -14,16 +14,15 @@ function App() {
     <>
       <Header />
       <div className="App">
-        <Nav />
+        <MenuNav />
         <Routes>
           <Route path="/" element={<Servicos />} />
-          <Route path="servicos" element={<Servicos />} />
+          {/* <Route path="servicos" element={<Servicos />} /> */}
           <Route path="clientes" element={<Clientes />} />
           <Route path="clinicas" element={<Clinicas />} />
           <Route path="produtos" element={<Produtos />} />
         </Routes>
       </div>
-      <Footer />
     </>
   );
 }

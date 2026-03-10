@@ -1,17 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Nav.css";
-import ToothIcon from "./svg/ToothIcon";
-import ClientIcon from "./svg/ClientIcon";
-import ClinicIcon from "./svg/ClinicIcon";
-import ServiceIcon from "./svg/ServiceIcon";
+import "./MenuNav.css";
+import ToothIcon from "../svg/ToothIcon";
+import ClientIcon from "../svg/ClientIcon";
+import ClinicIcon from "../svg/ClinicIcon";
+import ServiceIcon from "../svg/ServiceIcon";
 
-const Nav = () => {
+const MenuNav = () => {
   return (
     <nav className="container">
       <ul>
         <li>
-          <NavLink className="link" to="/servicos">
+          <NavLink className="link" to="/">
             <ServiceIcon color=" #1F2937" />
             <p>Serviços</p>
           </NavLink>
@@ -38,4 +38,4 @@ const Nav = () => {
     </nav>
   );
 };
-export default Nav;
+export default MenuNav;
