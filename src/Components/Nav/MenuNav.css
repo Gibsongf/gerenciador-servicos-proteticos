@@ -21,7 +21,7 @@ a {
 
 
 .link {
-  max-width: 316px;
+  width: 316px;
   max-height: 60px;
   padding: 8px 16px;
   display: flex;
@@ -58,7 +58,7 @@ li svg {
   }
 
   .link {
-    max-width: 216px;
+    width: 216px;
     max-height: 44px;
     font-size: 1.2rem;
 
@@ -75,6 +75,7 @@ li svg {
 
   .link {
     font-size: 1rem;
+    width: fit-content;
 
   }
 
