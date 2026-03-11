@@ -9,7 +9,7 @@ import ServiceIcon from "../svg/ServiceIcon";
 const MenuNav = () => {
   return (
     <nav className="container">
-      <ul>
+      <ul className="list-container">
         <li>
           <NavLink className="link" to="/">
             <ServiceIcon color=" #1F2937" />

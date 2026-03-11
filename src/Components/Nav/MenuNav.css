@@ -8,7 +8,7 @@
   color: var(--p-txt-color)
 }
 
-ul {
+.list-container {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -21,8 +21,8 @@ a {
 
 
 .link {
-  width: 316px;
-  height: 60px;
+  max-width: 316px;
+  max-height: 60px;
   padding: 8px 16px;
   display: flex;
   align-items: center;
@@ -58,15 +58,13 @@ li svg {
   }
 
   .link {
-    width: 216px;
-    height: 44px;
+    max-width: 216px;
+    max-height: 44px;
     font-size: 1.2rem;
 
   }
 
-  li svg {
-    height: 24px;
-  }
+
 }
 
 @media (max-width:900px) {
@@ -76,22 +74,68 @@ li svg {
   }
 
   .link {
-    width: 216px;
-    height: 44px;
     font-size: 1rem;
+
+  }
+
+
+}
+
+@media (max-width:700px) {
+
+  /* from side bar to the bottom */
+  .container {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    padding: 0px;
+    margin: 0 auto;
+    border: none;
+  }
+
+  .list-container {
+    flex-direction: row;
+    padding: 12px 0px;
+    gap: 12px;
+  }
+
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+    padding: 8px 12px;
+    gap: 4px;
+    border-radius: 4px;
+
+  }
+
+  .link.active {
+    background-color: #fff;
+    color: #0D9488;
+
+  }
+
+  .link.active svg path {
+    fill: #0D9488;
+  }
+}
+
+@media (max-width:400px) {
+  .link {
+    max-height: min-content;
+    padding: 0px;
+    /* gap: 2px; */
 
   }
 
   li svg {
     height: 24px;
+    font-size: 0.8rem;
+
   }
-}
 
-@media (max-width:700px) {
-
-
-  .link {
-    width: max-content;
-
+  .list-container {
+    flex-direction: row;
+    /* gap: 4px; */
   }
 }

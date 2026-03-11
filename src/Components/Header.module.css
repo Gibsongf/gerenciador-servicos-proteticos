@@ -1,6 +1,8 @@
 .container {
   /* max-width: 1200px; */
   /* margin: 0 auto; */
+  /* grid-column: 1/-1; */
+  /* grid-row: 1; */
   display: flex;
   justify-content: space-between;
   padding: 24px 48px;
@@ -8,7 +10,8 @@
   border-bottom: 1px solid rgb(0, 0, 0, 0.2);
 }
 
-.container div {
+.logoContainer,
+.accountContainer {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -19,7 +22,7 @@
   height: 60px;
 }
 
-.container a {
+.link {
   font-size: 1.5rem;
   color: black;
   padding: 8px 12px;
@@ -31,7 +34,8 @@
     font-size: 1.6rem;
   }
 
-  .container div {
+  .logoContainer,
+  .accountContainer {
     gap: 8px;
   }
 
@@ -40,7 +44,7 @@
     height: 44px;
   }
 
-  .container a {
+  .link {
     font-size: 1.5rem;
     color: black;
     padding: 4px 8px;
@@ -55,7 +59,8 @@
 
   }
 
-  .container div {
+  .logoContainer,
+  .accountContainer {
     gap: 8px;
   }
 
@@ -64,7 +69,7 @@
     height: 44px;
   }
 
-  .container a {
+  .link {
     font-size: 1.5rem;
     color: black;
     padding: 4px 8px;
@@ -77,8 +82,37 @@
     font-size: 1.2rem;
   }
 
-  .container a {
+  .link {
     font-size: 1.3rem;
+
+  }
+}
+
+@media (max-width:400px) {
+  .container {
+    font-size: 1rem;
+    padding: 8px 16px;
+
+  }
+
+  .link {
+    font-size: 1rem;
+
+  }
+
+  .logoContainer,
+  .accountContainer {
+    gap: 0px;
+  }
+
+  .container svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .container a {
+    font-size: 1rem;
+    padding: 4px 8px;
 
   }
 }

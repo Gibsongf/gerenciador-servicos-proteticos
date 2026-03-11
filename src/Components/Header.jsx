@@ -10,13 +10,13 @@ const Header = () => {
 
   return (
     <header className={style.container}>
-      <div className="icon-container">
+      <div className={style.logoContainer}>
         <ToothIcon />
         <p>Manejamento Protético</p>
       </div>
-      <div className="icon-container">
+      <div className={style.accountContainer}>
         <UserIcon />
-        {!mobile ? <Link>Minha Conta</Link> : ""}
+        {!mobile ? <Link className={style.link}>Minha Conta</Link> : ""}
       </div>
     </header>
   );
