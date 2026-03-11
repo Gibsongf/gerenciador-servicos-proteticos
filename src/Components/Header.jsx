@@ -3,18 +3,22 @@ import ToothIcon from "./svg/ToothIcon";
 import UserIcon from "./svg/UserIcon";
 import style from "./Header.module.css";
 import { Link } from "react-router-dom";
+import useMedia from "../Hooks/useMedia";
+
 const Header = () => {
+  const mobile = useMedia("(max-width: 700px)");
+
   return (
-    <div className={style.container}>
-      <div className="icon-container">
+    <header className={style.container}>
+      <div className={style.logoContainer}>
         <ToothIcon />
         <p>Manejamento Protético</p>
       </div>
-      <div className="icon-container">
+      <div className={style.accountContainer}>
         <UserIcon />
-        <Link>Minha Conta</Link>
+        {!mobile ? <Link className={style.link}>Minha Conta</Link> : ""}
       </div>
-    </div>
+    </header>
   );
 };
 

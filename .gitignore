@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+#css pattern
+pallet.txt
+#design
+design-protetico-ex
