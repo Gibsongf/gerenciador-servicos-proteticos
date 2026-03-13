@@ -5,7 +5,8 @@
   padding: 24px 32px;
   border-right: 1px solid rgb(0, 0, 0, 0.1);
   margin-top: 16px;
-  color: var(--p-txt-color)
+  color: var(--p-txt-color);
+  background-color: #FFFFFF;
 }
 
 .list-container {
@@ -89,12 +90,13 @@ li svg {
     grid-row: 2;
     grid-column: 1 / -1;
     padding: 0px;
-    margin: 0 auto;
     border: none;
   }
 
   .list-container {
     flex-direction: row;
+    justify-content: space-evenly;
+
     padding: 12px 0px;
     gap: 12px;
   }
@@ -103,6 +105,7 @@ li svg {
   .link {
     display: flex;
     flex-direction: column;
+
     max-height: fit-content;
     padding: 8px 12px;
     gap: 4px;

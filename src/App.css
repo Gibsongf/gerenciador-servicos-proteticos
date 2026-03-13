@@ -4,6 +4,9 @@
   display: grid;
   grid-template-columns: auto 1fr;
   padding: 0px 48px;
+  background-color: #F8FAFC;
+  /* margin: 0 auto; */
+
 }
 
 @media (max-width:1200px) {

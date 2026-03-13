@@ -13,7 +13,7 @@ function App() {
     <>
       <Header />
 
-      <div className="App">
+      <main className="App">
         <MenuNav />
         <Routes>
           <Route path="/" element={<Servicos />} />
@@ -22,7 +22,7 @@ function App() {
           <Route path="clinicas" element={<Clinicas />} />
           <Route path="produtos" element={<Produtos />} />
         </Routes>
-      </div>
+      </main>
     </>
   );
 }
