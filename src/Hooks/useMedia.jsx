@@ -1,6 +1,7 @@
 import React from "react";
 
-const useMedia = (media) => {
+const useMedia = () => {
+  const media = "(max-width: 700px)";
   const [match, setMatch] = React.useState(null);
 
   React.useEffect(() => {

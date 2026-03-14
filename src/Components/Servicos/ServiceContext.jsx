@@ -2,6 +2,7 @@ import React from "react";
 import useFetch from "../../Hooks/useFetch";
 import { GET_LIST_CONTENT } from "../../Api";
 import { ServiceContext } from "../../Context";
+import { removeDuplicate } from "../../utils";
 
 export const ServiceStorage = ({ children }) => {
   const { request, data, error, loading } = useFetch();
@@ -14,12 +15,10 @@ export const ServiceStorage = ({ children }) => {
       const { url, options } = GET_LIST_CONTENT("servico");
       const { json } = await request(url, options);
       if (json) {
-        setCliente(() => {
-          let obj = json.all.map((j) => j.cliente);
-          
-          return obj;
-        });
-        setLocal(json.all.map((j) => j.local));
+        // this will just show the client or local that has a service linked to them
+        // if there is none it wont show at select options html
+        setCliente(removeDuplicate(json.all.map((j) => j.cliente)));
+        setLocal(removeDuplicate(json.all.map((j) => j.local)));
       }
     };
     req();

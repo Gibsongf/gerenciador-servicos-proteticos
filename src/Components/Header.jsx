@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import useMedia from "../Hooks/useMedia";
 
 const Header = () => {
-  const mobile = useMedia("(max-width: 700px)");
+  const mobile = useMedia();
 
   return (
     <header className={style.container}>

@@ -3,6 +3,8 @@ import React from "react";
 import useFetch from "../../Hooks/useFetch";
 import { GET_LIST_CONTENT } from "../../Api";
 import { ServiceContext } from "../../Context";
+import style from "./Servicos.module.css";
+
 export const SelectDentist = () => {
   // const { request, data } = useFetch();
   const { setFilter, cliente } = React.useContext(ServiceContext);
@@ -13,15 +15,23 @@ export const SelectDentist = () => {
   };
 
   return (
-    <select onChange={onChange} defaultValue="" name={"cliente"} id={"cliente"}>
-      <option value="">Todos Dentistas</option>
-      {cliente &&
-        cliente.map((item, i) => (
-          <option key={i} value={item.nome}>
-            DR.{item.nome}
-          </option>
-        ))}
-    </select>
+    <div className={style.selectContainer}>
+      <label htmlFor="cliente">Dentistas: </label>
+      <select
+        className={style.select}
+        onChange={onChange}
+        defaultValue=""
+        name="cliente"
+        id="cliente">
+        <option value="">Todos Dentistas</option>
+        {cliente &&
+          cliente.map((item, i) => (
+            <option key={i} value={item.nome}>
+              DR.{item.nome}
+            </option>
+          ))}
+      </select>
+    </div>
   );
 };
 export const SelectClinic = () => {
@@ -33,14 +43,23 @@ export const SelectClinic = () => {
     });
   };
   return (
-    <select onChange={onChange} defaultValue="" name={"clinica"} id={"clinica"}>
-      <option value="">Todas Clínicas</option>
-      {/* {data &&
-        data.all.map((item, i) => (
-          <option key={i} value={item.nome}>
-            {item.nome}
-          </option>
-        ))} */}
-    </select>
+    <div className={style.selectContainer}>
+      <label htmlFor="clinica">Clínicas: </label>
+
+      <select
+        className={style.select}
+        onChange={onChange}
+        defaultValue=""
+        name={"clinica"}
+        id={"clinica"}>
+        <option value="">Todas Clínicas</option>
+        {local &&
+          local.map((item, i) => (
+            <option key={i} value={item.nome}>
+              {item.nome}
+            </option>
+          ))}
+      </select>
+    </div>
   );
 };

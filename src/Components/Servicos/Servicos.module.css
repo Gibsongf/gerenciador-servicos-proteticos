@@ -1,16 +1,164 @@
-.container {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  padding: 24px 16px;
+/* .container {
+  padding: 8px 4px;
+} */
+
+.navContainer {
+  display: flex;
+  gap: 16px;
+  background-color: #FFF;
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  background-color: #FFF;
+
+}
+
+.select {
+  max-width: fit-content;
+  border: none;
+  background-color: inherit;
+  outline: none;
+  cursor: pointer;
+  box-sizing: initial;
+
+}
+
+.selectContainer {
+  display: flex;
+  align-items: center;
+  border: rgb(0, 0, 0, 0.2) solid 1px;
+  border-radius: 8px;
+  /* background-color: #ffffff85; */
+  padding: 8px 12px;
+  height: 50px;
+
+}
+
+.pageTitle,
+.navContainer {
+  padding: 8px 16px;
+
+}
+
+.selectContainer:hover {
+  background-color: #FFF;
+
+}
+
+
+.buttonAdd {
+  background-color: var(--main-color);
+  color: #FFF;
+  padding: 8px 24px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.buttonAdd:hover {
+  background-color: var(--main-color-hover);
+}
+
+@media (max-width:1000px) {
+
+  .selectContainer {
+    padding: 8px
+  }
+
+  .navContainer {
+    gap: 8px;
+  }
+
+  .pageTitle,
+  .navContainer {
+    padding: 8px;
+
+  }
+
+  .buttonAdd {
+    padding: 4px 18px;
+  }
+}
+
+@media (max-width:800px) {
+
+
+  .pageTitle,
+  .navContainer {
+    padding: 4px;
+
+  }
+
+  .buttonAdd {
+    padding: 4px 12px;
+    font-size: 1rem;
+  }
+
+  .selectContainer {
+    padding: 4px;
+  }
+
+  .select {
+    max-width: 120px;
+
+  }
 }
 
 
 
 @media (max-width:700px) {
   .container {
-    font-size: 1fr
+    grid-column: 1 / -1;
   }
 
+  .mobileTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #FFF;
+    margin: 12px;
+    border-radius: 8px;
+    padding: 8px 0px;
+  }
+
+  .navContainer {
+    background-color: #FFF;
+    margin: 12px;
+    border-radius: 8px;
+    justify-content: space-evenly;
+    padding: 8px 0px;
+
+  }
+
+  .pageTitle {
+    font-size: 1.8rem;
+  }
+
+  .buttonAdd {
+    padding: 8px 20px;
+  }
+
+}
+
+@media (max-width:500px) {
+
+  .buttonAdd {
+    padding: 8px 20px;
+  }
+
+  .navContainer {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .selectContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 4px 8px;
+    box-sizing: initial;
+  }
 
 
 }
