@@ -5,6 +5,7 @@ import { ServiceStorage } from "./ServiceContext";
 import ServicosContent from "./ServicosContent";
 import useMedia from "../../Hooks/useMedia";
 import { ServiceTitle, MobileTitle } from "./ServiceTitle";
+import ExportService from "./ExportService";
 
 // create a other filter when is mobile
 const Servicos = () => {
@@ -15,6 +16,7 @@ const Servicos = () => {
         {mobile ? <MobileTitle /> : <ServiceTitle />}
 
         <FilterService />
+        <ExportService />
         <ServicosContent />
       </section>
     </ServiceStorage>
