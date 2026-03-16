@@ -6,7 +6,7 @@ import { removeDuplicate } from "../../utils";
 
 export const ServiceStorage = ({ children }) => {
   const { request, data, error, loading } = useFetch();
-  const [filter, setFilter] = React.useState(false);
+  const [filter, setFilter] = React.useState({});
   const [cliente, setCliente] = React.useState(false);
   const [local, setLocal] = React.useState(false);
 
