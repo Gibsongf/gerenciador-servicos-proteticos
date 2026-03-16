@@ -1,0 +1,8 @@
+.tableContainer {
+  background-color: #FFF;
+  overflow-x: scroll;
+  grid-column: 2/-1;
+  /* border: rgb(0, 0, 0, 0.2) solid 1px; */
+}
+
+.produtos {}

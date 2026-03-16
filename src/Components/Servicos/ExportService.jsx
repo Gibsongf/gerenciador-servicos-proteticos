@@ -1,6 +1,6 @@
 import React from "react";
 import ExportIcon from "../svg/ExportIcon";
-import style from "./Servicos.module.css";
+import style from "./ExportService.module.css";
 
 const ExportService = () => {
   return (

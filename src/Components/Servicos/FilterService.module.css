@@ -1,0 +1,31 @@
+.navContainer {
+  display: flex;
+  gap: 16px;
+  background-color: #FFF;
+}
+
+@media (max-width:1000px) {
+  .navContainer {
+    gap: 8px;
+  }
+
+}
+
+@media (max-width:700px) {
+  .navContainer {
+    background-color: #FFF;
+    margin: 12px;
+    border-radius: 8px;
+    justify-content: space-evenly;
+    padding: 8px 0px;
+    border: rgb(0, 0, 0, 0.2) solid 1px;
+
+  }
+}
+
+@media (max-width:500px) {
+  .navContainer {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}

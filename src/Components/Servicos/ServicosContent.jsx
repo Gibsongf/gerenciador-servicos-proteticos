@@ -1,14 +1,14 @@
 import React from "react";
 import { ServiceContext } from "../../Context";
-import style from "./Servicos.module.css";
+import style from "./ServicosContent.module.css";
+import "../Table/Table.css";
 
 const ServicosContent = () => {
   const { data, loading, filter } = React.useContext(ServiceContext);
   const tableHeaders = ["Data", "Clinica", "Cliente", "Produto"];
   if (loading) return <div>Loading</div>;
-  console.log(data);
   return (
-    <section className={style.tableContainer}>
+    <div className={style.tableContainer}>
       <table>
         <thead>
           <tr>
@@ -41,7 +41,7 @@ const ServicosContent = () => {
             })}
         </tbody>
       </table>
-    </section>
+    </div>
   );
 };
 

@@ -1,0 +1,48 @@
+.buttonAdd {
+  background-color: var(--main-color);
+  color: #FFF;
+  max-width: 150px;
+  padding: 8px 16px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.buttonAdd:hover {
+  background-color: var(--main-color-hover);
+}
+
+
+@media (max-width:1000px) {
+
+
+  .buttonAdd {
+    padding: 4px 18px;
+  }
+}
+
+@media (max-width:800px) {
+
+  .buttonAdd {
+    padding: 4px 12px;
+    font-size: 1rem;
+  }
+
+
+}
+
+
+
+@media (max-width:700px) {
+
+
+
+  .buttonAdd {
+    padding: 12px 24px;
+  }
+
+
+
+}

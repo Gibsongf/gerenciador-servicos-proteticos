@@ -1,9 +1,6 @@
-import PropTypes from "prop-types";
 import React from "react";
-import useFetch from "../../Hooks/useFetch";
-import { GET_LIST_CONTENT } from "../../Api";
 import { ServiceContext } from "../../Context";
-import style from "./Servicos.module.css";
+import style from "./Select.module.css";
 
 export const SelectDentist = () => {
   // const { request, data } = useFetch();
