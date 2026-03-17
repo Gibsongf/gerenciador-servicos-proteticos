@@ -15,6 +15,7 @@ export const ServiceStorage = ({ children }) => {
       const { url, options } = GET_LIST_CONTENT("servico");
       const { json } = await request(url, options);
       if (json) {
+        // console.log(json);
         // this will just show the client or local that has a service linked to them
         // if there is none it wont show at select options html
         setCliente(removeDuplicate(json.all.map((j) => j.cliente)));

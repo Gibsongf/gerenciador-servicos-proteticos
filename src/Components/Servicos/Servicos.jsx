@@ -6,6 +6,7 @@ import ServicosContent from "./ServicosContent";
 import useMedia from "../../Hooks/useMedia";
 import { ServiceTitle, MobileTitle } from "./ServiceTitle";
 import ExportService from "./ExportService";
+import FormService from "../Form/FormService";
 
 // create a other filter when is mobile
 const Servicos = () => {
@@ -14,11 +15,11 @@ const Servicos = () => {
     <ServiceStorage>
       <section className={style.container}>
         {mobile ? <MobileTitle /> : <ServiceTitle />}
-
         <FilterService />
         <ExportService />
         <ServicosContent />
       </section>
+      <FormService />
     </ServiceStorage>
   );
 };
