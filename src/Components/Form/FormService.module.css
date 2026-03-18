@@ -9,4 +9,8 @@
   color: white;
 }
 
-.form {}
+.form {
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 12px;
+}

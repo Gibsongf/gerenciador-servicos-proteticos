@@ -1,35 +1,66 @@
 import React from "react";
-// import style from "./Select.module.css";
-import useForm from "../../Hooks/useForm";
+import style from "./Input.module.css";
 import useFetch from "../../Hooks/useFetch";
 import { GET_LIST_CONTENT } from "../../Api";
+import { CheckBox } from "./CheckBox";
 
-export const ProductSelect = ({ setClientes, clientes, type, label }) => {
-  const { onChange, error } = useForm();
+export const ProductSelect = ({ label, onChange, error, ref }) => {
   const { request } = useFetch();
+  const [data, setData] = React.useState();
+  const [listProduct, setListProduct] = React.useState([]);
+  const selectRef = React.useRef();
+
   React.useEffect(() => {
     const req = async () => {
       const { url, options } = GET_LIST_CONTENT("produto");
       const { json } = await request(url, options);
-      setClientes(json);
+      setData(json);
     };
     req();
-  }, [request, setClientes, type]);
+  }, [request]);
+
+  const onBtnClick = (e) => {
+    e.preventDefault();
+    let opt = Array.from(selectRef.current.children);
+    opt.forEach((option) => {
+      if (option.selected) {
+        setListProduct((listProduct) => {
+          return [...listProduct, option];
+        });
+      }
+    });
+  };
+
   return (
-    <div>
-      <label htmlFor="cliente">{label}</label>
-      <select onChange={onChange} defaultValue="" name={type} id={type}>
-        <option disable="true" value="">
-          Selecione um
+    <div className={style.selectContainer}>
+      <label className={style.label} htmlFor="cliente">
+        {label}
+      </label>
+      <select
+        className={style.input}
+        ref={selectRef}
+        required={true}
+        onChange={onChange}
+        defaultValue=""
+        name={"produto"}
+        id={"produto"}>
+        <option disabled={true} value="">
+          Selecione Produtos
         </option>
-        {clientes &&
-          clientes.all.map((item, i) => (
-            <option key={i} value={item.nome}>
+        {data &&
+          data.all.map((item, i) => (
+            <option key={i} value={item.nome} id={item._id}>
               {item.nome}
             </option>
           ))}
       </select>
-      {error && <p>{error}</p>}
+      <button className={style.btnProduct} onClick={onBtnClick}>
+        ✔
+      </button>
+      <div ref={ref}>
+        <CheckBox arr={listProduct} />
+      </div>
+      {error && <p className={style.error}>{error}</p>}
     </div>
   );
 };

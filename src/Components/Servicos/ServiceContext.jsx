@@ -9,6 +9,7 @@ export const ServiceStorage = ({ children }) => {
   const [filter, setFilter] = React.useState({});
   const [cliente, setCliente] = React.useState(false);
   const [local, setLocal] = React.useState(false);
+  const [modal, setModal] = React.useState(false);
 
   React.useEffect(() => {
     const req = async () => {
@@ -26,7 +27,17 @@ export const ServiceStorage = ({ children }) => {
   }, [request]);
   return (
     <ServiceContext.Provider
-      value={{ data, loading, filter, error, setFilter, cliente, local }}>
+      value={{
+        data,
+        loading,
+        filter,
+        error,
+        setFilter,
+        cliente,
+        local,
+        modal,
+        setModal,
+      }}>
       {children}
     </ServiceContext.Provider>
   );

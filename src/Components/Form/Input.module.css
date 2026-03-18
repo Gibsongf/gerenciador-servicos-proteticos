@@ -13,12 +13,27 @@
   transition: 0.2s;
 }
 
+.selectContainer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 4px;
+  align-items: center;
+
+}
+
+.selectContainer .label {
+  grid-column: 1/-1;
+}
+
+.btnProduct {
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
 .input:focus,
 .input:hover {
   outline: none;
-  /* border-color: #fb1; */
   background: white;
-  /* box-shadow: 0 0 0 3px #fea; */
 }
 
 .label {

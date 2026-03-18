@@ -1,34 +1,41 @@
 import React from "react";
-// import style from "./Select.module.css";
-import useForm from "../../Hooks/useForm";
+import style from "./Input.module.css";
 import useFetch from "../../Hooks/useFetch";
 import { GET_LIST_CONTENT } from "../../Api";
-export const FormSelect = ({ setValue, value, type, label, localFilter }) => {
-  const { onChange, error } = useForm();
+export const FormSelect = ({ type, label, localFilter, onChange, error }) => {
   const { request } = useFetch();
+  const [data, setData] = React.useState();
   React.useEffect(() => {
     const req = async () => {
       const { url, options } = GET_LIST_CONTENT(type);
       let { json } = await request(url, options);
-      setValue(json);
+      setData(json);
     };
     req();
-  }, [request, setValue, type, localFilter]);
+  }, [request, setData, type, localFilter]);
 
   return (
-    <div>
-      <label htmlFor="cliente">{label}</label>
-      <select onChange={onChange} defaultValue="" name={type} id={type}>
+    <div className={style.container}>
+      <label className={style.label} htmlFor="cliente">
+        {label}
+      </label>
+      <select
+        className={style.input}
+        required={true}
+        onChange={onChange}
+        defaultValue=""
+        name={type}
+        id={type}>
         {localFilter ? (
           <>
-            <option disable="true" value="">
+            <option disabled={true} value="">
               Selecione um Dentista
             </option>
-            {value &&
-              value.all.map((item, i) => {
-                if (item.local.nome === localFilter)
+            {data &&
+              data.all.map((item, i) => {
+                if (item.local._id === localFilter)
                   return (
-                    <option key={i} value={item.nome}>
+                    <option key={i} value={item._id}>
                       {item.nome}
                     </option>
                   );
@@ -40,12 +47,19 @@ export const FormSelect = ({ setValue, value, type, label, localFilter }) => {
           </option>
         )}
       </select>
-      {error && <p>{error}</p>}
+      {error && <p className={style.error}>{error}</p>}
     </div>
   );
 };
 
-export const FormSelectLocal = ({ onChange, error, type, label }) => {
+export const FormSelectLocal = ({
+  onChange,
+  error,
+  type,
+  label,
+  value,
+  setCliente,
+}) => {
   const [data, setData] = React.useState();
   const { request } = useFetch();
   React.useEffect(() => {
@@ -57,22 +71,34 @@ export const FormSelectLocal = ({ onChange, error, type, label }) => {
     };
     req();
   }, [request, setData, type]);
-
+  React.useEffect(() => {
+    // remove cliente value from select cliente in case of changes in value of local
+    // ex:user select local and a cliente but decide to change to another local but forget to change cliente too, it will get a error on api side
+    setCliente("");
+  }, [value, setCliente]);
   return (
-    <div>
-      <label htmlFor="cliente">{label}</label>
-      <select onChange={onChange} defaultValue="" name={type} id={type}>
-        <option disable="true" value="">
+    <div className={style.container}>
+      <label className={style.label} htmlFor="cliente">
+        {label}
+      </label>
+      <select
+        className={style.input}
+        required={true}
+        onChange={onChange}
+        defaultValue=""
+        name={type}
+        id={type}>
+        <option disabled={true} value="">
           Selecione um Local
         </option>
         {data &&
           data.all.map((item, i) => (
-            <option key={i} value={item.nome}>
+            <option key={i} value={item._id}>
               {item.nome}
             </option>
           ))}
       </select>
-      {error && <p>{error}</p>}
+      {error && <p className={style.error}>{error}</p>}
     </div>
   );
 };
