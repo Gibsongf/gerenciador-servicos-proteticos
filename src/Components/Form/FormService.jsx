@@ -13,7 +13,7 @@ const FormService = () => {
   const local = useForm();
   const status = useForm();
   const refCheckbox = React.useRef();
-  const formRef = React.useRef();
+  const sectionRef = React.useRef();
 
   const { modal, setModal } = React.useContext(ServiceContext);
   const onSubmit = (e) => {
@@ -35,23 +35,24 @@ const FormService = () => {
     };
   };
   React.useEffect(() => {
-    const clickOut = (e) => {
-      if (e.target === formRef.current) {
+    const clickOutside = (e) => {
+      if (e.target === sectionRef.current) {
         setModal(false);
       }
     };
-    window.addEventListener("click", clickOut);
+    window.addEventListener("click", clickOutside);
     return () => {
-      window.removeEventListener("click", clickOut);
+      window.removeEventListener("click", clickOutside);
     };
-  }, [formRef, setModal]);
+  }, [sectionRef, setModal]);
+
   return (
     <section
-      ref={formRef}
-      style={{ display: modal ? "block" : "none" }}
+      ref={sectionRef}
+      // style={{ display: modal ? "flex" : "none" }}
       onSubmit={onSubmit}
-      className={style.containerModal}>
-      <form className={style.form}>
+      className={`${style.containerModal} ${modal ? style.active : ""}`}>
+      <form className={`${style.form} ${modal ? style.active : ""}`}>
         <Input label="Paciente" type="text" name="paciente" {...paciente} />
         {/* remove value from cliente when local change with setCliente */}
         <FormSelectLocal
@@ -66,7 +67,8 @@ const FormService = () => {
           type={"cliente"}
           {...cliente}
         />
-        <ProductSelect label={"Produtos"} ref={refCheckbox} />
+        {/* to reset the box, fix for now */}
+        {modal && <ProductSelect label={"Produtos"} ref={refCheckbox} />}
         <StatusDelivery {...status} />
         <button>Confirmar</button>
       </form>

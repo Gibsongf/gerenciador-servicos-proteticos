@@ -57,7 +57,7 @@ export const ProductSelect = ({ label, onChange, error, ref }) => {
       <button className={style.btnProduct} onClick={onBtnClick}>
         ✔
       </button>
-      <div ref={ref}>
+      <div className={style.checkBoxProduct} ref={ref}>
         <CheckBox arr={listProduct} />
       </div>
       {error && <p className={style.error}>{error}</p>}
