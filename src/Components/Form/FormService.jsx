@@ -34,6 +34,10 @@ const FormService = () => {
       produtos,
     };
   };
+  const onClose = (e) => {
+    e.preventDefault();
+    setModal(false);
+  };
   React.useEffect(() => {
     const clickOutside = (e) => {
       if (e.target === sectionRef.current) {
@@ -49,7 +53,6 @@ const FormService = () => {
   return (
     <section
       ref={sectionRef}
-      // style={{ display: modal ? "flex" : "none" }}
       onSubmit={onSubmit}
       className={`${style.containerModal} ${modal ? style.active : ""}`}>
       <form className={`${style.form} ${modal ? style.active : ""}`}>
@@ -67,10 +70,15 @@ const FormService = () => {
           type={"cliente"}
           {...cliente}
         />
-        {/* to reset the box, fix for now */}
+        {/* to reset the box values, fix for now */}
         {modal && <ProductSelect label={"Produtos"} ref={refCheckbox} />}
         <StatusDelivery {...status} />
-        <button>Confirmar</button>
+        <div className={style.btnContainer}>
+          <button onClick={onClose} className={style.btnClose}>
+            Cancelar
+          </button>
+          <button className={style.btnSalvar}>Salvar</button>
+        </div>
       </form>
     </section>
   );

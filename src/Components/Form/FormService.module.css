@@ -16,6 +16,8 @@
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   padding: 16px;
   background-color: var(--main-bg);
@@ -33,4 +35,30 @@
 .containerModal.active {
   visibility: visible;
   opacity: 1;
+}
+
+.btnContainer {
+  align-self: flex-end;
+}
+
+.btnSalvar,
+.btnClose {
+  width: 100px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgb(0, 0, 0, 0.4);
+
+}
+
+.btnSalvar {
+  background-color: var(--main-color);
+  color: white;
+  font-weight: bold;
+  margin-left: 4px;
+
+}
+
+.btnClose {
+  align-self: flex-end;
+  background-color: #eee;
 }
