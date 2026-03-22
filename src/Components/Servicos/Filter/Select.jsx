@@ -1,5 +1,5 @@
 import React from "react";
-import { ServiceContext } from "../../Context";
+import { ServiceContext } from "../../../Context";
 import style from "./Select.module.css";
 
 export const SelectDentist = () => {

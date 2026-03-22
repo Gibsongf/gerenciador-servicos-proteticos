@@ -6,7 +6,7 @@
 
 .input {
   border: rgb(0, 0, 0, 0.2) solid 1px;
-  display: block;
+  /* display: block; */
   width: 100%;
   font-size: 1rem;
   padding: 12px;
@@ -15,24 +15,19 @@
   transition: 0.2s;
 }
 
-.inputStatus {
-  border: rgb(0, 0, 0, 0.2) solid 1px;
-  display: block;
-  width: 50%;
-  font-size: 1rem;
-  padding: 12px;
-  border-radius: 0.4rem;
-  background: #eee;
-  transition: 0.2s;
+.productContainer {
+  align-self: self-end;
+
 }
 
 .selectContainer {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  column-gap: 4px;
+  display: flex;
+  column-gap: 12px;
   align-items: center;
-
+  margin-top: 4px;
 }
+
+
 
 .selectContainer .label {
   grid-column: 1/-1;
@@ -48,7 +43,9 @@
 }
 
 .btnProduct:focus,
-.btnProduct:hover {
+.btnProduct:hover,
+.btnRemoveProduct:focus,
+.btnRemoveProduct:hover {
   border: 1px solid black;
   transform: scale(1);
   transition: 0.1s ease-in-out;
@@ -56,19 +53,20 @@
 
 }
 
-.input:focus,
-.input:hover,
-.inputStatus:focus,
-.inputStatus:hover {
-  outline: none;
-  border: rgb(0, 0, 0, 0.4) solid 1px;
-  box-shadow: 0 0 0 3px var(--second-color);
-
+.btnRemoveProduct {
+  max-width: 100%;
+  font-size: 1rem;
+  padding: 12px;
+  border-radius: 0.4rem;
+  background: #eee;
+  border: rgb(0, 0, 0, 0.2) solid 1px;
+  align-self: flex-end;
+  cursor: pointer;
 }
 
 .label {
   display: block;
-  font-size: 1rem;
+  font-size: 0.7rem;
   line-height: 1;
   padding-bottom: 0.5rem;
 }
@@ -77,15 +75,4 @@
   color: #f31;
   font-size: 0.875rem;
   margin-top: 0.25rem;
-}
-
-.checkBoxProduct {
-  display: flex;
-  gap: 4px;
-  flex-direction: column;
-  max-height: 200px;
-  overflow-y: scroll;
-  margin-top: 8px;
-  margin-bottom: 8px;
-
 }

@@ -7,7 +7,6 @@ import Clinicas from "./Components/Clinicas/Clinicas";
 import Produtos from "./Components/Produtos/Produtos";
 import Header from "./Components/Header";
 import "./App.css";
-
 function App() {
   return (
     <>
@@ -16,11 +15,11 @@ function App() {
       <main className="App">
         <MenuNav />
         <Routes>
-          <Route path="/" element={<Servicos />} />
-          {/* <Route path="servicos" element={<Servicos />} /> */}
-          <Route path="clientes" element={<Clientes />} />
-          <Route path="clinicas" element={<Clinicas />} />
-          <Route path="produtos" element={<Produtos />} />
+          <Route path="*" element={<Servicos />} />
+          <Route path="servico/*" element={<Servicos />} />
+          <Route path="cliente" element={<Clientes />} />
+          <Route path="clinica" element={<Clinicas />} />
+          <Route path="produto" element={<Produtos />} />
         </Routes>
       </main>
     </>

@@ -7,7 +7,7 @@ export function StatusDelivery({ onChange, value }) {
         Finalizado:
       </label>
       <select
-        className={style.input}
+        className={style.inputStatus}
         name="statusEntrega"
         id="statusEntrega"
         onChange={onChange}
