@@ -2,7 +2,6 @@ import React from "react";
 import style from "./SelectProduct.module.css";
 import useFetch from "../../Hooks/useFetch";
 import { GET_LIST_CONTENT } from "../../Api";
-import { CheckBox } from "./CheckBox";
 
 export const ProductSelect = ({ setValue, error, index, removeProduct }) => {
   const { request } = useFetch();
@@ -16,22 +15,23 @@ export const ProductSelect = ({ setValue, error, index, removeProduct }) => {
       setData(json);
     };
     req();
-    console.log(index);
   }, [request]);
 
   const onChange = ({ target }) => {
-    if (!target.value) return;
     setCurrValue(target.value);
+
     setValue((obj) => {
-      return { ...obj, [index]: [target.value, quantity] };
+      let copy = { ...obj };
+      copy[index] = [target.value, quantity];
+      return copy;
     });
   };
-  const quantityChange = (e) => {
-    if (!currValue) return;
-
-    setQuantity(e.target.value);
+  const quantityChange = ({ target }) => {
+    setQuantity(() => Number(target.value));
     setValue((obj) => {
-      return { ...obj, [index]: [currValue, quantity] };
+      let copy = { ...obj };
+      copy[index] = [currValue, Number(target.value)];
+      return copy;
     });
   };
 
@@ -44,7 +44,7 @@ export const ProductSelect = ({ setValue, error, index, removeProduct }) => {
           onChange={onChange}
           value={currValue}
           name={"produto"}
-          id={"produto"}>
+          id={"produto-" + index}>
           <option disabled={true} value="">
             Selecione Produtos
           </option>
@@ -57,7 +57,7 @@ export const ProductSelect = ({ setValue, error, index, removeProduct }) => {
         </select>
       </div>
       <div>
-        <label className={style.label} htmlFor="quantity">
+        <label className={style.label} htmlFor={"quantity-" + index}>
           Quantidade
         </label>
         <input
@@ -65,7 +65,7 @@ export const ProductSelect = ({ setValue, error, index, removeProduct }) => {
           className={style.input}
           type="number"
           name="quantity"
-          id="quantity"
+          id={"quantity-" + index}
           value={quantity}
           min={1}
           max={20}

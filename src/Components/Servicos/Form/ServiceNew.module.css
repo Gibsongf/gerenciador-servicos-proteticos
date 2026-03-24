@@ -38,6 +38,11 @@
 
 }
 
+.btnSalvar:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
 .btnClose {
   align-self: flex-end;
   background-color: var(--second-color)

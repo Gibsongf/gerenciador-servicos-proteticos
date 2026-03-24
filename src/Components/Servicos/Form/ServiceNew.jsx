@@ -6,8 +6,14 @@ import { FormSelect, FormSelectLocal } from "../../Form/SelectForm";
 import { ProductSelect } from "../../Form/SelectProduct";
 import style from "./ServiceNew.module.css";
 import { StatusDelivery } from "../../Form/SelectFinishService";
+import { todayDate } from "../../../utils";
+import useFetch from "../../../Hooks/useFetch";
+import { USER_POST } from "../../../Api";
+import { ServiceContext } from "../../../Context";
+import { useNavigate } from "react-router-dom";
 
 const ServiceNew = () => {
+  const { setUpdate } = React.useContext(ServiceContext);
   const paciente = useForm();
   const data = useForm();
   const produto = useForm();
@@ -15,20 +21,39 @@ const ServiceNew = () => {
   const local = useForm();
   const status = useForm();
   const [renderProducts, setRenderProducts] = React.useState([]);
-  const refCheckbox = React.useRef();
+  const formRef = React.useRef();
+  const nav = useNavigate();
+  const { request, error, loading } = useFetch();
+
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(produto);
-    let produtos = [];
-    if (!refCheckbox.current) return "";
-
+    let produtos = Object.keys(produto.value).map((k) => {
+      return { produto: produto.value[k][0], quantidade: produto.value[k][1] };
+    });
     const obj = {
       paciente: paciente.value,
       cliente: cliente.value,
       local: local.value,
-      status: status.value,
+      statusEntrega: status.value ? status.value : false,
+      dataRegistro: data.value,
       produtos,
     };
+
+    const { url, options } = USER_POST("servico", obj);
+    const submit = async () => {
+      const { response, json } = await request(url, options);
+      if (response.ok) {
+        setUpdate((update) => [...update, 1]);
+        alert(json.message);
+        return true;
+      }
+      alert(error);
+
+      return false;
+    };
+    if (submit()) {
+      nav("/servico");
+    }
   };
   const onCancel = (e) => {
     e.preventDefault();
@@ -73,15 +98,28 @@ const ServiceNew = () => {
         {...produto}
       />,
     ]);
+    data.setValue(todayDate());
   }, []);
   return (
     <>
       <h1>Adicionar Serviço</h1>
 
-      <form className={style.form}>
+      <form ref={formRef} className={style.form} onSubmit={onSubmit}>
         <div className={style.formSelect}>
-          <Input label="Paciente" type="text" name="paciente" {...paciente} />
-          <Input label="Data" type="date" name="data" {...data} />
+          <Input
+            label="Paciente"
+            type="text"
+            name="paciente"
+            required={true}
+            {...paciente}
+          />
+          <Input
+            label="Data"
+            type="date"
+            name="data"
+            required={false}
+            {...data}
+          />
         </div>
         {/* remove value from cliente when local change with setCliente */}
         <div className={style.formSelect}>
@@ -111,7 +149,7 @@ const ServiceNew = () => {
           <button onClick={onCancel} className={style.btnClose}>
             Cancelar
           </button>
-          <button onClick={onSubmit} className={style.btnSalvar}>
+          <button className={style.btnSalvar} disabled={loading}>
             Salvar
           </button>
         </div>

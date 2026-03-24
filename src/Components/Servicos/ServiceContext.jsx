@@ -9,6 +9,7 @@ export const ServiceStorage = ({ children }) => {
   const [filter, setFilter] = React.useState({});
   const [cliente, setCliente] = React.useState(false);
   const [local, setLocal] = React.useState(false);
+  const [update, setUpdate] = React.useState([]);
 
   React.useEffect(() => {
     const req = async () => {
@@ -23,7 +24,7 @@ export const ServiceStorage = ({ children }) => {
       }
     };
     req();
-  }, [request]);
+  }, [request, update.length]);
   return (
     <ServiceContext.Provider
       value={{
@@ -34,6 +35,7 @@ export const ServiceStorage = ({ children }) => {
         setFilter,
         cliente,
         local,
+        setUpdate,
       }}>
       {children}
     </ServiceContext.Provider>

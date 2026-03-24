@@ -11,7 +11,7 @@ const MenuNav = () => {
     <nav className="container">
       <ul className="list-container">
         <li>
-          <NavLink className="link" to="/">
+          <NavLink className="link" to="/servico">
             <ServiceIcon color=" #1F2937" />
             <p>Serviços</p>
           </NavLink>
