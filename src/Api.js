@@ -34,3 +34,18 @@ export function GET_CONTENT_BY_ID(id, category) {
   const url = apiUrl + "/servico/todos/" + category + "/" + id;
   return { url, options };
 }
+
+export function USER_POST(category, body) {
+  // const url = `http://localhost:3000/api/${formData["category"]}/novo`;
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage["token"],
+    },
+    body: JSON.stringify(body),
+  };
+  const url = "http://localhost:3000/api/" + category + "/novo";
+  return { url, options };
+}

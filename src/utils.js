@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export function removeDuplicate(arr) {
   const lstRepeat = [];
   function remove(obj) {
@@ -7,4 +9,8 @@ export function removeDuplicate(arr) {
     }
   }
   return arr.filter(remove);
+}
+
+export function todayDate() {
+  return format(new Date(), "yyyy-MM-dd");
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import ExportIcon from "../svg/ExportIcon";
+import ExportIcon from "../../svg/ExportIcon";
 import style from "./ExportService.module.css";
 
 const ExportService = () => {

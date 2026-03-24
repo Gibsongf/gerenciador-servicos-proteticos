@@ -8,10 +8,13 @@ const ServiceTR = ({ item, i }) => {
       <td>{item.dataRegistro.split("T")[0]}</td>
       <td>{item.local.nome}</td>
       <td>{item.cliente.nome}</td>
+      <td>{item.paciente}</td>
       <td>
         <div className={style.produtos}>
-          {item.produto.map((produto, indx) => (
-            <p key={i + indx}>{produto.nome}</p>
+          {item.produtos.map((p, indx) => (
+            <p key={i + indx}>
+              {p.produto.nome} (x{p.quantidade})
+            </p>
           ))}
         </div>
       </td>
@@ -23,7 +26,7 @@ const ServiceTR = ({ item, i }) => {
 };
 const ServicosContent = () => {
   const { data, loading, filter } = React.useContext(ServiceContext);
-  const tableHeaders = ["Data", "Clinica", "Cliente", "Produto"];
+  const tableHeaders = ["Data", "Clinica", "Cliente", "Paciente", "Produto"];
   const filterData = (item, i) => {
     if (Object.values(filter).length) {
       let match = false;

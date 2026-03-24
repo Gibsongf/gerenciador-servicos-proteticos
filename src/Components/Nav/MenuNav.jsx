@@ -11,25 +11,25 @@ const MenuNav = () => {
     <nav className="container">
       <ul className="list-container">
         <li>
-          <NavLink className="link" to="/">
+          <NavLink className="link" to="/servico">
             <ServiceIcon color=" #1F2937" />
             <p>Serviços</p>
           </NavLink>
         </li>
         <li>
-          <NavLink className="link" to="/clientes">
+          <NavLink className="link" to="/cliente">
             <ClientIcon color=" #1F2937" />
             <p>Clientes</p>
           </NavLink>
         </li>
         <li>
-          <NavLink className="link" to="/clinicas">
+          <NavLink className="link" to="/clinica">
             <ClinicIcon color=" #1F2937" />
             <p>Clínicas</p>
           </NavLink>
         </li>
         <li>
-          <NavLink className="link" to="/produtos">
+          <NavLink className="link" to="/produto">
             <ToothIcon color="#1F2937" />
             <p>Produtos</p>
           </NavLink>

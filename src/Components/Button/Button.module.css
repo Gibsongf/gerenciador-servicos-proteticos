@@ -8,6 +8,8 @@
   border: none;
   cursor: pointer;
   width: 100%;
+  text-align: center;
+
 }
 
 .buttonAdd:hover {

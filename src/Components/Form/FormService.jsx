@@ -15,7 +15,6 @@ const FormService = () => {
   const refCheckbox = React.useRef();
   const sectionRef = React.useRef();
 
-  const { modal, setModal } = React.useContext(ServiceContext);
   const onSubmit = (e) => {
     e.preventDefault();
     let produtos = [];
@@ -36,26 +35,14 @@ const FormService = () => {
   };
   const onClose = (e) => {
     e.preventDefault();
-    setModal(false);
   };
-  React.useEffect(() => {
-    const clickOutside = (e) => {
-      if (e.target === sectionRef.current) {
-        setModal(false);
-      }
-    };
-    window.addEventListener("click", clickOutside);
-    return () => {
-      window.removeEventListener("click", clickOutside);
-    };
-  }, [sectionRef, setModal]);
 
   return (
     <section
       ref={sectionRef}
       onSubmit={onSubmit}
-      className={`${style.containerModal} ${modal ? style.active : ""}`}>
-      <form className={`${style.form} ${modal ? style.active : ""}`}>
+      className={`${style.containerModal} `}>
+      <form className={`${style.form} `}>
         <Input label="Paciente" type="text" name="paciente" {...paciente} />
         {/* remove value from cliente when local change with setCliente */}
         <FormSelectLocal
@@ -71,7 +58,7 @@ const FormService = () => {
           {...cliente}
         />
         {/* to reset the box values, fix for now */}
-        {modal && <ProductSelect label={"Produtos"} ref={refCheckbox} />}
+
         <StatusDelivery {...status} />
         <div className={style.btnContainer}>
           <button onClick={onClose} className={style.btnClose}>

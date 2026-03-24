@@ -5,4 +5,6 @@
   /* border: rgb(0, 0, 0, 0.2) solid 1px; */
 }
 
-.produtos {}
+.produtos p {
+  text-align: left;
+}
