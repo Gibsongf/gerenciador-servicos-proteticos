@@ -1,8 +1,8 @@
 import React from "react";
-import { SelectClinic, SelectDentist } from "./Select";
+import { SelectDentist } from "./SelectDentist";
+import { SelectClinic } from "./SelectClinic";
 import style from "./FilterService.module.css";
 import useMedia from "../../../Hooks/useMedia";
-// import BtnShowForm from "../ButtonAdd";
 import { Link } from "react-router-dom";
 import btnStyle from "../../Button/Button.module.css";
 
@@ -22,8 +22,4 @@ const FilterService = () => {
   );
 };
 
-// Input.PropTypes = {
-//   name: PropTypes.string.isRequired,
-//   options: PropTypes.array.isRequired,
-// };
 export default FilterService;

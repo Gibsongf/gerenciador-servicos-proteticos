@@ -2,7 +2,14 @@ import React from "react";
 import style from "./Input.module.css";
 import useFetch from "../../Hooks/useFetch";
 import { GET_LIST_CONTENT } from "../../Api";
-export const FormSelect = ({ type, label, localFilter, onChange, error }) => {
+export const FormSelectDentist = ({
+  type,
+  label,
+  localFilter,
+  onChange,
+  error,
+  value,
+}) => {
   const { request } = useFetch();
   const [data, setData] = React.useState();
   React.useEffect(() => {
@@ -13,7 +20,6 @@ export const FormSelect = ({ type, label, localFilter, onChange, error }) => {
     };
     req();
   }, [request, setData, type, localFilter]);
-
   return (
     <div className={style.container}>
       <label className={style.label} htmlFor="cliente">
@@ -23,7 +29,7 @@ export const FormSelect = ({ type, label, localFilter, onChange, error }) => {
         className={style.input}
         required={true}
         onChange={onChange}
-        defaultValue=""
+        value={value}
         name={type}
         id={type}>
         {localFilter ? (
@@ -71,11 +77,11 @@ export const FormSelectLocal = ({
     };
     req();
   }, [request, setData, type]);
-  React.useEffect(() => {
-    // remove cliente value from select cliente in case of changes in value of local
-    // ex:user select local and a cliente but decide to change to another local but forget to change cliente too, it will get a error on api side
+
+  const selectOnChange = (e) => {
+    onChange(e);
     setCliente("");
-  }, [value, setCliente]);
+  };
   return (
     <div className={style.container}>
       <label className={style.label} htmlFor="cliente">
@@ -84,8 +90,8 @@ export const FormSelectLocal = ({
       <select
         className={style.input}
         required={true}
-        onChange={onChange}
-        defaultValue=""
+        onChange={selectOnChange}
+        value={value}
         name={type}
         id={type}>
         <option disabled={true} value="">

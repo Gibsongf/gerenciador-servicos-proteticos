@@ -1,45 +1,56 @@
 import React from "react";
-
-import useForm from "../../../Hooks/useForm";
 import Input from "../../Form/Input";
-import { FormSelect, FormSelectLocal } from "../../Form/SelectForm";
+import { FormSelectDentist, FormSelectLocal } from "../../Form/SelectForm";
 import { ProductSelect } from "../../Form/SelectProduct";
-import style from "./ServiceNew.module.css";
+import style from "./FormServico.module.css";
 import { StatusDelivery } from "../../Form/SelectFinishService";
-import { todayDate } from "../../../utils";
 import useFetch from "../../../Hooks/useFetch";
-import { USER_POST } from "../../../Api";
-import { ServiceContext } from "../../../Context";
+import { USER_PUT } from "../../../Api";
+import { ServicoContext } from "../../../Context";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { ProductSelectEdit } from "../../Form/SelectProductEdit";
+import useFormEditar from "../../../Hooks/useFormEditar";
 
-const ServiceNew = () => {
-  const { setUpdate } = React.useContext(ServiceContext);
-  const paciente = useForm();
-  const data = useForm();
-  const produto = useForm();
-  const cliente = useForm();
-  const local = useForm();
-  const status = useForm();
+const FormServicoEdit = () => {
+  const { id } = useParams();
+  const { setUpdate, serviceDetails } = React.useContext(ServicoContext);
+  const paciente = useFormEditar(serviceDetails.paciente);
+  const date = useFormEditar(serviceDetails.dataRegistro);
+  const produto = useFormEditar(serviceDetails.produtos);
+  const local = useFormEditar(serviceDetails.local._id);
+  const cliente = useFormEditar(serviceDetails.cliente._id);
   const [renderProducts, setRenderProducts] = React.useState([]);
-  const formRef = React.useRef();
+  const status = useFormEditar(serviceDetails.statusEntrega);
   const nav = useNavigate();
   const { request, error, loading } = useFetch();
 
   const onSubmit = (e) => {
     e.preventDefault();
+    // object with index as keys for the product state form
     let produtos = Object.keys(produto.value).map((k) => {
-      return { produto: produto.value[k][0], quantidade: produto.value[k][1] };
+      if (produto.value[k].length) {
+        return {
+          produto: produto.value[k][0],
+          quantidade: produto.value[k][1],
+        };
+      } else {
+        return {
+          produto: produto.value[k].produto._id,
+          quantidade: produto.value[k].quantidade,
+        };
+      }
     });
     const obj = {
       paciente: paciente.value,
       cliente: cliente.value,
       local: local.value,
       statusEntrega: status.value ? status.value : false,
-      dataRegistro: data.value,
+      dataRegistro: date.value,
       produtos,
     };
 
-    const { url, options } = USER_POST("servico", obj);
+    const { url, options } = USER_PUT("servico", id, obj);
     const submit = async () => {
       const { response, json } = await request(url, options);
       if (response.ok) {
@@ -55,11 +66,18 @@ const ServiceNew = () => {
       nav("/servico");
     }
   };
+
   const onCancel = (e) => {
     e.preventDefault();
+    nav("/servico");
   };
+
   const removeProduct = (e) => {
     e.preventDefault();
+    // we pass the current target index in the array renderProducts
+    // with dataset, retrieve it and use it for removal of that target
+    // from the list of rendered products
+    // and use the index as key of the produto value form to remove it from there
     const indx = Number(e.target.dataset.index);
     if (indx >= 1) {
       setRenderProducts((lst) => {
@@ -89,22 +107,24 @@ const ServiceNew = () => {
   };
 
   React.useEffect(() => {
-    setRenderProducts([
-      <ProductSelect
-        removeProduct={removeProduct}
-        index={0}
-        key={0}
-        label={"Produtos"}
-        {...produto}
-      />,
-    ]);
-    data.setValue(todayDate());
+    setRenderProducts(() => {
+      return produto.value.map((p, i) => (
+        <ProductSelectEdit
+          index={i}
+          removeProduct={removeProduct}
+          key={i}
+          label={"Produtos"}
+          {...produto}
+        />
+      ));
+    });
   }, []);
+
   return (
     <>
       <h1>Adicionar Serviço</h1>
 
-      <form ref={formRef} className={style.form} onSubmit={onSubmit}>
+      <form className={style.form} onSubmit={onSubmit}>
         <div className={style.formSelect}>
           <Input
             label="Paciente"
@@ -118,7 +138,7 @@ const ServiceNew = () => {
             type="date"
             name="data"
             required={false}
-            {...data}
+            {...date}
           />
         </div>
         {/* remove value from cliente when local change with setCliente */}
@@ -129,7 +149,7 @@ const ServiceNew = () => {
             type={"local"}
             {...local}
           />
-          <FormSelect
+          <FormSelectDentist
             localFilter={local.value}
             label={"Dentista"}
             type={"cliente"}
@@ -139,7 +159,7 @@ const ServiceNew = () => {
 
         <div className={style.containerProduct}>
           <h4>Produtos</h4>
-          {renderProducts.map((Select) => Select)}
+          {renderProducts.map((select) => select)}
         </div>
         <button onClick={onClickAddProduct} className={style.btnAddProduct}>
           + Adicionar Produto
@@ -158,4 +178,4 @@ const ServiceNew = () => {
   );
 };
 
-export default ServiceNew;
+export default FormServicoEdit;

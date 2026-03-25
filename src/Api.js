@@ -31,7 +31,7 @@ export function GET_CONTENT_BY_ID(id, category) {
       Authorization: "Bearer " + localStorage["token"],
     },
   };
-  const url = apiUrl + "/servico/todos/" + category + "/" + id;
+  const url = apiUrl + "/servico/" + id;
   return { url, options };
 }
 
@@ -47,5 +47,20 @@ export function USER_POST(category, body) {
     body: JSON.stringify(body),
   };
   const url = "http://localhost:3000/api/" + category + "/novo";
+  return { url, options };
+}
+
+export function USER_PUT(category, id, body) {
+  // const url = `http://localhost:3000/api/${formData["category"]}/novo`;
+  // ${apiUrl}/api/${formData["category"]}/${id}/edit
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage["token"],
+    },
+    body: JSON.stringify(body),
+  };
+  const url = "http://localhost:3000/api/" + category + "/" + id + "/edit";
   return { url, options };
 }

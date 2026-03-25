@@ -8,3 +8,7 @@
 .produtos p {
   text-align: left;
 }
+
+svg {
+  width: 24px;
+}

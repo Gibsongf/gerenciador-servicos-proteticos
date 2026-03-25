@@ -22,7 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
+TODO.txt
 #css pattern
 pallet.txt
 #design

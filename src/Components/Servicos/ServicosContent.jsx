@@ -1,8 +1,15 @@
 import React from "react";
-import { ServiceContext } from "../../Context";
+import { ServicoContext } from "../../Context";
 import style from "./ServicosContent.module.css";
 import "../Table/Table.css";
+import EditIcon from "../svg/EditIcon";
+import { Link } from "react-router-dom";
 const ServiceTR = ({ item, i }) => {
+  const { saveServiceDetails } = React.useContext(ServicoContext);
+
+  const onClickEdit = () => {
+    saveServiceDetails(item);
+  };
   return (
     <tr>
       <td>{item.dataRegistro.split("T")[0]}</td>
@@ -19,13 +26,15 @@ const ServiceTR = ({ item, i }) => {
         </div>
       </td>
       <td>
-        <button>edit</button>
+        <Link onClick={onClickEdit} to={"/servico/editar/" + item._id}>
+          <EditIcon />
+        </Link>
       </td>
     </tr>
   );
 };
 const ServicosContent = () => {
-  const { data, loading, filter } = React.useContext(ServiceContext);
+  const { data, loading, filter } = React.useContext(ServicoContext);
   const tableHeaders = ["Data", "Clinica", "Cliente", "Paciente", "Produto"];
   const filterData = (item, i) => {
     if (Object.values(filter).length) {
