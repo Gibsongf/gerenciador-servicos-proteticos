@@ -17,6 +17,17 @@
   overflow-y: scroll;
 }
 
+@media (max-width:700px) {
+  .formSelect:nth-child(odd) {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .containerProduct {
+    max-height: 150px;
+  }
+}
+
 .btnContainer {
   text-align: right;
 }

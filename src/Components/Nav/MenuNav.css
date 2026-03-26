@@ -96,8 +96,7 @@ li svg {
   .list-container {
     flex-direction: row;
     justify-content: space-evenly;
-
-    padding: 12px 0px;
+    padding: 4px 0px;
     gap: 12px;
   }
 
@@ -107,7 +106,7 @@ li svg {
     flex-direction: column;
 
     max-height: fit-content;
-    padding: 8px 12px;
+    padding: 4px 8px;
     gap: 4px;
     border-radius: 4px;
 

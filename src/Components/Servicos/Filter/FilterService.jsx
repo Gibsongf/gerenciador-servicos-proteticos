@@ -10,7 +10,7 @@ import btnStyle from "../../Button/Button.module.css";
 const FilterService = () => {
   const mobile = useMedia();
   return (
-    <div className={style.navContainer}>
+    <div className={style.filterContainer}>
       <SelectDentist />
       <SelectClinic />
       {!mobile && (
