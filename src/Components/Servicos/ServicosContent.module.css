@@ -2,7 +2,8 @@
   background-color: #FFF;
   overflow-x: scroll;
   grid-column: 2/-1;
-  /* border: rgb(0, 0, 0, 0.2) solid 1px; */
+  min-height: 450px;
+
 }
 
 .produtos p {
@@ -11,4 +12,30 @@
 
 svg {
   width: 24px;
+}
+
+.ulContainer ul {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 5px
+}
+
+
+.buttonPage {
+  padding: 4px 8px;
+  font-weight: bold;
+  border: #16ab9f solid 2px;
+  border-radius: 4px;
+
+}
+
+.buttonPage.active {
+  background-color: #0F766E;
+  color: white;
+}
+
+.buttonPage:hover {
+  border: rgb(0, 0, 0, 0.5) solid 2px;
+
 }

@@ -1,16 +1,6 @@
 let apiUrl = "http://localhost:3000/api";
 // import { loginData } from "./TODO/loginData";
 
-function setupFetch(url, reqMethod = "get") {
-  const reqConfig = {
-    method: reqMethod,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + localStorage["token"],
-    },
-  };
-  return reqConfig;
-}
 export function GET_LIST_CONTENT(category) {
   const options = {
     method: "get",
@@ -36,8 +26,6 @@ export function GET_CONTENT_BY_ID(id, category) {
 }
 
 export function USER_POST(category, body) {
-  // const url = `http://localhost:3000/api/${formData["category"]}/novo`;
-
   const options = {
     method: "POST",
     headers: {
@@ -51,8 +39,6 @@ export function USER_POST(category, body) {
 }
 
 export function USER_PUT(category, id, body) {
-  // const url = `http://localhost:3000/api/${formData["category"]}/novo`;
-  // ${apiUrl}/api/${formData["category"]}/${id}/edit
   const options = {
     method: "PUT",
     headers: {

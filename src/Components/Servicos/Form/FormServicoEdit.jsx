@@ -54,7 +54,7 @@ const FormServicoEdit = () => {
     const submit = async () => {
       const { response, json } = await request(url, options);
       if (response.ok) {
-        setUpdate((update) => [...update, 1]);
+        setUpdate((update) => update + 1);
         alert(json.message);
         return true;
       }

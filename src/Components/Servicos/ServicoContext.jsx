@@ -9,7 +9,9 @@ export const ServicoStorage = ({ children }) => {
   const [filter, setFilter] = React.useState({});
   const [cliente, setCliente] = React.useState(false);
   const [local, setLocal] = React.useState(false);
-  const [update, setUpdate] = React.useState([]);
+  const [pagination, setPagination] = React.useState(1);
+
+  const [update, setUpdate] = React.useState(1);
   const [editService, setEditService] = React.useState({});
   React.useEffect(() => {
     const req = async () => {
@@ -20,10 +22,20 @@ export const ServicoStorage = ({ children }) => {
         // if there is none it wont show at select options html
         setCliente(removeDuplicate(json.all.map((j) => j.cliente)));
         setLocal(removeDuplicate(json.all.map((j) => j.local)));
+        let index = 0;
+        const lst = [[]];
+        json.all.forEach((j) => {
+          if (lst[index].length - 1 >= 4) {
+            index++;
+            lst.push([]);
+          }
+          lst[index].push(j);
+        });
+        setPagination(lst);
       }
     };
     req();
-  }, [request, update.length]);
+  }, [request, update]);
   const saveServiceDetails = (service) => {
     let final = { ...service };
     final.dataRegistro = final.dataRegistro.split("T")[0];
@@ -47,6 +59,7 @@ export const ServicoStorage = ({ children }) => {
         cliente,
         local,
         setUpdate,
+        pagination,
         saveServiceDetails,
         serviceDetails: getServiceDetails(),
       }}>

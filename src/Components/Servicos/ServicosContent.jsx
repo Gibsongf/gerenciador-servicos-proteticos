@@ -34,8 +34,10 @@ const ServiceTR = ({ item, i }) => {
   );
 };
 const ServicosContent = () => {
-  const { data, loading, filter } = React.useContext(ServicoContext);
+  const { data, loading, filter, pagination } =
+    React.useContext(ServicoContext);
   const tableHeaders = ["Data", "Clinica", "Cliente", "Paciente", "Produto"];
+  const [page, setPage] = React.useState(0);
   const filterData = (item, i) => {
     if (Object.values(filter).length) {
       let match = false;
@@ -56,19 +58,41 @@ const ServicosContent = () => {
   if (loading) return <div>Loading</div>;
 
   return (
-    <div className={style.tableContainer}>
-      <table>
-        <thead>
-          <tr>
-            {tableHeaders.map((h) => (
-              <th key={h}>{h}</th>
-            ))}
-            <th> </th>
-          </tr>
-        </thead>
-        <tbody>{data && data.all.map((item, i) => filterData(item, i))}</tbody>
-      </table>
-    </div>
+    <>
+      <div className={style.tableContainer}>
+        <table>
+          <thead>
+            <tr>
+              {tableHeaders.map((h) => (
+                <th key={h}>{h}</th>
+              ))}
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            {data && pagination[page].map((item, i) => filterData(item, i))}
+          </tbody>
+        </table>
+      </div>
+      <nav className={style.ulContainer}>
+        <ul>
+          {data &&
+            pagination.map((pg, i) => {
+              let className = `${style.buttonPage}`;
+              if (i == page) {
+                className += " " + style.active;
+              }
+              return (
+                <li key={i}>
+                  <button className={className} onClick={() => setPage(i)}>
+                    {i + 1}
+                  </button>
+                </li>
+              );
+            })}
+        </ul>
+      </nav>
+    </>
   );
 };
 
