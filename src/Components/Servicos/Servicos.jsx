@@ -9,6 +9,7 @@ import ExportService from "./Filter/ExportService";
 import { Route, Routes } from "react-router-dom";
 import FormServicoNovo from "./Form/FormServicoNovo";
 import FormServicoEdit from "./Form/FormServicoEdit";
+import ServicoMobile from "./ServicoContentMobile";
 
 // create a other filter when is mobile
 const Home = () => {
@@ -18,7 +19,7 @@ const Home = () => {
       {mobile ? <MobileTitle /> : <ServiceTitle />}
       <FilterService />
       <ExportService />
-      <ServicosContent />
+      {mobile ? <ServicoMobile /> : <ServicosContent />}
     </>
   );
 };

@@ -47,7 +47,16 @@
 @media (max-width:700px) {
   .selectContainer {
     height: 40px;
-    border: none;
+    border: rgb(0, 0, 0, 0.2) solid 1px;
+  }
+
+  .selectContainer label {
+    display: none;
+  }
+
+  .select {
+    min-width: 100%;
+
   }
 
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { ServicoContext } from "../../../Context";
 import style from "./Select.module.css";
 
-export const SelectClinic = () => {
+export const SelectClinic = ({ mobile = false }) => {
   const { setFilter, local } = React.useContext(ServicoContext);
 
   const onChange = ({ target }) => {
@@ -26,6 +26,11 @@ export const SelectClinic = () => {
         defaultValue=""
         name={"local"}
         id={"local"}>
+        {mobile && (
+          <option selected disabled>
+            Clínicas
+          </option>
+        )}
         <option value="">Todas Clínicas</option>
         {local &&
           local.map((item, i) => (

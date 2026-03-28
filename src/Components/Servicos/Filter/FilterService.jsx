@@ -11,8 +11,8 @@ const FilterService = () => {
   const mobile = useMedia();
   return (
     <div className={style.filterContainer}>
-      <SelectDentist />
-      <SelectClinic />
+      <SelectDentist mobile={mobile} />
+      <SelectClinic mobile={mobile} />
       {!mobile && (
         <Link className={btnStyle.buttonAdd} to={"/servico/novo"}>
           Add Serviço

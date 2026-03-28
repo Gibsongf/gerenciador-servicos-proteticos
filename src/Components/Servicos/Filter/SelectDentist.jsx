@@ -2,7 +2,7 @@ import React from "react";
 import { ServicoContext } from "../../../Context";
 import style from "./Select.module.css";
 
-export const SelectDentist = () => {
+export const SelectDentist = ({ mobile = false }) => {
   // const { request, data } = useFetch();
   const { setFilter, cliente } = React.useContext(ServicoContext);
   const onChange = ({ target }) => {
@@ -25,6 +25,11 @@ export const SelectDentist = () => {
         defaultValue=""
         name="cliente"
         id="cliente">
+        {mobile && (
+          <option selected disabled>
+            Dentistas
+          </option>
+        )}
         <option value="">Todos Dentistas</option>
         {cliente &&
           cliente.map((item, i) => (

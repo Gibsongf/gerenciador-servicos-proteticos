@@ -9,7 +9,7 @@ export const MobileTitle = () => {
     <div className={style.mobileTitle}>
       <ServiceTitle />
       <Link className={btnStyle.buttonAdd} to={"/servico/novo"}>
-        Add Serviço
+        + Add Serviço
       </Link>
     </div>
   );

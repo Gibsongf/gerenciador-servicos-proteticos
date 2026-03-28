@@ -2,7 +2,7 @@
   display: flex;
   gap: 16px;
   background-color: #FFF;
-  align-items: center
+  align-items: center;
 }
 
 @media (max-width:1000px) {
@@ -15,12 +15,11 @@
 @media (max-width:700px) {
   .filterContainer {
     background-color: #FFF;
+    flex-direction: column;
     margin: 0px;
     border-radius: 8px;
-    justify-content: space-evenly;
     padding: 4px 0px;
-    border: rgb(0, 0, 0, 0.2) solid 1px;
-
+    align-items: stretch;
   }
 }
 
