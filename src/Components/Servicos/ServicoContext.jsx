@@ -10,7 +10,6 @@ export const ServicoStorage = ({ children }) => {
   const [cliente, setCliente] = React.useState(false);
   const [local, setLocal] = React.useState(false);
   const [pagination, setPagination] = React.useState(1);
-
   const [update, setUpdate] = React.useState(1);
   const [editService, setEditService] = React.useState({});
   React.useEffect(() => {

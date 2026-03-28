@@ -1,9 +1,11 @@
 .container {
   position: relative;
+  cursor: pointer;
 
 }
 
 .links {
+
   visibility: hidden;
   position: absolute;
   display: flex;

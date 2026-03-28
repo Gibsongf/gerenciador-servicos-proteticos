@@ -32,7 +32,8 @@
   .App {
     grid-template-rows: 1fr auto;
     margin: 0px;
-    padding: 0px 4px;
-
+    padding: 0px;
+    background-color: #e9e9e9c4;
+    /* background-color: black; */
   }
 }

@@ -1,0 +1,52 @@
+.card {
+  background-color: #FFF;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.card span {
+  display: flex;
+  padding: 2px;
+  color: var(--main-color-hover);
+  font-weight: bold;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.content {
+  grid-column: 1;
+}
+
+.card p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.5;
+}
+
+
+.btnLoadMore {
+  padding: 8px 12px;
+  background-color: var(--main-color);
+  color: #FFF;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+}
+
+.btnLoadMore:hover {
+  background-color: var(--main-color-hover);
+}
+
+.btnLoadMore:disabled {
+  background-color: var(--main-color-hover);
+}

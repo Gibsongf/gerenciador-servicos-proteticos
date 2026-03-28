@@ -20,7 +20,12 @@ const EditMenu = ({ id, saveInfo, onClickDelete }) => {
   return (
     <div className={styles.container}>
       <button
-        style={{ fontWeight: "bold", fontSize: "1.2rem", border: "none" }}
+        style={{
+          fontWeight: "bold",
+          fontSize: "1.2rem",
+          border: "none",
+          cursor: "pointer",
+        }}
         onClick={() => setShow(true)}>
         {/* ⋮ */}
         ...

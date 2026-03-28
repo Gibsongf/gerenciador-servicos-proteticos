@@ -14,12 +14,13 @@
 
 @media (max-width:700px) {
   .filterContainer {
-    background-color: #FFF;
+    background-color: transparent;
     flex-direction: column;
     margin: 0px;
     border-radius: 8px;
     padding: 4px 0px;
     align-items: stretch;
+
   }
 }
 

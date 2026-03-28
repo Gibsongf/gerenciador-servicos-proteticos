@@ -46,8 +46,10 @@
 
 @media (max-width:700px) {
   .selectContainer {
-    height: 40px;
+    height: 35px;
     border: rgb(0, 0, 0, 0.2) solid 1px;
+    background-color: #FFF;
+
   }
 
   .selectContainer label {
@@ -56,8 +58,8 @@
 
   .select {
     min-width: 100%;
-
   }
+
 
 }
 
@@ -68,7 +70,8 @@
     flex-direction: column;
     padding: 4px 8px;
     box-sizing: initial;
-    height: 40px;
+    justify-content: center;
+
   }
 
 
