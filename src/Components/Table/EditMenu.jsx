@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./EditMenu.module.css";
-import EditMenuIcon from "../svg/EditMenu";
 
 const EditMenu = ({ id, saveInfo, onClickDelete }) => {
   const [show, setShow] = React.useState(false);
@@ -23,7 +22,8 @@ const EditMenu = ({ id, saveInfo, onClickDelete }) => {
       <button
         style={{ fontWeight: "bold", fontSize: "1.2rem", border: "none" }}
         onClick={() => setShow(true)}>
-        ⋮
+        {/* ⋮ */}
+        ...
       </button>
 
       <div

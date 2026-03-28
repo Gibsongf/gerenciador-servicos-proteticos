@@ -56,3 +56,8 @@ td:nth-child(2) {
 td:nth-child(3) {
   font-weight: bold;
 }
+
+td:last-child {
+  font-weight: bold;
+  border-left: 1px solid #ddd;
+}

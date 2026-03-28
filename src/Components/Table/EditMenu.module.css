@@ -6,7 +6,7 @@
 .links {
   visibility: hidden;
   position: absolute;
-  display: none;
+  display: flex;
   background-color: var(--main-color);
   color: white;
   left: -60px;
@@ -15,10 +15,18 @@
   padding: 4px 8px;
   z-index: 100;
   border-radius: 4px;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s;
 }
 
-.links.active {
-  visibility: visible;
-  display: flex;
 
+
+.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
