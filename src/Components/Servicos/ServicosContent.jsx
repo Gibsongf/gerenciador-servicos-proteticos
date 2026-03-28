@@ -4,14 +4,21 @@ import style from "./ServicosContent.module.css";
 import "../Table/Table.css";
 import EditMenu from "../Table/EditMenu";
 import useFetch from "../../Hooks/useFetch";
+import { USER_DELETE } from "../../Api";
 const ServiceTR = ({ item, i }) => {
-  const { saveServiceDetails } = React.useContext(ServicoContext);
+  const { saveServiceDetails, setUpdate } = React.useContext(ServicoContext);
   const { request } = useFetch();
   const onClickDelete = () => {
     const msg = "Deseja deletar este Serviço?";
-    const response = window.confirm(msg);
-    if (response) {
-      console.log(response);
+    const confirm = window.confirm(msg);
+    const deleteItem = async () => {
+      const { url, options } = USER_DELETE("servico", item._id);
+      const { json } = await request(url, options);
+      alert(json.message);
+      setUpdate((n) => n + 1);
+    };
+    if (confirm) {
+      deleteItem();
     }
   };
   const onClickEdit = () => {

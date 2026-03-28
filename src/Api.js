@@ -50,3 +50,15 @@ export function USER_PUT(category, id, body) {
   const url = "http://localhost:3000/api/" + category + "/" + id + "/edit";
   return { url, options };
 }
+
+export function USER_DELETE(category, id) {
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage["token"],
+    },
+  };
+  const url = "http://localhost:3000/api/" + category + "/" + id;
+  return { url, options };
+}
