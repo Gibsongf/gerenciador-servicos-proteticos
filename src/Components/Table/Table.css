@@ -4,6 +4,7 @@
   grid-column: 2/-1;
   grid-row: 1;
 
+
 }
 
 table {
@@ -12,19 +13,46 @@ table {
   width: 100%;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+thead {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #e0e0e0;
 }
+
+
+tr {
+  border-bottom: 2px solid #ddd;
+}
+
+th {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 
 td,
 th {
-  border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  font-size: 14px;
+  color: #555;
+  background-color: #FFF;
+
 }
 
+td:first-child {
+  font-weight: 600;
+  color: #333;
+}
 
+/* Coluna Clínica com cor teal */
+td:nth-child(2) {
+  color: #17a2b8;
+  font-weight: 600;
+}
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+td:nth-child(3) {
+  font-weight: bold;
 }

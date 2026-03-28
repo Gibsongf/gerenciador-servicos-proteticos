@@ -1,0 +1,24 @@
+.container {
+  position: relative;
+
+}
+
+.links {
+  visibility: hidden;
+  position: absolute;
+  display: none;
+  background-color: var(--main-color);
+  color: white;
+  left: -60px;
+  top: -20px;
+  flex-direction: column;
+  padding: 4px 8px;
+  z-index: 100;
+  border-radius: 4px;
+}
+
+.links.active {
+  visibility: visible;
+  display: flex;
+
+}

@@ -1,9 +1,10 @@
 .tableContainer {
-  background-color: #FFF;
+  background: #eee;
   overflow-x: scroll;
   grid-column: 2/-1;
   min-height: 450px;
-
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .produtos p {
@@ -38,4 +39,11 @@ svg {
 .buttonPage:hover {
   border: rgb(0, 0, 0, 0.5) solid 2px;
 
+}
+
+@media (max-width:700px) {
+  .tableContainer {
+    flex: 1;
+    min-height: initial;
+  }
 }

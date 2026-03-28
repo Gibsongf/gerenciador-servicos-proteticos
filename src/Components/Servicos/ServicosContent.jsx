@@ -2,11 +2,18 @@ import React from "react";
 import { ServicoContext } from "../../Context";
 import style from "./ServicosContent.module.css";
 import "../Table/Table.css";
-import EditIcon from "../svg/EditIcon";
-import { Link } from "react-router-dom";
+import EditMenu from "../Table/EditMenu";
+import useFetch from "../../Hooks/useFetch";
 const ServiceTR = ({ item, i }) => {
   const { saveServiceDetails } = React.useContext(ServicoContext);
-
+  const { request } = useFetch();
+  const onClickDelete = () => {
+    const msg = "Deseja deletar este Serviço?";
+    const response = window.confirm(msg);
+    if (response) {
+      console.log(response);
+    }
+  };
   const onClickEdit = () => {
     saveServiceDetails(item);
   };
@@ -26,9 +33,11 @@ const ServiceTR = ({ item, i }) => {
         </div>
       </td>
       <td>
-        <Link onClick={onClickEdit} to={"/servico/editar/" + item._id}>
-          <EditIcon />
-        </Link>
+        <EditMenu
+          onClickDelete={onClickDelete}
+          saveInfo={onClickEdit}
+          id={item._id}
+        />
       </td>
     </tr>
   );
