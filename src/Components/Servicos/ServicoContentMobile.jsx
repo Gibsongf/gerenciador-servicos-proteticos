@@ -23,13 +23,7 @@ const Card = ({ item, i }) => {
   const onClickEdit = () => {
     saveServiceDetails(item);
   };
-  // <td></td>
-  //       <td></td>
-  //       <td></td>
-  //       <td></td>
-  //       <td>
-  //
-  //       </td>
+
   return (
     <>
       <div className={style.card}>
@@ -46,15 +40,13 @@ const Card = ({ item, i }) => {
           <span>
             Paciente: <p>{item.paciente}</p>
           </span>
-          <span>
-            Produto:{" "}
-            <div className={style.produtos}>
-              {item.produtos.map((p, indx) => (
-                <p key={i + indx}>
-                  {p.produto.nome} (x{p.quantidade})
-                </p>
-              ))}
-            </div>
+          <span className={style.produtos}>
+            Produtos
+            {item.produtos.map((p, indx) => (
+              <p key={i + indx}>
+                {p.produto.nome} (x{p.quantidade})
+              </p>
+            ))}
           </span>
         </div>
         <EditMenu
@@ -75,8 +67,6 @@ const ServicoMobile = () => {
       for (const [key, val] of Object.entries(filter)) {
         if (item[key].nome === val) {
           match = true;
-        } else {
-          return "";
         }
       }
       if (match) {

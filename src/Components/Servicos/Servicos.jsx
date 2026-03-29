@@ -1,10 +1,10 @@
 import React from "react";
-import style from "./Servicos.module.css";
+import style from "../../Styles/Home.module.css";
 import FilterService from "./Filter/FilterService";
 import { ServicoStorage } from "./ServicoContext";
 import ServicosContent from "./ServicosContent";
 import useMedia from "../../Hooks/useMedia";
-import { ServiceTitle, MobileTitle } from "./ServicoTitle";
+import { Title, MobileTitle } from "../Title/ContentTitle";
 import ExportService from "./Filter/ExportService";
 import { Route, Routes } from "react-router-dom";
 import FormServicoNovo from "./Form/FormServicoNovo";
@@ -13,26 +13,55 @@ import ServicoMobile from "./ServicoContentMobile";
 
 // create a other filter when is mobile
 const Home = () => {
-  const mobile = useMedia();
   return (
     <>
-      {mobile ? <MobileTitle /> : <ServiceTitle />}
-      <FilterService />
-      <ExportService />
-      {mobile ? <ServicoMobile /> : <ServicosContent />}
+      <section className={style.container}>
+        <Title text={"Serviços"} />
+        <FilterService />
+        <ExportService />
+      </section>
+      <ServicosContent />
+    </>
+  );
+};
+const HomeMobile = () => {
+  return (
+    <>
+      <section className={style.container}>
+        <MobileTitle path="/servico/novo" text={"+ Add Serviço"} />
+        <FilterService />
+        <ExportService />
+        <ServicoMobile />
+      </section>
     </>
   );
 };
 const Servicos = () => {
+  const mobile = useMedia();
+
   return (
     <ServicoStorage>
-      <section className={style.container}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="novo" element={<FormServicoNovo />} />
-          <Route path="editar/:id" element={<FormServicoEdit />} />
-        </Routes>
-      </section>
+      {/* <section className={style.container}> */}
+      <Routes>
+        <Route path="/" element={mobile ? <HomeMobile /> : <Home />} />
+        <Route
+          path="novo"
+          element={
+            <section className={style.container}>
+              <FormServicoNovo />
+            </section>
+          }
+        />
+        <Route
+          path="editar/:id"
+          element={
+            <section className={style.container}>
+              <FormServicoEdit />
+            </section>
+          }
+        />
+      </Routes>
+      {/* </section> */}
     </ServicoStorage>
   );
 };

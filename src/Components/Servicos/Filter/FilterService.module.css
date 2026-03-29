@@ -1,7 +1,7 @@
 .filterContainer {
   display: flex;
   gap: 16px;
-  background-color: #FFF;
+  /* background-color: #FFF; */
   align-items: center;
 }
 

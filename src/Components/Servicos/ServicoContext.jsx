@@ -24,6 +24,7 @@ export const ServicoStorage = ({ children }) => {
         let index = 0;
         const lst = [[]];
         json.all.forEach((j) => {
+          j.match = false;
           if (lst[index].length - 1 >= 4) {
             index++;
             lst.push([]);
@@ -47,6 +48,16 @@ export const ServicoStorage = ({ children }) => {
     }
     return editService;
   };
+  const saveFilter = ({ target }) => {
+    setFilter((filter) => {
+      if (!target.value) {
+        const newFilter = { ...filter };
+        delete newFilter[target.name];
+        return { ...newFilter };
+      }
+      return { ...filter, [target.name]: target.value };
+    });
+  };
   return (
     <ServicoContext.Provider
       value={{
@@ -54,7 +65,7 @@ export const ServicoStorage = ({ children }) => {
         loading,
         filter,
         error,
-        setFilter,
+        saveFilter,
         cliente,
         local,
         setUpdate,

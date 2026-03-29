@@ -15,7 +15,7 @@ svg {
 
 .pageTitle {
   font-size: 2.5rem;
-  background-color: #FFF;
+  /* background-color: #FFF; */
 }
 
 @media (max-width:900px) {

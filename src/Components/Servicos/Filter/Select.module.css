@@ -5,13 +5,14 @@
   border-radius: 8px;
   padding: 8px 12px;
   height: 50px;
-
-}
-
-.selectContainer:hover {
   background-color: #FFF;
 
 }
+
+/* .selectContainer:hover {
+  background-color: #FFF;
+
+} */
 
 .select {
   max-width: fit-content;

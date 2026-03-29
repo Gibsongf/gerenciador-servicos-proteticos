@@ -3,26 +3,15 @@ import { ServicoContext } from "../../../Context";
 import style from "./Select.module.css";
 
 export const SelectClinic = ({ mobile = false }) => {
-  const { setFilter, local } = React.useContext(ServicoContext);
+  const { saveFilter, local } = React.useContext(ServicoContext);
 
-  const onChange = ({ target }) => {
-    setFilter((filter) => {
-      // console.log(target.name, target.value);
-      if (!target.value) {
-        const newFilter = { ...filter };
-        delete newFilter[target.name];
-        return { ...newFilter };
-      }
-      return { ...filter, [target.name]: target.value };
-    });
-  };
   return (
     <div className={style.selectContainer}>
       <label htmlFor="local">Clínicas: </label>
 
       <select
         className={style.select}
-        onChange={onChange}
+        onChange={saveFilter}
         defaultValue=""
         name={"local"}
         id={"local"}>

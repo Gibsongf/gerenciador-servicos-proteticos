@@ -1,18 +1,18 @@
 import React from "react";
-import { ServicoContext } from "../../Context";
-import style from "../../Styles/Content.module.css";
+import { ClinicaContext } from "../../Context";
+import style from "../../Styles/Home.module.css";
 import "../../Styles/Table.css";
 import EditMenu from "../Table/EditMenu";
 import useFetch from "../../Hooks/useFetch";
 import { USER_DELETE } from "../../Api";
-const ServiceTR = ({ item, i }) => {
-  const { saveServiceDetails, setUpdate } = React.useContext(ServicoContext);
+const ClinicaTR = ({ item, i }) => {
+  const { saveServiceDetails, setUpdate } = React.useContext(ClinicaContext);
   const { request } = useFetch();
   const onClickDelete = () => {
-    const msg = "Deseja deletar este Serviço?";
+    const msg = "Deseja deletar este Local?";
     const confirm = window.confirm(msg);
     const deleteItem = async () => {
-      const { url, options } = USER_DELETE("servico", item._id);
+      const { url, options } = USER_DELETE("local", item._id);
       const { json } = await request(url, options);
       alert(json.message);
       setUpdate((n) => n + 1);
@@ -26,11 +26,13 @@ const ServiceTR = ({ item, i }) => {
   };
   return (
     <tr>
-      <td>{item.dataRegistro.split("T")[0]}</td>
-      <td>{item.local.nome}</td>
-      <td>{item.cliente.nome}</td>
-      <td>{item.paciente}</td>
-      <td>
+      <td>{item.nome}</td>
+      <td>{item.endereço}</td>
+      <td>{item.tabela}</td>
+      <td>Numero de serviços</td>
+      <td>Numero de Dentista</td>
+
+      {/* <td>
         <div className={style.produtos}>
           {item.produtos.map((p, indx) => (
             <p key={i + indx}>
@@ -38,7 +40,7 @@ const ServiceTR = ({ item, i }) => {
             </p>
           ))}
         </div>
-      </td>
+      </td> */}
       <td>
         <EditMenu
           onClickDelete={onClickDelete}
@@ -49,10 +51,10 @@ const ServiceTR = ({ item, i }) => {
     </tr>
   );
 };
-const ServicosContent = () => {
+const ClinicasContent = () => {
   const { data, loading, filter, pagination } =
-    React.useContext(ServicoContext);
-  const tableHeaders = ["Data", "Clinica", "Cliente", "Paciente", "Produto"];
+    React.useContext(ClinicaContext);
+  const tableHeaders = ["Nome", "Endereço", "Tabela", "Serviços", "Dentistas"];
   const filterData = (item, i) => {
     console.log(item);
     if (Object.values(filter).length) {
@@ -63,11 +65,11 @@ const ServicosContent = () => {
         }
       }
       if (match) {
-        return <ServiceTR key={i} item={item} i={i} />;
+        return <ClinicaTR key={i} item={item} i={i} />;
       }
       return "";
     }
-    return <ServiceTR key={i} item={item} i={i} />;
+    return <ClinicaTR key={i} item={item} i={i} />;
   };
 
   if (loading) return <div>Loading</div>;
@@ -111,4 +113,4 @@ const ServicosContent = () => {
   );
 };
 
-export default ServicosContent;
+export default ClinicasContent;
