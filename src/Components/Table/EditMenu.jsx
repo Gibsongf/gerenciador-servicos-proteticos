@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./EditMenu.module.css";
 
-const EditMenu = ({ id, saveInfo, onClickDelete }) => {
+const EditMenu = ({ id, editPath, saveInfo, onClickDelete }) => {
   const [show, setShow] = React.useState(false);
   const ref = React.useRef();
 
@@ -35,7 +35,7 @@ const EditMenu = ({ id, saveInfo, onClickDelete }) => {
         ref={ref}
         id={id}
         className={`${styles.links} ${show && styles.active}`}>
-        <Link onClick={saveInfo} to={"/servico/editar/" + id}>
+        <Link onClick={saveInfo} to={editPath + id}>
           Edit
         </Link>
         <a onClick={onClickDelete}>Deletar</a>

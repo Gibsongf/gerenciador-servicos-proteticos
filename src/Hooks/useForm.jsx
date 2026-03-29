@@ -10,18 +10,28 @@ const types = {
   //   message:
   //     "A senha precisa ter 1 caráter maiúsculo, 1 minúsculo e 1 digito. Com no mínimo 8 caracteres.",
   // },
+  telefone: {
+    regex:
+      /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/,
+    message: "Preencha um numero válido",
+  },
+  cep: {
+    regex: /^\d{5}-\d{3}$/,
+    message: "Preencha um CEP válido",
+  },
   number: {
     regex: /^\d+$/,
     message: "Utilize números apenas.",
   },
 };
-const useForm = (type) => {
+
+const useForm = (required = false, type = "") => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(null);
 
   function validate(value) {
     if (type === false) return true;
-    if (value.length === 0) {
+    if (value.length === 0 && required) {
       setError("Preencha um valor.");
       return false;
     } else if (types[type] && !types[type].regex.test(value)) {

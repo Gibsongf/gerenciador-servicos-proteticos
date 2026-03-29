@@ -36,18 +36,17 @@ export const ClinicaStorage = ({ children }) => {
     };
     req();
   }, [request, update]);
-  // const saveServiceDetails = (service) => {
-  //   let final = { ...service };
-  //   final.dataRegistro = final.dataRegistro.split("T")[0];
-  //   setEditClinica(final);
-  //   localStorage.setItem("clinica", JSON.stringify(final));
-  // };
-  // const getServiceDetails = () => {
-  //   if (!editClinica._id) {
-  //     return JSON.parse(localStorage.getItem("clinica"));
-  //   }
-  //   return editClinica;
-  // };
+  const saveClickClinic = (obj) => {
+    let final = { ...obj };
+    setEditClinica(final);
+    localStorage.setItem("clinica", JSON.stringify(final));
+  };
+  const getStoredClinic = () => {
+    if (!editClinica._id) {
+      return JSON.parse(localStorage.getItem("clinica"));
+    }
+    return editClinica;
+  };
   return (
     <ClinicaContext.Provider
       value={{
@@ -60,8 +59,8 @@ export const ClinicaStorage = ({ children }) => {
         // local,
         setUpdate,
         pagination,
-        // saveServiceDetails,
-        // serviceDetails: getServiceDetails(),
+        saveClickClinic,
+        storedClinic: getStoredClinic(),
       }}>
       {children}
     </ClinicaContext.Provider>

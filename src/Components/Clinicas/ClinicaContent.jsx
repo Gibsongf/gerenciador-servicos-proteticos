@@ -6,7 +6,7 @@ import EditMenu from "../Table/EditMenu";
 import useFetch from "../../Hooks/useFetch";
 import { USER_DELETE } from "../../Api";
 const ClinicaTR = ({ item, i }) => {
-  const { saveServiceDetails, setUpdate } = React.useContext(ClinicaContext);
+  const { saveClickClinic, setUpdate } = React.useContext(ClinicaContext);
   const { request } = useFetch();
   const onClickDelete = () => {
     const msg = "Deseja deletar este Local?";
@@ -22,30 +22,22 @@ const ClinicaTR = ({ item, i }) => {
     }
   };
   const onClickEdit = () => {
-    saveServiceDetails(item);
+    saveClickClinic(item);
   };
   return (
     <tr>
       <td>{item.nome}</td>
       <td>{item.endereço}</td>
       <td>{item.tabela}</td>
-      <td>Numero de serviços</td>
-      <td>Numero de Dentista</td>
+      {/* <td>Numero de serviços</td> */}
+      {/* <td>Numero de Dentista</td> */}
 
-      {/* <td>
-        <div className={style.produtos}>
-          {item.produtos.map((p, indx) => (
-            <p key={i + indx}>
-              {p.produto.nome} (x{p.quantidade})
-            </p>
-          ))}
-        </div>
-      </td> */}
       <td>
         <EditMenu
           onClickDelete={onClickDelete}
           saveInfo={onClickEdit}
           id={item._id}
+          editPath={"/clinica/editar/"}
         />
       </td>
     </tr>
@@ -54,7 +46,7 @@ const ClinicaTR = ({ item, i }) => {
 const ClinicasContent = () => {
   const { data, loading, filter, pagination } =
     React.useContext(ClinicaContext);
-  const tableHeaders = ["Nome", "Endereço", "Tabela", "Serviços", "Dentistas"];
+  const tableHeaders = ["Nome", "Endereço", "Tabela"];
   const filterData = (item, i) => {
     console.log(item);
     if (Object.values(filter).length) {

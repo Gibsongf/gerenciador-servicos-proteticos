@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "../../Form/Input";
+import { Input } from "../../Form/Input";
 import { FormSelectDentist, FormSelectLocal } from "../../Form/SelectForm";
 import { ProductSelect } from "../../Form/SelectProduct";
 import style from "./FormServico.module.css";
@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { ProductSelectEdit } from "../../Form/SelectProductEdit";
 import useFormEditar from "../../../Hooks/useFormEditar";
+import sectionStyle from "../../../Styles/Home.module.css";
 
 const FormServicoEdit = () => {
   const { id } = useParams();
@@ -121,7 +122,7 @@ const FormServicoEdit = () => {
   }, []);
 
   return (
-    <>
+    <section className={sectionStyle.container}>
       <h1>Adicionar Serviço</h1>
 
       <form className={style.form} onSubmit={onSubmit}>
@@ -174,7 +175,7 @@ const FormServicoEdit = () => {
           </button>
         </div>
       </form>
-    </>
+    </section>
   );
 };
 

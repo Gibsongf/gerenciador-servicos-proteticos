@@ -5,6 +5,9 @@ import useMedia from "../../Hooks/useMedia";
 import { Route, Routes } from "react-router-dom";
 import ClinicasContent from "./ClinicaContent";
 import { Title, MobileTitle } from "../Title/ContentTitle";
+import Filter from "./ButtonAdd";
+import FormClinicaNovo from "./Form/FormClinicaNovo";
+import FormClinicaEdit from "./Form/FormClinicaEdit";
 // create a other filter when is mobile
 
 const Home = () => {
@@ -12,6 +15,7 @@ const Home = () => {
     <>
       <section className={style.container}>
         <Title text={"Clínicas"} />
+        <Filter />
         {/* <ServiceTitle /> */}
         {/* <FilterService /> */}
         {/* <ExportService /> */}
@@ -44,7 +48,7 @@ const Clinicas = () => {
           path="novo"
           element={
             <section className={style.container}>
-              {/* <FormServicoNovo /> */}
+              <FormClinicaNovo />
             </section>
           }
         />
@@ -52,7 +56,7 @@ const Clinicas = () => {
           path="editar/:id"
           element={
             <section className={style.container}>
-              {/* <FormServicoEdit /> */}
+              <FormClinicaEdit />
             </section>
           }
         />

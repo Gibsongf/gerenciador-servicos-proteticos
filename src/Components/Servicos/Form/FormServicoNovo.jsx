@@ -1,7 +1,7 @@
 import React from "react";
 
 import useForm from "../../../Hooks/useForm";
-import Input from "../../Form/Input";
+import { Input } from "../../Form/Input";
 import { FormSelectDentist, FormSelectLocal } from "../../Form/SelectForm";
 import { ProductSelect } from "../../Form/SelectProduct";
 import style from "./FormServico.module.css";
@@ -11,6 +11,7 @@ import useFetch from "../../../Hooks/useFetch";
 import { USER_POST } from "../../../Api";
 import { ServicoContext } from "../../../Context";
 import { useNavigate } from "react-router-dom";
+import sectionStyle from "../../../Styles/Home.module.css";
 
 const FormServicoNovo = () => {
   const { setUpdate } = React.useContext(ServicoContext);
@@ -102,7 +103,7 @@ const FormServicoNovo = () => {
     data.setValue(todayDate());
   }, []);
   return (
-    <>
+    <section className={sectionStyle.container}>
       <h1>Adicionar Serviço</h1>
 
       <form ref={formRef} className={style.form} onSubmit={onSubmit}>
@@ -155,7 +156,7 @@ const FormServicoNovo = () => {
           </button>
         </div>
       </form>
-    </>
+    </section>
   );
 };
 

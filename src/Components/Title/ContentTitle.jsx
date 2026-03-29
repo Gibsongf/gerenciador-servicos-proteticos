@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../../Styles/Home.module.css";
 import { Link } from "react-router-dom";
-import btnStyle from "../Button/Button.module.css";
+import btnStyle from "../../Styles/Button.module.css";
 
 // select date , sel
 export const MobileTitle = ({ path, text }) => {

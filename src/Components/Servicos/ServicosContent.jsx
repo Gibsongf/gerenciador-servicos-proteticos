@@ -44,6 +44,7 @@ const ServiceTR = ({ item, i }) => {
           onClickDelete={onClickDelete}
           saveInfo={onClickEdit}
           id={item._id}
+          editPath={"/servico/editar/"}
         />
       </td>
     </tr>

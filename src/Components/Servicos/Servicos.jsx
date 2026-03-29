@@ -44,22 +44,8 @@ const Servicos = () => {
       {/* <section className={style.container}> */}
       <Routes>
         <Route path="/" element={mobile ? <HomeMobile /> : <Home />} />
-        <Route
-          path="novo"
-          element={
-            <section className={style.container}>
-              <FormServicoNovo />
-            </section>
-          }
-        />
-        <Route
-          path="editar/:id"
-          element={
-            <section className={style.container}>
-              <FormServicoEdit />
-            </section>
-          }
-        />
+        <Route path="novo" element={<FormServicoNovo />} />
+        <Route path="editar/:id" element={<FormServicoEdit />} />
       </Routes>
       {/* </section> */}
     </ServicoStorage>
