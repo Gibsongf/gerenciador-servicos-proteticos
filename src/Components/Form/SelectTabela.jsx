@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Input.module.css";
 
-const SelectTabela = ({ onChange }) => {
+const SelectTabela = ({ onChange, value = "normal" }) => {
   return (
     <div className={style.container}>
       <label className={style.label} htmlFor="tabela">
@@ -10,11 +10,11 @@ const SelectTabela = ({ onChange }) => {
       <select
         className={style.inputStatus}
         onChange={onChange}
-        defaultValue={"normal"}
+        value={value}
         name="tabela"
         id="tabela">
-        <option value="normal">Normal</option>
-        <option value="reduzida">Reduzida</option>
+        <option value="Normal">Normal</option>
+        <option value="Reduzido">Reduzida</option>
       </select>
     </div>
   );

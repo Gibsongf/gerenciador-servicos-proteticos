@@ -48,7 +48,6 @@ const ClinicasContent = () => {
     React.useContext(ClinicaContext);
   const tableHeaders = ["Nome", "Endereço", "Tabela"];
   const filterData = (item, i) => {
-    console.log(item);
     if (Object.values(filter).length) {
       let match = false;
       for (const [key, val] of Object.entries(filter)) {

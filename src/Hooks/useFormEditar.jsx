@@ -1,5 +1,4 @@
 import React from "react";
-import useForm from "./useForm";
 const types = {
   email: {
     regex:
@@ -7,6 +6,15 @@ const types = {
     message: "Preencha um email válido",
   },
 
+  telefone: {
+    regex:
+      /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/,
+    message: "Preencha um numero válido",
+  },
+  cep: {
+    regex: /^\d{5}-\d{3}$/,
+    message: "Preencha um CEP válido",
+  },
   number: {
     regex: /^\d+$/,
     message: "Utilize números apenas.",

@@ -44,13 +44,13 @@ export const InputTelefone = ({ value, onChange, error, onBlur }) => {
         id={"telefone"}
         name={"telefone"}
         className={styles.input}
-        type={"tel"}
+        type="tel"
         value={value}
         onChange={onChange}
         onBlur={onBlur}
         required={false}
-        placeholder="(11) 99999-9999"
-        pattern="\(\d{2}\)\s\d{5}-\d{4}"
+        maxLength={14}
+        placeholder="11 99999 9999"
       />
       {error && <p className={styles.error}>{error}</p>}
     </div>

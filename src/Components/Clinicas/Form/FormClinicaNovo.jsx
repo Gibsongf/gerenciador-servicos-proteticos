@@ -18,16 +18,12 @@ import useFetch from "../../../Hooks/useFetch";
 import { Input, InputTelefone } from "../../Form/Input";
 import SelectTabela from "../../Form/SelectTabela";
 import { USER_POST } from "../../../Api";
-// nome: req.body.nome,
-//             endereço: req.body.endereço,
-//             tabela: req.body.tabela,
-//             telefone: req.body.telefone,
-//             cep: req.body.cep,
+
 const FormClinicaNovo = () => {
   const { setUpdate } = React.useContext(ClinicaContext);
   const nome = useForm(true);
   const endereço = useForm(true);
-  const cep = useForm(true);
+  const cep = useForm(false);
   const telefone = useForm(false, "telefone");
   const tabela = useForm();
   const { request, error, loading } = useFetch();
@@ -44,8 +40,11 @@ const FormClinicaNovo = () => {
     Object.keys(obj).forEach((k) => {
       if (!obj[k]) {
         delete obj[k];
+      } else if (k === "telefone") {
+        obj.telefone = telefone.value.replace(/\D/g, "");
       }
     });
+    console.log(obj);
     const { url, options } = USER_POST("local", obj);
     const submit = async () => {
       const { response, json } = await request(url, options);
@@ -59,7 +58,7 @@ const FormClinicaNovo = () => {
       return false;
     };
     if (submit()) {
-      nav("/clinica");
+      // nav("/clinica");
     }
   };
   const onCancel = (e) => {
@@ -91,7 +90,7 @@ const FormClinicaNovo = () => {
             label="CEP"
             type="code"
             name="cep"
-            required={true}
+            required={false}
             placeholder={"00000-000"}
             {...cep}
           />
