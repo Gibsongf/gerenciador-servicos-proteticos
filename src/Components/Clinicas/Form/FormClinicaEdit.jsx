@@ -17,7 +17,7 @@ const FormClinicaNovo = () => {
   const cep = useForm(true, "cep", storedClinic.cep);
   const telefone = useForm(false, "telefone", storedClinic.telefone);
   const tabela = useForm(false, "", storedClinic.tabela);
-  const { request, loading } = useFetch();
+  const { request, loading, error } = useFetch();
   const nav = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
@@ -35,16 +35,16 @@ const FormClinicaNovo = () => {
     });
     const { url, options } = USER_PUT("local", id, obj);
     const submit = async () => {
-      const { response, json, serverError } = await request(url, options);
+      const { response, json, fetchError } = await request(url, options);
+      console.log(error);
       if (response.ok) {
         setUpdate((update) => update + 1);
         alert(json.message);
         return true;
-      } else if (serverError) {
-        let msg = Object.keys(serverError).map(
-          (k) => `${k}: ${serverError[k]}`,
-        );
-        alert(...msg);
+      } else if (fetchError) {
+        alert(fetchError);
+      } else {
+        alert(error);
       }
 
       return false;

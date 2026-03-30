@@ -9,7 +9,7 @@ const useFetch = () => {
   const request = React.useCallback(async (url, options) => {
     let response;
     let json;
-    let serverError;
+    let fetchError;
     try {
       setError(null);
       setLoading(true);
@@ -17,13 +17,13 @@ const useFetch = () => {
       json = await response.json();
       if (response.ok === false) throw new Error(json);
     } catch (err) {
-      serverError = json.errors;
+      fetchError = json.message;
       setError(json);
       json = null;
     } finally {
       setData(json);
       setLoading(false);
-      return { response, json, serverError };
+      return { response, json, fetchError };
     }
   }, []);
 

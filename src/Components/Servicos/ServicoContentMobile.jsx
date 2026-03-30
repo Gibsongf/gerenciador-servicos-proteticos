@@ -1,9 +1,7 @@
 import React from "react";
 import { ServicoContext } from "../../Context";
-import style from "./ServicosContentMobile.module.css";
+import style from "../../Styles/ContentMobile.module.css";
 import EditMenu from "../Table/EditMenu";
-import useFetch from "../../Hooks/useFetch";
-import { USER_DELETE } from "../../Api";
 import useContentAction from "../../Hooks/useContentAction";
 const Card = ({ item, i }) => {
   const { saveService, setUpdate } = React.useContext(ServicoContext);
@@ -19,10 +17,10 @@ const Card = ({ item, i }) => {
     <>
       <div className={style.card}>
         <div className={style.content}>
-          <span className={style.col1}>
+          <span>
             Data: <p>{item.dataRegistro.split("T")[0]}</p>
           </span>
-          <span className={style.col2}>
+          <span>
             Cliente: <p>{item.cliente.nome}</p>
           </span>
           <span>
@@ -52,7 +50,7 @@ const Card = ({ item, i }) => {
 };
 const ServicoMobile = () => {
   const { data, loading, filter } = React.useContext(ServicoContext);
-  const [page, setPage] = React.useState(5);
+  const [page, setPage] = React.useState(2);
   const filterData = (item, i) => {
     if (Object.values(filter).length) {
       let match = false;
@@ -69,20 +67,18 @@ const ServicoMobile = () => {
     return <Card key={i} item={item} i={i} />;
   };
   if (loading) return <div>Loading</div>;
+
   const onClickLoad = () => {
     setPage((p) => p + 5);
   };
   return (
     <>
       <div className={style.cardContainer}>
-        {data && data.all.slice(0, page).map((item, i) => filterData(item, i))}
+        {data && data.all.map((item, i) => filterData(item, i))}
       </div>
       {data && (
-        <button
-          className={style.btnLoadMore}
-          onClick={onClickLoad}
-          disabled={page > data.all.length - 1}>
-          {page < data.all.length - 1 ? "Carregar Mais" : "Sem mais resultados"}
+        <button className={style.btnLoadMore} onClick={onClickLoad} disabled>
+          Sem mais resultados
         </button>
       )}
     </>

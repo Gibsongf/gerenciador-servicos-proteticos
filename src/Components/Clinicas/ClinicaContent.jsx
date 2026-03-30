@@ -1,29 +1,18 @@
 import React from "react";
 import { ClinicaContext } from "../../Context";
-import style from "../../Styles/Home.module.css";
+import style from "../../Styles/Content.module.css";
 import "../../Styles/Table.css";
 import EditMenu from "../Table/EditMenu";
-import useFetch from "../../Hooks/useFetch";
-import { USER_DELETE } from "../../Api";
+import useContentAction from "../../Hooks/useContentAction";
 const ClinicaTR = ({ item, i }) => {
   const { saveClickClinic, setUpdate } = React.useContext(ClinicaContext);
-  const { request } = useFetch();
-  const onClickDelete = () => {
-    const msg = "Deseja deletar este Local?";
-    const confirm = window.confirm(msg);
-    const deleteItem = async () => {
-      const { url, options } = USER_DELETE("local", item._id);
-      const { json } = await request(url, options);
-      alert(json.message);
-      setUpdate((n) => n + 1);
-    };
-    if (confirm) {
-      deleteItem();
-    }
-  };
-  const onClickEdit = () => {
-    saveClickClinic(item);
-  };
+  const { onClickDelete, onClickEdit } = useContentAction(
+    item,
+    setUpdate,
+    saveClickClinic,
+    "local",
+    "Clínica",
+  );
   return (
     <tr>
       <td>{item.nome}</td>
@@ -82,24 +71,6 @@ const ClinicasContent = () => {
           </tbody>
         </table>
       </div>
-      {/* <nav className={style.ulContainer}>
-        <ul>
-          {data &&
-            pagination.map((pg, i) => {
-              let className = `${style.buttonPage}`;
-              if (i == page) {
-                className += " " + style.active;
-              }
-              return (
-                <li key={i}>
-                  <button className={className} onClick={() => setPage(i)}>
-                    {i + 1}
-                  </button>
-                </li>
-              );
-            })}
-        </ul>
-      </nav> */}
     </>
   );
 };

@@ -26,14 +26,12 @@ const Home = () => {
 };
 const HomeMobile = () => {
   return (
-    <>
-      <section className={style.container}>
-        <MobileTitle path="/servico/novo" text={"+ Add Serviço"} />
-        <FilterService />
-        <ExportService />
-        <ServicoMobile />
-      </section>
-    </>
+    <section className={style.container}>
+      <MobileTitle path="/servico/novo" text={"+ Add Serviço"} />
+      <FilterService />
+      <ExportService />
+      <ServicoMobile />
+    </section>
   );
 };
 const Servicos = () => {

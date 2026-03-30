@@ -41,8 +41,7 @@ const ServiceTR = ({ item, i }) => {
   );
 };
 const ServicosContent = () => {
-  const { data, loading, filter, pagination } =
-    React.useContext(ServicoContext);
+  const { data, loading, filter } = React.useContext(ServicoContext);
   const tableHeaders = ["Data", "Clinica", "Cliente", "Paciente", "Produto"];
   const filterData = (item, i) => {
     if (Object.values(filter).length) {

@@ -34,16 +34,18 @@ const FormClinicaNovo = () => {
         obj.telefone = telefone.value.replace(/\D/g, "");
       }
     });
-    console.log(obj);
     const { url, options } = USER_POST("local", obj);
     const submit = async () => {
-      const { response, json } = await request(url, options);
+      const { response, json, fetchError } = await request(url, options);
       if (response.ok) {
         setUpdate((update) => update + 1);
         alert(json.message);
         return true;
+      } else if (fetchError) {
+        alert(fetchError);
+      } else {
+        alert(error);
       }
-      alert(error);
 
       return false;
     };
