@@ -59,8 +59,8 @@ const FormClinicaNovo = () => {
   };
   return (
     <section className={sectionStyle.container}>
-      <h1></h1>
-      <form onSubmit={onSubmit} action="">
+      <h1>Edição de Clínica</h1>
+      <form className={style.form} onSubmit={onSubmit} action="">
         <div className={style.formSelect}>
           <Input
             label="Nome *"
@@ -82,7 +82,7 @@ const FormClinicaNovo = () => {
             label="CEP"
             type="code"
             name="cep"
-            required={true}
+            required={false}
             placeholder={"00000-000"}
             {...cep}
           />

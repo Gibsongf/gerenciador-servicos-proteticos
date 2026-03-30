@@ -1,13 +1,3 @@
-// nome: { type: String },
-//   endereço: { type: String, required: true },
-//   cep: { type: String, maxLength: 9 },
-//   telefone: { type: String, maxLength: 14 },
-//   tabela: {
-//     type: String,
-//     enum: ["Normal", "Reduzido"],
-//     default: "Normal",
-//   },
-
 import React from "react";
 import style from "./FormClinica.module.css";
 import sectionStyle from "../../../Styles/Home.module.css";
@@ -67,8 +57,8 @@ const FormClinicaNovo = () => {
   };
   return (
     <section className={sectionStyle.container}>
-      <h1></h1>
-      <form onSubmit={onSubmit} action="">
+      <h1>Adicionar Clínica</h1>
+      <form className={style.form} onSubmit={onSubmit} action="">
         <div className={style.formSelect}>
           <Input
             label="Nome *"

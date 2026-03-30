@@ -4,25 +4,16 @@ import style from "./ServicosContentMobile.module.css";
 import EditMenu from "../Table/EditMenu";
 import useFetch from "../../Hooks/useFetch";
 import { USER_DELETE } from "../../Api";
+import useContentAction from "../../Hooks/useContentAction";
 const Card = ({ item, i }) => {
-  const { saveServiceDetails, setUpdate } = React.useContext(ServicoContext);
-  const { request } = useFetch();
-  const onClickDelete = () => {
-    const msg = "Deseja deletar este Serviço?";
-    const confirm = window.confirm(msg);
-    const deleteItem = async () => {
-      const { url, options } = USER_DELETE("servico", item._id);
-      const { json } = await request(url, options);
-      alert(json.message);
-      setUpdate((n) => n + 1);
-    };
-    if (confirm) {
-      deleteItem();
-    }
-  };
-  const onClickEdit = () => {
-    saveServiceDetails(item);
-  };
+  const { saveService, setUpdate } = React.useContext(ServicoContext);
+  const { onClickDelete, onClickEdit } = useContentAction(
+    item,
+    setUpdate,
+    saveService,
+    "servico",
+    "Serviço",
+  );
 
   return (
     <>
@@ -53,6 +44,7 @@ const Card = ({ item, i }) => {
           onClickDelete={onClickDelete}
           saveInfo={onClickEdit}
           id={item._id}
+          editPath={"/servico/editar/"}
         />
       </div>
     </>

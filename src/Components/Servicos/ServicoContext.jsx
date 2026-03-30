@@ -36,7 +36,7 @@ export const ServicoStorage = ({ children }) => {
     };
     req();
   }, [request, update]);
-  const saveServiceDetails = (service) => {
+  const saveService = (service) => {
     let final = { ...service };
     final.dataRegistro = final.dataRegistro.split("T")[0];
     setEditService(final);
@@ -70,7 +70,7 @@ export const ServicoStorage = ({ children }) => {
         local,
         setUpdate,
         pagination,
-        saveServiceDetails,
+        saveService,
         serviceDetails: getServiceDetails(),
       }}>
       {children}

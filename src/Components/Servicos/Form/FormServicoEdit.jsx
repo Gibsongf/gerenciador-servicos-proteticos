@@ -123,7 +123,7 @@ const FormServicoEdit = () => {
 
   return (
     <section className={sectionStyle.container}>
-      <h1>Adicionar Serviço</h1>
+      <h1>Edição de Serviço</h1>
 
       <form className={style.form} onSubmit={onSubmit}>
         <div className={style.formSelect}>

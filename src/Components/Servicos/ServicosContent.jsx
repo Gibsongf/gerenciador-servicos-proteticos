@@ -3,27 +3,17 @@ import { ServicoContext } from "../../Context";
 import style from "../../Styles/Content.module.css";
 import "../../Styles/Table.css";
 import EditMenu from "../Table/EditMenu";
-import useFetch from "../../Hooks/useFetch";
-import { USER_DELETE } from "../../Api";
+import useContentAction from "../../Hooks/useContentAction";
 const ServiceTR = ({ item, i }) => {
-  const { saveServiceDetails, setUpdate } = React.useContext(ServicoContext);
-  const { request } = useFetch();
-  const onClickDelete = () => {
-    const msg = "Deseja deletar este Serviço?";
-    const confirm = window.confirm(msg);
-    const deleteItem = async () => {
-      const { url, options } = USER_DELETE("servico", item._id);
-      const { json } = await request(url, options);
-      alert(json.message);
-      setUpdate((n) => n + 1);
-    };
-    if (confirm) {
-      deleteItem();
-    }
-  };
-  const onClickEdit = () => {
-    saveServiceDetails(item);
-  };
+  const { saveService, setUpdate } = React.useContext(ServicoContext);
+  const { onClickDelete, onClickEdit } = useContentAction(
+    item,
+    setUpdate,
+    saveService,
+    "servico",
+    "Serviço",
+  );
+
   return (
     <tr>
       <td>{item.dataRegistro.split("T")[0]}</td>
@@ -55,7 +45,6 @@ const ServicosContent = () => {
     React.useContext(ServicoContext);
   const tableHeaders = ["Data", "Clinica", "Cliente", "Paciente", "Produto"];
   const filterData = (item, i) => {
-    console.log(item);
     if (Object.values(filter).length) {
       let match = false;
       for (const [key, val] of Object.entries(filter)) {
