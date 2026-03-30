@@ -2,22 +2,21 @@ import React from "react";
 import style from "../../../Styles/Form.module.css";
 import sectionStyle from "../../../Styles/Home.module.css";
 import useForm from "../../../Hooks/useForm";
-import { ClinicaContext } from "../../../Context";
-import { useNavigate, useParams } from "react-router-dom";
+import { ClienteContext } from "../../../Context";
+import { useNavigate } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
 import { Input, InputTelefone } from "../../Form/Input";
 import SelectTabela from "../../Form/SelectTabela";
-import { USER_PUT } from "../../../Api";
+import { USER_POST } from "../../../Api";
 
 const FormClinicaNovo = () => {
-  const { setUpdate, storedClinic } = React.useContext(ClinicaContext);
-  const { id } = useParams();
-  const nome = useForm(true, "", storedClinic.nome);
-  const endereço = useForm(true, "", storedClinic.endereço);
-  const cep = useForm(true, "cep", storedClinic.cep);
-  const telefone = useForm(false, "telefone", storedClinic.telefone);
-  const tabela = useForm(false, "", storedClinic.tabela);
-  const { request, loading, error } = useFetch();
+  const { setUpdate } = React.useContext(ClienteContext);
+  const nome = useForm(true);
+  const endereço = useForm(true);
+  const cep = useForm(false);
+  const telefone = useForm(false, "telefone");
+  const tabela = useForm();
+  const { request, error, loading } = useFetch();
   const nav = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
@@ -31,12 +30,13 @@ const FormClinicaNovo = () => {
     Object.keys(obj).forEach((k) => {
       if (!obj[k]) {
         delete obj[k];
+      } else if (k === "telefone") {
+        obj.telefone = telefone.value.replace(/\D/g, "");
       }
     });
-    const { url, options } = USER_PUT("local", id, obj);
+    const { url, options } = USER_POST("local", obj);
     const submit = async () => {
       const { response, json, fetchError } = await request(url, options);
-      console.log(error);
       if (response.ok) {
         setUpdate((update) => update + 1);
         alert(json.message);
@@ -59,7 +59,7 @@ const FormClinicaNovo = () => {
   };
   return (
     <section className={sectionStyle.container}>
-      <h1>Edição de Clínica</h1>
+      <h1>Adicionar Clínica</h1>
       <form className={style.form} onSubmit={onSubmit} action="">
         <div className={style.formSelect}>
           <Input

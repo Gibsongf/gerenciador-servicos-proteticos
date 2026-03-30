@@ -2,7 +2,7 @@ import React from "react";
 import { Input } from "../../Form/Input";
 import { FormSelectDentist, FormSelectLocal } from "../../Form/SelectForm";
 import { ProductSelect } from "../../Form/SelectProduct";
-import style from "./FormServico.module.css";
+import style from "../../../Styles/Form.module.css";
 import { StatusDelivery } from "../../Form/SelectFinishService";
 import useFetch from "../../../Hooks/useFetch";
 import { USER_PUT } from "../../../Api";

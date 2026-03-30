@@ -2,15 +2,15 @@ import React from "react";
 import style from "../../../Styles/Form.module.css";
 import sectionStyle from "../../../Styles/Home.module.css";
 import useForm from "../../../Hooks/useForm";
-import { ClinicaContext } from "../../../Context";
+import { ClienteContext } from "../../../Context";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
 import { Input, InputTelefone } from "../../Form/Input";
 import SelectTabela from "../../Form/SelectTabela";
 import { USER_PUT } from "../../../Api";
 
-const FormClinicaNovo = () => {
-  const { setUpdate, storedClinic } = React.useContext(ClinicaContext);
+const FormClienteEdit = () => {
+  const { setUpdate, storedClinic } = React.useContext(ClienteContext);
   const { id } = useParams();
   const nome = useForm(true, "", storedClinic.nome);
   const endereço = useForm(true, "", storedClinic.endereço);
@@ -104,4 +104,4 @@ const FormClinicaNovo = () => {
   );
 };
 
-export default FormClinicaNovo;
+export default FormClienteEdit;

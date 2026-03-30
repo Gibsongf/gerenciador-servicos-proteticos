@@ -9,7 +9,6 @@ import Filter from "./ButtonAdd";
 import FormClinicaNovo from "./Form/FormClinicaNovo";
 import FormClinicaEdit from "./Form/FormClinicaEdit";
 import ClinicaMobile from "./ClinicaContentMobile";
-// create a other filter when is mobile
 
 const Home = () => {
   return (
@@ -17,9 +16,6 @@ const Home = () => {
       <section className={style.container}>
         <Title text={"Clínicas"} />
         <Filter />
-        {/* <ServiceTitle /> */}
-        {/* <FilterService /> */}
-        {/* <ExportService /> */}
       </section>
       <ClinicasContent />
     </>
@@ -29,9 +25,6 @@ const HomeMobile = () => {
   return (
     <section className={style.container}>
       <MobileTitle path="/clinica/novo" text={"+ Add Clínica"} />
-      {/* <FilterService /> */}
-      {/* <ExportService /> */}
-      {/* <ServicoMobile /> */}
       <ClinicaMobile />
     </section>
   );
@@ -41,13 +34,11 @@ const Clinicas = () => {
 
   return (
     <ClinicaStorage>
-      {/* <section className={style.container}> */}
       <Routes>
         <Route path="/" element={mobile ? <HomeMobile /> : <Home />} />
         <Route path="novo" element={<FormClinicaNovo />} />
         <Route path="editar/:id" element={<FormClinicaEdit />} />
       </Routes>
-      {/* </section> */}
     </ClinicaStorage>
   );
 };

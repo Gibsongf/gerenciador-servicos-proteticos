@@ -13,8 +13,8 @@ const Filter = () => {
   return (
     <div className={style.filterContainer}>
       {!mobile && (
-        <Link className={btnStyle.buttonAdd} to={"/clinica/novo"}>
-          Add Clínica
+        <Link className={btnStyle.buttonAdd} to={"/cliente/novo"}>
+          Add Cliente
         </Link>
       )}
     </div>

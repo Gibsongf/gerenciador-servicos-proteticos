@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./FormClinica.module.css";
+import style from "../../../Styles/Form.module.css";
 import sectionStyle from "../../../Styles/Home.module.css";
 import useForm from "../../../Hooks/useForm";
 import { ClinicaContext } from "../../../Context";
@@ -50,7 +50,7 @@ const FormClinicaNovo = () => {
       return false;
     };
     if (submit()) {
-      // nav("/clinica");
+      nav("/clinica");
     }
   };
   const onCancel = (e) => {
@@ -89,7 +89,7 @@ const FormClinicaNovo = () => {
           <InputTelefone {...telefone} />
         </div>
         <div className={style.formSelect}>
-          <SelectTabela onChange={tabela.onChange} />
+          <SelectTabela onChange={tabela.onChange} value={tabela.value} />
         </div>
         <div className={style.btnContainer}>
           <button onClick={onCancel} className={style.btnClose}>

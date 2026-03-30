@@ -4,7 +4,7 @@ import useForm from "../../../Hooks/useForm";
 import { Input } from "../../Form/Input";
 import { FormSelectDentist, FormSelectLocal } from "../../Form/SelectForm";
 import { ProductSelect } from "../../Form/SelectProduct";
-import style from "./FormServico.module.css";
+import style from "../../../Styles/Form.module.css";
 import { StatusDelivery } from "../../Form/SelectFinishService";
 import { todayDate } from "../../../utils";
 import useFetch from "../../../Hooks/useFetch";
