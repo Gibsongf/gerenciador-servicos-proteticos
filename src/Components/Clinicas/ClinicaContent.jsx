@@ -18,8 +18,8 @@ const ClinicaTR = ({ item, i }) => {
       <td>{item.nome}</td>
       <td>{item.endereço}</td>
       <td>{item.tabela}</td>
-      {/* <td>Numero de serviços</td> */}
-      {/* <td>Numero de Dentista</td> */}
+      <td>{item.clientes.length}</td>
+      <td>{item.serviços.length}</td>
 
       <td>
         <EditMenu
@@ -35,7 +35,7 @@ const ClinicaTR = ({ item, i }) => {
 const ClinicasContent = () => {
   const { data, loading, filter, pagination } =
     React.useContext(ClinicaContext);
-  const tableHeaders = ["Nome", "Endereço", "Tabela"];
+  const tableHeaders = ["Nome", "Endereço", "Tabela", "Clientes", "Serviços"];
   const filterData = (item, i) => {
     if (Object.values(filter).length) {
       let match = false;

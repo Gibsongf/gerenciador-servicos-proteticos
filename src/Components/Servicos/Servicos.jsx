@@ -1,11 +1,11 @@
 import React from "react";
 import style from "../../Styles/Home.module.css";
-import FilterService from "./Filter/FilterService";
+import FilterService from "./FilterService";
 import { ServicoStorage } from "./ServicoContext";
 import ServicosContent from "./ServicosContent";
 import useMedia from "../../Hooks/useMedia";
 import { Title, MobileTitle } from "../Title/ContentTitle";
-import ExportService from "./Filter/ExportService";
+import ExportService from "../ExportService";
 import { Route, Routes } from "react-router-dom";
 import FormServicoNovo from "./Form/FormServicoNovo";
 import FormServicoEdit from "./Form/FormServicoEdit";

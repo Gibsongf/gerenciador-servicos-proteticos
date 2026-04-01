@@ -1,6 +1,6 @@
 import React from "react";
 import { ClienteContext } from "../../Context";
-import style from "../../Styles/ContentMobile.module.css";
+import style from "../../Styles/Content.module.css";
 import EditMenu from "../Table/EditMenu";
 import useContentAction from "../../Hooks/useContentAction";
 const Tr = ({ item }) => {
@@ -15,8 +15,9 @@ const Tr = ({ item }) => {
   return (
     <tr>
       <td>{item.nome}</td>
-      <td>{item.endereço}</td>
-      <td>{item.tabela}</td>
+      <td>{item.local.nome}</td>
+      <td>{item.local.endereço}</td>
+      <td className={style.servicoQtd}>{item.serviços.length}</td>
 
       <td>
         <EditMenu
@@ -31,7 +32,6 @@ const Tr = ({ item }) => {
 };
 const ClientesContent = () => {
   const { data, loading, filter } = React.useContext(ClienteContext);
-  const tableHeaders = ["Nome", "Endereço", "Tabela"];
   const filterData = (item, i) => {
     if (Object.values(filter).length) {
       let match = false;
@@ -56,9 +56,10 @@ const ClientesContent = () => {
         <table>
           <thead>
             <tr>
-              {tableHeaders.map((h) => (
-                <th key={h}>{h}</th>
-              ))}
+              <th>Nome</th>
+              <th>Clínica</th>
+              <th>Endereço</th>
+              <th className={style.servicoQtd}>Serviços</th>
               <th> </th>
             </tr>
           </thead>

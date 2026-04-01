@@ -1,10 +1,7 @@
 import React from "react";
-import { ServicoContext } from "../../../Context";
 import style from "./Select.module.css";
 
-export const SelectDentist = ({ mobile = false }) => {
-  const { saveFilter, cliente } = React.useContext(ServicoContext);
-
+export const SelectDentist = ({ mobile = false, saveFilter, cliente }) => {
   return (
     <div className={style.selectContainer}>
       <label htmlFor="cliente">Dentistas: </label>

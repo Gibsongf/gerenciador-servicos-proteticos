@@ -20,17 +20,20 @@ const Card = ({ item, i }) => {
             Nome: <p>{item.nome}</p>
           </span>
           <span>
-            Endereço: <p>{item.endereço}</p>
+            Clinica: <p>{item.local.nome}</p>
+          </span>
+           <span>
+            endereço: <p>{item.local.endereço}</p>
           </span>
           <span>
-            Tabela: <p>{item.tabela}</p>
+            Serviços: <p>{item.serviços.length}</p>
           </span>
         </div>
         <EditMenu
           onClickDelete={onClickDelete}
           saveInfo={onClickEdit}
           id={item._id}
-          editPath={"/Cliente/editar/"}
+          editPath={"/cliente/editar/"}
         />
       </div>
     </>

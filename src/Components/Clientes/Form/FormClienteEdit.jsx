@@ -6,37 +6,32 @@ import { ClienteContext } from "../../../Context";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
 import { Input, InputTelefone } from "../../Form/Input";
-import SelectTabela from "../../Form/SelectTabela";
 import { USER_PUT } from "../../../Api";
+import { FormSelectLocal } from "../../Form/SelectForm";
 
 const FormClienteEdit = () => {
-  const { setUpdate, storedClinic } = React.useContext(ClienteContext);
+  const { setUpdate, storedCliente } = React.useContext(ClienteContext);
   const { id } = useParams();
-  const nome = useForm(true, "", storedClinic.nome);
-  const endereço = useForm(true, "", storedClinic.endereço);
-  const cep = useForm(true, "cep", storedClinic.cep);
-  const telefone = useForm(false, "telefone", storedClinic.telefone);
-  const tabela = useForm(false, "", storedClinic.tabela);
+  const nome = useForm(true, "", storedCliente.nome);
+  const local = useForm(true, "", storedCliente.local._id);
+  const telefone = useForm(false, "telefone", storedCliente.telefone);
   const { request, loading, error } = useFetch();
   const nav = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
     const obj = {
       nome: nome.value,
-      endereço: endereço.value,
-      cep: cep.value,
+      local: local.value,
       telefone: telefone.value,
-      tabela: tabela.value,
     };
     Object.keys(obj).forEach((k) => {
       if (!obj[k]) {
         delete obj[k];
       }
     });
-    const { url, options } = USER_PUT("local", id, obj);
+    const { url, options } = USER_PUT("cliente", id, obj);
     const submit = async () => {
       const { response, json, fetchError } = await request(url, options);
-      console.log(error);
       if (response.ok) {
         setUpdate((update) => update + 1);
         alert(json.message);
@@ -49,13 +44,14 @@ const FormClienteEdit = () => {
 
       return false;
     };
-    if (submit()) {
-      nav("/clinica");
+    const success = submit();
+    if (success) {
+      nav("/cliente");
     }
   };
   const onCancel = (e) => {
     e.preventDefault();
-    nav("/clinica");
+    nav("/cliente");
   };
   return (
     <section className={sectionStyle.container}>
@@ -69,27 +65,17 @@ const FormClienteEdit = () => {
             required={true}
             {...nome}
           />
-          <Input
-            label="Endereço *"
-            type="text"
-            name="endereço"
-            required={true}
-            {...endereço}
-          />
         </div>
         <div className={style.formSelect}>
-          <Input
-            label="CEP"
-            type="code"
-            name="cep"
-            required={false}
-            placeholder={"00000-000"}
-            {...cep}
-          />
           <InputTelefone {...telefone} />
         </div>
         <div className={style.formSelect}>
-          <SelectTabela onChange={tabela.onChange} value={tabela.value} />
+          <FormSelectLocal
+            setCliente={() => ""}
+            label={"Clínicas"}
+            type={"local"}
+            {...local}
+          />
         </div>
         <div className={style.btnContainer}>
           <button onClick={onCancel} className={style.btnClose}>

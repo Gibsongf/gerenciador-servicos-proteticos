@@ -84,7 +84,7 @@ export const FormSelectLocal = ({
   };
   return (
     <div className={style.container}>
-      <label className={style.label} htmlFor="cliente">
+      <label className={style.label} htmlFor="local">
         {label}
       </label>
       <select

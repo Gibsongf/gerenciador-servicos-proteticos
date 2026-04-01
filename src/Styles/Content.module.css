@@ -12,7 +12,9 @@
 .produtos p {
   text-align: left;
 }
-
+/* .servicoQtd{
+  text-align: center;
+} */
 svg {
   width: 24px;
 }

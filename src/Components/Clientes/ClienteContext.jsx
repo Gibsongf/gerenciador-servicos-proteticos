@@ -2,18 +2,23 @@ import React from "react";
 import useFetch from "../../Hooks/useFetch";
 import { GET_LIST_CONTENT } from "../../Api";
 import { ClienteContext } from "../../Context";
+import { removeDuplicate } from "../../utils";
 
 export const ClienteStorage = ({ children }) => {
   const { request, data, error, loading } = useFetch();
   const [filter, setFilter] = React.useState({});
   const [pagination, setPagination] = React.useState(1);
   const [update, setUpdate] = React.useState(1);
+  const [local, setLocal] = React.useState();
   const [editCliente, setEditCliente] = React.useState({});
+
   React.useEffect(() => {
     const req = async () => {
       const { url, options } = GET_LIST_CONTENT("cliente");
       const { json } = await request(url, options);
       if (json) {
+        setLocal(removeDuplicate(json.all.map((j) => j.local)));
+
         let index = 0;
         const lst = [[]];
         json.all.forEach((j) => {
@@ -39,6 +44,16 @@ export const ClienteStorage = ({ children }) => {
     }
     return editCliente;
   };
+  const saveFilter = ({ target }) => {
+    setFilter((filter) => {
+      if (!target.value) {
+        const newFilter = { ...filter };
+        delete newFilter[target.name];
+        return { ...newFilter };
+      }
+      return { ...filter, [target.name]: target.value };
+    });
+  };
   return (
     <ClienteContext.Provider
       value={{
@@ -46,11 +61,12 @@ export const ClienteStorage = ({ children }) => {
         loading,
         filter,
         error,
-        setFilter,
+        saveFilter,
         setUpdate,
         pagination,
         saveInfo,
-        storedClinic: getStoredInfo(),
+        storedCliente: getStoredInfo(),
+        local,
       }}>
       {children}
     </ClienteContext.Provider>

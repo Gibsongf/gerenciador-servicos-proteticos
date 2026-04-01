@@ -6,26 +6,22 @@ import { ClienteContext } from "../../../Context";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
 import { Input, InputTelefone } from "../../Form/Input";
-import SelectTabela from "../../Form/SelectTabela";
 import { USER_POST } from "../../../Api";
+import { FormSelectLocal } from "../../Form/SelectForm";
 
 const FormClinicaNovo = () => {
   const { setUpdate } = React.useContext(ClienteContext);
   const nome = useForm(true);
-  const endereço = useForm(true);
-  const cep = useForm(false);
+  const local = useForm(true);
   const telefone = useForm(false, "telefone");
-  const tabela = useForm();
   const { request, error, loading } = useFetch();
   const nav = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
     const obj = {
       nome: nome.value,
-      endereço: endereço.value,
-      cep: cep.value,
       telefone: telefone.value,
-      tabela: tabela.value,
+      local: local.value,
     };
     Object.keys(obj).forEach((k) => {
       if (!obj[k]) {
@@ -34,7 +30,7 @@ const FormClinicaNovo = () => {
         obj.telefone = telefone.value.replace(/\D/g, "");
       }
     });
-    const { url, options } = USER_POST("local", obj);
+    const { url, options } = USER_POST("cliente", obj);
     const submit = async () => {
       const { response, json, fetchError } = await request(url, options);
       if (response.ok) {
@@ -50,12 +46,12 @@ const FormClinicaNovo = () => {
       return false;
     };
     if (submit()) {
-      nav("/clinica");
+      nav("/cliente");
     }
   };
   const onCancel = (e) => {
     e.preventDefault();
-    nav("/clinica");
+    nav("/cliente");
   };
   return (
     <section className={sectionStyle.container}>
@@ -69,27 +65,17 @@ const FormClinicaNovo = () => {
             required={true}
             {...nome}
           />
-          <Input
-            label="Endereço *"
-            type="text"
-            name="endereço"
-            required={true}
-            {...endereço}
-          />
         </div>
         <div className={style.formSelect}>
-          <Input
-            label="CEP"
-            type="code"
-            name="cep"
-            required={false}
-            placeholder={"00000-000"}
-            {...cep}
-          />
           <InputTelefone {...telefone} />
         </div>
         <div className={style.formSelect}>
-          <SelectTabela onChange={tabela.onChange} value={tabela.value} />
+          <FormSelectLocal
+            setCliente={() => ""}
+            label={"Clínicas"}
+            type={"local"}
+            {...local}
+          />
         </div>
         <div className={style.btnContainer}>
           <button onClick={onCancel} className={style.btnClose}>

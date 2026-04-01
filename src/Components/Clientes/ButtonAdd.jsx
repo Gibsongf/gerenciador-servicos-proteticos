@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import btnStyle from "../../Styles/Button.module.css";
 
 // select date , select all dentist select clinics
-const Filter = () => {
+const BtnAdd = () => {
   const mobile = useMedia();
 
   return (
@@ -21,4 +21,4 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+export default BtnAdd;

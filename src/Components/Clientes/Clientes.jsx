@@ -5,17 +5,17 @@ import useMedia from "../../Hooks/useMedia";
 import { Route, Routes } from "react-router-dom";
 import ClientesContent from "./ClienteContent";
 import { Title, MobileTitle } from "../Title/ContentTitle";
-import Filter from "./ButtonAdd";
 import FormClienteNovo from "./Form/FormClienteNovo";
 import FormClienteEdit from "./Form/FormClienteEdit";
 import ClienteMobile from "./ClienteContentMobile";
+import FilterCliente from "./FilterClientes";
 
 const Home = () => {
   return (
     <>
       <section className={style.container}>
-        <Title text={"Clínicas"} />
-        <Filter />
+        <Title text={"Clientes"} />
+        <FilterCliente />
       </section>
       <ClientesContent />
     </>
