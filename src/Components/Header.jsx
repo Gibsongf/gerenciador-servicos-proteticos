@@ -4,6 +4,7 @@ import UserIcon from "./svg/UserIcon";
 import style from "./Header.module.css";
 import { Link } from "react-router-dom";
 import useMedia from "../Hooks/useMedia";
+import DropDownConfig from "./Conta/DropDown";
 
 const Header = () => {
   const mobile = useMedia();
@@ -16,7 +17,7 @@ const Header = () => {
       </div>
       <div className={style.accountContainer}>
         <UserIcon />
-        {!mobile ? <Link className={style.link}>Minha Conta</Link> : ""}
+        {!mobile ? <DropDownConfig /> : ""}
       </div>
     </header>
   );

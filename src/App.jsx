@@ -7,6 +7,8 @@ import Clinicas from "./Components/Clinicas/Clinicas";
 import Produtos from "./Components/Produtos/Produtos";
 import Header from "./Components/Header";
 import "./App.css";
+import Conta from "./Components/Conta/Conta";
+import ExportarExcel from "./Components/ExportarExcel/ExportarExcel";
 function App() {
   return (
     <>
@@ -20,6 +22,8 @@ function App() {
           <Route path="cliente/*" element={<Clientes />} />
           <Route path="clinica/*" element={<Clinicas />} />
           <Route path="produto/*" element={<Produtos />} />
+          <Route path="conta/*" element={<Conta />} />
+          <Route path="exportar/*" element={<ExportarExcel />} />
         </Routes>
       </main>
     </>
