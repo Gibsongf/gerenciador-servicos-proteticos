@@ -79,3 +79,12 @@
 
   }
 }
+
+@media (max-width:700px) {
+  .links {
+    left: -120px;
+    top: 40px;
+    padding: 20px 16px;
+
+  }
+}

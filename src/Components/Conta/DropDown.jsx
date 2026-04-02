@@ -4,11 +4,12 @@ import styles from "./DropDown.module.css";
 import ConfigSvg from "../svg/Config";
 import ExitIcon from "../svg/ExitIcon";
 import { DownArrow, UpArrow } from "../svg/DropArrow";
+import useMedia from "../../Hooks/useMedia";
 
 const DropDownConfig = () => {
   const [show, setShow] = React.useState(false);
   const ref = React.useRef();
-
+  const mobile = useMedia();
   React.useEffect(() => {
     const clickOutside = (event) => {
       if (!ref.current || ref.current.contains(event.target)) return;
@@ -22,10 +23,8 @@ const DropDownConfig = () => {
   }, [ref]);
   return (
     <div className={styles.container}>
-      <button
-        className={styles.buttonActive}
-        onClick={() => setShow((e) => !e)}>
-        Minha Conta{" "}
+      <button className={styles.buttonActive} onClick={() => setShow(true)}>
+        {!mobile && "Minha Conta"}
         {show ? (
           <UpArrow className={styles.activeArrow} />
         ) : (
@@ -34,7 +33,10 @@ const DropDownConfig = () => {
       </button>
 
       <div ref={ref} className={`${styles.links} ${show && styles.active}`}>
-        <Link className={styles.config} to={"/conta"}>
+        <Link
+          onClick={() => setShow(false)}
+          className={styles.config}
+          to={"/conta"}>
           {" "}
           <ConfigSvg />
           Configurações

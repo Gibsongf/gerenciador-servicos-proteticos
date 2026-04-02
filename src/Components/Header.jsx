@@ -7,17 +7,17 @@ import useMedia from "../Hooks/useMedia";
 import DropDownConfig from "./Conta/DropDown";
 
 const Header = () => {
-  const mobile = useMedia();
-
   return (
     <header className={style.container}>
-      <div className={style.logoContainer}>
+      {/* <div className={style.logoContainer}> */}
+      <Link className={style.logoContainer}>
         <ToothIcon />
         <p>Manejamento Protético</p>
-      </div>
+      </Link>
+      {/* </div> */}
       <div className={style.accountContainer}>
         <UserIcon />
-        {!mobile ? <DropDownConfig /> : ""}
+        <DropDownConfig />
       </div>
     </header>
   );

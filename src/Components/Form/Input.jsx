@@ -38,7 +38,7 @@ export const InputTelefone = ({ value, onChange, error, onBlur }) => {
   return (
     <div className={styles.container}>
       <label htmlFor={"telefone"} className={styles.label}>
-        Telefone
+        Telefone (opcional)
       </label>
       <input
         id={"telefone"}
