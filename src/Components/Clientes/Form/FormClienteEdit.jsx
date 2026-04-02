@@ -55,7 +55,7 @@ const FormClienteEdit = () => {
   };
   return (
     <section className={sectionStyle.container}>
-      <h1>Edição de Clínica</h1>
+      <h1>Edição de Cliente</h1>
       <form className={style.form} onSubmit={onSubmit} action="">
         <div className={style.formSelect}>
           <Input

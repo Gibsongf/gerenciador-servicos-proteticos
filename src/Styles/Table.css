@@ -1,9 +1,8 @@
 .tableContainer {
   background-color: #FFF;
-  overflow-y: scroll;
+  overflow: scroll;
   grid-column: 2/-1;
   grid-row: 1;
-
 
 }
 
@@ -11,6 +10,7 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  position: relative;
 }
 
 thead {
@@ -29,6 +29,8 @@ th {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
 }
 
 

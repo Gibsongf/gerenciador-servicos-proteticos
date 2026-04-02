@@ -3,12 +3,13 @@ import style from "../../../Styles/Form.module.css";
 import sectionStyle from "../../../Styles/Home.module.css";
 import useForm from "../../../Hooks/useForm";
 import { ProdutoContext } from "../../../Context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
 import { Input } from "../../Form/Input";
-import { USER_POST } from "../../../Api";
+import { USER_PUT } from "../../../Api";
 
 const FormProdutoEdit = () => {
+  const { id } = useParams();
   const { setUpdate, storedProduto } = React.useContext(ProdutoContext);
   const nome = useForm(true, "", storedProduto.nome);
   const normal = useForm(true, "", storedProduto.valor_normal);
@@ -22,12 +23,14 @@ const FormProdutoEdit = () => {
       valor_normal: normal.value,
       valor_reduzido: reduzido.value,
     };
+
     Object.keys(obj).forEach((k) => {
       if (!obj[k]) {
         delete obj[k];
       }
     });
-    const { url, options } = USER_POST("produto", obj);
+
+    const { url, options } = USER_PUT("produto", id, obj);
     const submit = async () => {
       const { response, json, fetchError } = await request(url, options);
       if (response.ok) {
@@ -42,9 +45,11 @@ const FormProdutoEdit = () => {
 
       return false;
     };
-    if (submit()) {
-      nav("/produto");
-    }
+    submit().then((result) => {
+      if (result) {
+        nav("/produto");
+      }
+    });
   };
   const onCancel = (e) => {
     e.preventDefault();
@@ -52,7 +57,7 @@ const FormProdutoEdit = () => {
   };
   return (
     <section className={sectionStyle.container}>
-      <h1>Adicionar Clínica</h1>
+      <h1>Adicionar Produto</h1>
       <form className={style.form} onSubmit={onSubmit} action="">
         <div className={style.formSelect}>
           <Input

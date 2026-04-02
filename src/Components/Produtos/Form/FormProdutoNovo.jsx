@@ -42,9 +42,11 @@ const FormProdutoNovo = () => {
 
       return false;
     };
-    if (submit()) {
-      nav("/produto");
-    }
+    const result = submit();
+    console.log(result);
+    // if (submit()) {
+    //   nav("/produto");
+    // }
   };
   const onCancel = (e) => {
     e.preventDefault();
@@ -52,7 +54,7 @@ const FormProdutoNovo = () => {
   };
   return (
     <section className={sectionStyle.container}>
-      <h1>Adicionar Clínica</h1>
+      <h1>Adicionar Produto</h1>
       <form className={style.form} onSubmit={onSubmit} action="">
         <div className={style.formSelect}>
           <Input

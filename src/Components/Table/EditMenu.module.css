@@ -1,6 +1,7 @@
 .container {
   position: relative;
   cursor: pointer;
+  height: fit-content;
 
 }
 

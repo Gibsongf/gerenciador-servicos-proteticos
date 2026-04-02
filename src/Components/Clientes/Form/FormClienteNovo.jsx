@@ -55,7 +55,7 @@ const FormClinicaNovo = () => {
   };
   return (
     <section className={sectionStyle.container}>
-      <h1>Adicionar Clínica</h1>
+      <h1>Adicionar Cliente</h1>
       <form className={style.form} onSubmit={onSubmit} action="">
         <div className={style.formSelect}>
           <Input
