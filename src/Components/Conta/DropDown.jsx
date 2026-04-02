@@ -22,8 +22,15 @@ const DropDownConfig = () => {
   }, [ref]);
   return (
     <div className={styles.container}>
-      <button className={styles.buttonActive} onClick={() => setShow(true)}>
-        Minha Conta {show ? <UpArrow /> : <DownArrow />}
+      <button
+        className={styles.buttonActive}
+        onClick={() => setShow((e) => !e)}>
+        Minha Conta{" "}
+        {show ? (
+          <UpArrow className={styles.activeArrow} />
+        ) : (
+          <DownArrow className={styles.activeArrow} />
+        )}
       </button>
 
       <div ref={ref} className={`${styles.links} ${show && styles.active}`}>
