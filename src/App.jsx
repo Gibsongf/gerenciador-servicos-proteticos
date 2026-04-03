@@ -9,7 +9,8 @@ import Header from "./Components/Header";
 import "./App.css";
 import Conta from "./Components/Conta/Conta";
 import ExportarExcel from "./Components/ExportarExcel/ExportarExcel";
-function App() {
+import Login from "./Components/Conta/Login";
+const AppRoute = () => {
   return (
     <>
       <Header />
@@ -17,7 +18,7 @@ function App() {
       <main className="App">
         <MenuNav />
         <Routes>
-          <Route path="*" element={<Servicos />} />
+          <Route path="/" element={<Login />} />
           <Route path="servico/*" element={<Servicos />} />
           <Route path="cliente/*" element={<Clientes />} />
           <Route path="clinica/*" element={<Clinicas />} />
@@ -28,6 +29,9 @@ function App() {
       </main>
     </>
   );
+};
+function App() {
+  return <Login />;
 }
 
 export default App;

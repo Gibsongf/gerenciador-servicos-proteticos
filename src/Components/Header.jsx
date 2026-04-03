@@ -9,12 +9,10 @@ import DropDownConfig from "./Conta/DropDown";
 const Header = () => {
   return (
     <header className={style.container}>
-      {/* <div className={style.logoContainer}> */}
-      <Link className={style.logoContainer}>
+      <Link to={"/servico"} className={style.logoContainer}>
         <ToothIcon />
         <p>Manejamento Protético</p>
       </Link>
-      {/* </div> */}
       <div className={style.accountContainer}>
         <UserIcon />
         <DropDownConfig />
