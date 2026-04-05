@@ -3,12 +3,27 @@ import { Input, InputRememberMe } from "../Form/Input";
 import useForm from "../../Hooks/useForm";
 import style from "../../Styles/Login.module.css";
 import ToothIcon from "../svg/ToothIcon";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useFetch from "../../Hooks/useFetch";
+import { USER_LOGIN } from "../../Api";
+import { UserContext } from "../../Context";
 
 const Login = () => {
-  const email = useForm("");
+  const username = useForm("");
   const password = useForm("");
   const remember = useForm("");
+  const nav = useNavigate();
+  const { userLogin, login } = React.useContext(UserContext);
+
+  const submit = async (e) => {
+    e.preventDefault();
+    userLogin(username.value, password.value);
+  };
+  React.useEffect(() => {
+    if (login === true) {
+      nav("/conta");
+    }
+  }, [login, nav]);
   return (
     <div className={style.container}>
       <div className={style.logoContainer}>
@@ -21,13 +36,13 @@ const Login = () => {
           <p>Digite seus dados para entrar</p>
         </div>
 
-        <form className={style.form} action="">
+        <form onSubmit={submit} className={style.form}>
           <Input
-            label="Email"
-            type="mail"
-            name="email"
+            label="Username"
+            type="text"
+            name="username"
             required={true}
-            {...email}
+            {...username}
           />
           <Input
             label="Senha"

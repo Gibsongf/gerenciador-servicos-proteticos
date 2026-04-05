@@ -5,11 +5,13 @@ import ConfigSvg from "../svg/Config";
 import ExitIcon from "../svg/ExitIcon";
 import { DownArrow, UpArrow } from "../svg/DropArrow";
 import useMedia from "../../Hooks/useMedia";
+import { UserContext } from "../../Context";
 
 const DropDownConfig = () => {
   const [show, setShow] = React.useState(false);
   const ref = React.useRef();
   const mobile = useMedia();
+  const { userLogout } = React.useContext(UserContext);
   React.useEffect(() => {
     const clickOutside = (event) => {
       if (!ref.current || ref.current.contains(event.target)) return;
@@ -21,6 +23,10 @@ const DropDownConfig = () => {
       document.removeEventListener("mousedown", clickOutside);
     };
   }, [ref]);
+  const handleLogout = () => {
+    userLogout();
+    setShow(false);
+  };
   return (
     <div className={styles.container}>
       <button className={styles.buttonActive} onClick={() => setShow(true)}>
@@ -41,7 +47,10 @@ const DropDownConfig = () => {
           <ConfigSvg />
           Configurações
         </Link>
-        <Link className={`${styles.config} ${styles.exit}`}>
+        <Link
+          onClick={handleLogout}
+          to={"/login"}
+          className={`${styles.config} ${styles.exit}`}>
           <ExitIcon /> Sair
         </Link>
       </div>

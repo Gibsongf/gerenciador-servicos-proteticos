@@ -10,6 +10,7 @@ import "./App.css";
 import Conta from "./Components/Conta/Conta";
 import ExportarExcel from "./Components/ExportarExcel/ExportarExcel";
 import Login from "./Components/Conta/Login";
+import UserData from "./UserContext";
 const AppRoute = () => {
   return (
     <>
@@ -18,7 +19,7 @@ const AppRoute = () => {
       <main className="App">
         <MenuNav />
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/login/*" element={<Login />} />
           <Route path="servico/*" element={<Servicos />} />
           <Route path="cliente/*" element={<Clientes />} />
           <Route path="clinica/*" element={<Clinicas />} />
@@ -31,7 +32,11 @@ const AppRoute = () => {
   );
 };
 function App() {
-  return <Login />;
+  return (
+    <UserData>
+      <AppRoute />
+    </UserData>
+  );
 }
 
 export default App;

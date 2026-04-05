@@ -1,4 +1,4 @@
-let apiUrl = "http://localhost:3000/api";
+let apiUrl = "http://localhost:3000/api/";
 // import { loginData } from "./TODO/loginData";
 
 export function GET_LIST_CONTENT(category) {
@@ -9,7 +9,7 @@ export function GET_LIST_CONTENT(category) {
       Authorization: "Bearer " + localStorage["token"],
     },
   };
-  const url = "http://localhost:3000/api/" + category + "/todos";
+  const url = apiUrl + category + "/todos";
   return { url, options };
 }
 
@@ -21,7 +21,7 @@ export function GET_CONTENT_BY_ID(id, category) {
       Authorization: "Bearer " + localStorage["token"],
     },
   };
-  const url = apiUrl + "/servico/" + id;
+  const url = apiUrl + "servico/" + id;
   return { url, options };
 }
 
@@ -34,7 +34,7 @@ export function USER_POST(category, body) {
     },
     body: JSON.stringify(body),
   };
-  const url = "http://localhost:3000/api/" + category + "/novo";
+  const url = apiUrl + category + "/novo";
   return { url, options };
 }
 
@@ -47,7 +47,7 @@ export function USER_PUT(category, id, body) {
     },
     body: JSON.stringify(body),
   };
-  const url = "http://localhost:3000/api/" + category + "/" + id + "/edit";
+  const url = apiUrl + category + "/" + id + "/edit";
   return { url, options };
 }
 
@@ -59,6 +59,39 @@ export function USER_DELETE(category, id) {
       Authorization: "Bearer " + localStorage["token"],
     },
   };
-  const url = "http://localhost:3000/api/" + category + "/" + id;
+  const url = apiUrl + category + "/" + id;
+  return { url, options };
+}
+export function USER_LOGIN(loginData) {
+  const options = {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginData),
+  };
+
+  const url = "http://localhost:3000/user/login";
+  return { url, options };
+}
+
+export function GET_USER_DATA(token) {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  };
+  const url = "http://localhost:3000/user/";
+  return { url, options };
+}
+export function TOKEN_VALIDATE_POST(token) {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  };
+  const url = "http://localhost:3000/user/validate";
   return { url, options };
 }
