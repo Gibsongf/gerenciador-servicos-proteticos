@@ -5,10 +5,11 @@ import style from "./Header.module.css";
 import { Link } from "react-router-dom";
 import useMedia from "../Hooks/useMedia";
 import DropDownConfig from "./Conta/DropDown";
-import UserData from "../UserContext";
+import { UserContext } from "../Context";
 
 const Header = () => {
-  // const { userLogout } = React.useContext(UserData);
+  const { login } = React.useContext(UserContext);
+  if (!login) return "";
   return (
     <header className={style.container}>
       <Link to={"/servico"} className={style.logoContainer}>

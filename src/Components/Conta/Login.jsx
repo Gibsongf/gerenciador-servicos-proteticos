@@ -13,7 +13,7 @@ const Login = () => {
   const password = useForm("");
   const remember = useForm("");
   const nav = useNavigate();
-  const { userLogin, login } = React.useContext(UserContext);
+  const { userLogin, login, loading, error } = React.useContext(UserContext);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -55,7 +55,15 @@ const Login = () => {
             <InputRememberMe {...remember} />
             <Link to={"/esqueceu"}>Esqueceu a senha?</Link>
           </div>
-          <button className={style.entrar}>Entrar</button>
+          {error && <p className={style.error}>{error}</p>}
+
+          {loading ? (
+            <button className={style.entrar} disabled>
+              Carregando...
+            </button>
+          ) : (
+            <button className={style.entrar}>Entrar</button>
+          )}
         </form>
         <div className={style.footer}>
           <p>

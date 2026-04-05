@@ -5,6 +5,7 @@ import ToothIcon from "../svg/ToothIcon";
 import ClientIcon from "../svg/ClientIcon";
 import ClinicIcon from "../svg/ClinicIcon";
 import ServiceIcon from "../svg/ServiceIcon";
+import { UserContext } from "../../Context";
 
 const MenuNav = () => {
   return (

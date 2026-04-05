@@ -32,10 +32,12 @@ const UserData = ({ children }) => {
       setLoading(true);
       const { url, options } = USER_LOGIN({ username, password });
       const tokenRes = await fetch(url, options);
-      if (!tokenRes.ok) throw new Error(`Error: ${tokenRes.statusText}`);
-      const { token } = await tokenRes.json();
-      localStorage.setItem("token", token);
-      await getUser(token);
+      const json = await tokenRes.json();
+      if (!json.user) {
+        throw new Error(`Error: ${json.message}`);
+      }
+      localStorage.setItem("token", json.token);
+      await getUser(json.token);
       navigate("/conta");
     } catch (err) {
       setError(err.message);
@@ -65,7 +67,7 @@ const UserData = ({ children }) => {
         setLogin(false);
       }
     }
-    // autoLogin();
+    autoLogin();
   }, [userLogout]);
 
   return (
