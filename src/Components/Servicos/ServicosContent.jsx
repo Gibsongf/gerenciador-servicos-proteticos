@@ -47,8 +47,10 @@ const ServicosContent = () => {
     if (Object.values(filter).length) {
       let match = false;
       for (const [key, val] of Object.entries(filter)) {
-        if (item[key].nome === val) {
+        if (item[key]._id === val) {
           match = true;
+        } else {
+          match = false;
         }
       }
       if (match) {
@@ -62,41 +64,19 @@ const ServicosContent = () => {
   if (loading) return <div>Loading</div>;
 
   return (
-    <>
-      <div className={style.tableContainer}>
-        <table>
-          <thead>
-            <tr>
-              {tableHeaders.map((h) => (
-                <th key={h}>{h}</th>
-              ))}
-              <th> </th>
-            </tr>
-          </thead>
-          <tbody>
-            {data && data.all.map((item, i) => filterData(item, i))}
-          </tbody>
-        </table>
-      </div>
-      {/* <nav className={style.ulContainer}>
-        <ul>
-          {data &&
-            pagination.map((pg, i) => {
-              let className = `${style.buttonPage}`;
-              if (i == page) {
-                className += " " + style.active;
-              }
-              return (
-                <li key={i}>
-                  <button className={className} onClick={() => setPage(i)}>
-                    {i + 1}
-                  </button>
-                </li>
-              );
-            })}
-        </ul>
-      </nav> */}
-    </>
+    <div className={style.tableContainer}>
+      <table>
+        <thead>
+          <tr>
+            {tableHeaders.map((h) => (
+              <th key={h}>{h}</th>
+            ))}
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>{data && data.all.map((item, i) => filterData(item, i))}</tbody>
+      </table>
+    </div>
   );
 };
 

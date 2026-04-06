@@ -1,6 +1,4 @@
 import React from "react";
-// import { SelectDentist } from "./SelectDentist";
-// import { SelectClinic } from "./SelectClinic";
 import style from "../../Styles/Filter.module.css";
 import useMedia from "../../Hooks/useMedia";
 import { Link } from "react-router-dom";

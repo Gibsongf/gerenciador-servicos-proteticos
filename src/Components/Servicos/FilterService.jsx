@@ -2,22 +2,36 @@ import React from "react";
 import { ServicoContext } from "../../Context";
 import useMedia from "../../Hooks/useMedia";
 import { SelectClinic } from "../Form/SelectClinic";
-import { SelectDentist } from "../Form/SelectDentist";
+import { FilterSelectDentist } from "../Form/SelectFilterDentist";
 import { Link } from "react-router-dom";
 import btnStyle from "../../Styles/Button.module.css";
 import style from "../../Styles/Filter.module.css";
 
 // select date , select all dentist select clinics
 const FilterService = () => {
-  const { saveFilter, local, cliente } = React.useContext(ServicoContext);
+  const { saveFilter, local, filter, cliente } =
+    React.useContext(ServicoContext);
   const mobile = useMedia();
+  const [clienteValue, setCliente] = React.useState("");
+
+  const onChange = (e) => {
+    if (e.target.name === "local") {
+      setCliente("");
+      saveFilter("cliente", "");
+    } else {
+      setCliente(e.target.value);
+    }
+    saveFilter(e.target.name, e.target.value);
+  };
   return (
     <div className={style.filterContainer}>
-      <SelectClinic mobile={mobile} saveFilter={saveFilter} local={local} />
-      <SelectDentist
+      <SelectClinic mobile={mobile} saveFilter={onChange} local={local} />
+      <FilterSelectDentist
         mobile={mobile}
-        saveFilter={saveFilter}
+        onChange={onChange}
+        value={clienteValue}
         cliente={cliente}
+        filter={filter}
       />
       {!mobile && (
         <Link className={btnStyle.buttonAdd} to={"/servico/novo"}>

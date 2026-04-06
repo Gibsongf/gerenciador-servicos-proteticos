@@ -55,8 +55,10 @@ const ServicoMobile = () => {
     if (Object.values(filter).length) {
       let match = false;
       for (const [key, val] of Object.entries(filter)) {
-        if (item[key].nome === val) {
+        if (item[key]._id === val) {
           match = true;
+        } else {
+          match = false;
         }
       }
       if (match) {

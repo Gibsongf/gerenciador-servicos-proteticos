@@ -1,5 +1,4 @@
 import React from "react";
-import { ServicoContext } from "../../Context";
 import style from "./Select.module.css";
 
 export const SelectClinic = ({ mobile = false, saveFilter, local }) => {
@@ -21,7 +20,7 @@ export const SelectClinic = ({ mobile = false, saveFilter, local }) => {
         <option value="">Todas Clínicas</option>
         {local &&
           local.map((item, i) => (
-            <option key={i} value={item.nome}>
+            <option key={i} value={item._id}>
               {item.nome}
             </option>
           ))}

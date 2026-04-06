@@ -39,13 +39,11 @@ const Servicos = () => {
 
   return (
     <ServicoStorage>
-      {/* <section className={style.container}> */}
       <Routes>
         <Route path="/" element={mobile ? <HomeMobile /> : <Home />} />
         <Route path="novo" element={<FormServicoNovo />} />
         <Route path="editar/:id" element={<FormServicoEdit />} />
       </Routes>
-      {/* </section> */}
     </ServicoStorage>
   );
 };

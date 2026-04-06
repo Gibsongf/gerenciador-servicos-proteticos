@@ -11,28 +11,6 @@ import Conta from "./Components/Conta/Conta";
 import ExportarExcel from "./Components/ExportarExcel/ExportarExcel";
 import Login from "./Components/Conta/Login";
 import UserData from "./UserContext";
-// import { UserContext } from "./Context";
-const AppRoute = () => {
-  // const { login } = React.useContext(UserContext);
-  return (
-    <>
-      <Header />
-
-      <main className="App">
-        <MenuNav />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="servico/*" element={<Servicos />} />
-          <Route path="cliente/*" element={<Clientes />} />
-          <Route path="clinica/*" element={<Clinicas />} />
-          <Route path="produto/*" element={<Produtos />} />
-          <Route path="conta/*" element={<Conta />} />
-          <Route path="exportar/*" element={<ExportarExcel />} />
-        </Routes>
-      </main>
-    </>
-  );
-};
 
 function App() {
   return (
@@ -48,6 +26,7 @@ function App() {
               <main className="App">
                 <MenuNav />
                 <Routes>
+                  <Route index path="/*" element={<Servicos />} />
                   <Route path="servico/*" element={<Servicos />} />
                   <Route path="cliente/*" element={<Clientes />} />
                   <Route path="clinica/*" element={<Clinicas />} />

@@ -36,16 +36,17 @@ export const ServicoStorage = ({ children }) => {
     }
     return editService;
   };
-  const saveFilter = ({ target }) => {
+  const saveFilter = (name, value) => {
     setFilter((filter) => {
-      if (!target.value) {
+      if (!value) {
         const newFilter = { ...filter };
-        delete newFilter[target.name];
+        delete newFilter[name];
         return { ...newFilter };
       }
-      return { ...filter, [target.name]: target.value };
+      return { ...filter, [name]: value };
     });
   };
+
   return (
     <ServicoContext.Provider
       value={{
