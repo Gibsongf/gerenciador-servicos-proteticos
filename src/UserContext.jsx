@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 
 const UserData = ({ children }) => {
   // just user data, not service, products etc
-  const [data, setData] = React.useState(null);
+  const [userData, setUserData] = React.useState(null);
   const [login, setLogin] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
   const userLogout = React.useCallback(async function () {
-    setData(null);
+    setUserData(null);
     setError(null);
     setLoading(false);
     setLogin(false);
@@ -22,8 +22,9 @@ const UserData = ({ children }) => {
     const { url, options } = GET_USER_DATA(token);
     const response = await fetch(url, options);
     const json = await response.json();
-    setData(json);
+    setUserData(json);
     setLogin(true);
+    localStorage.setItem("userData", JSON.stringify(json));
   }
 
   async function userLogin(username, password) {
@@ -54,8 +55,10 @@ const UserData = ({ children }) => {
         try {
           setError(null);
           setLoading(true);
-          const { url, options } = TOKEN_VALIDATE_POST(token);
+          const { url, options } = GET_USER_DATA(token);
           const response = await fetch(url, options);
+          const json = await response.json();
+          setUserData(json);
           if (!response.ok) throw new Error("Token inválido");
           await getUser(token);
         } catch (err) {
@@ -70,9 +73,19 @@ const UserData = ({ children }) => {
     autoLogin();
   }, [userLogout]);
 
+  const getUserData = () => {
+    return JSON.parse(localStorage.getItem("userData"));
+  };
   return (
     <UserContext.Provider
-      value={{ userLogin, userLogout, data, error, loading, login }}>
+      value={{
+        userLogin,
+        userLogout,
+        userData: getUserData(),
+        error,
+        loading,
+        login,
+      }}>
       {children}
     </UserContext.Provider>
   );

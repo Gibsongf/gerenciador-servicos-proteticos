@@ -25,6 +25,8 @@ const HomeMobile = () => {
   return (
     <section className={style.container}>
       <MobileTitle path="/cliente/novo" text={"+ Add Cliente"} />
+      <FilterCliente />
+
       <ClienteMobile />
     </section>
   );

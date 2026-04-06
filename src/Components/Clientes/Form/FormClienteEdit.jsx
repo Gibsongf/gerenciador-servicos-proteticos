@@ -27,9 +27,12 @@ const FormClienteEdit = () => {
     Object.keys(obj).forEach((k) => {
       if (!obj[k]) {
         delete obj[k];
+      } else if (k === "telefone") {
+        obj.telefone = telefone.value.replace(/\D/g, "");
       }
     });
     const { url, options } = USER_PUT("cliente", id, obj);
+
     const submit = async () => {
       const { response, json, fetchError } = await request(url, options);
       if (response.ok) {
@@ -44,8 +47,7 @@ const FormClienteEdit = () => {
 
       return false;
     };
-    const success = submit();
-    if (success) {
+    if (submit()) {
       nav("/cliente");
     }
   };
@@ -56,7 +58,7 @@ const FormClienteEdit = () => {
   return (
     <section className={sectionStyle.container}>
       <h1>Edição de Cliente</h1>
-      <form className={style.form} onSubmit={onSubmit} action="">
+      <form className={style.form} onSubmit={onSubmit}>
         <div className={style.formSelect}>
           <Input
             label="Nome *"

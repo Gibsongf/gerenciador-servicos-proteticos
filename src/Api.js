@@ -74,7 +74,18 @@ export function USER_LOGIN(loginData) {
   const url = "http://localhost:3000/user/login";
   return { url, options };
 }
+export function USER_ACC_PUT(data, id) {
+  const options = {
+    method: "put",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
 
+  const url = "http://localhost:3000/user/edit/" + id;
+  return { url, options };
+}
 export function GET_USER_DATA(token) {
   const options = {
     method: "GET",

@@ -9,7 +9,7 @@ import { Input, InputTelefone } from "../../Form/Input";
 import SelectTabela from "../../Form/SelectTabela";
 import { USER_PUT } from "../../../Api";
 
-const FormClinicaNovo = () => {
+const FormClinicaEdit = () => {
   const { setUpdate, storedClinic } = React.useContext(ClinicaContext);
   const { id } = useParams();
   const nome = useForm(true, "", storedClinic.nome);
@@ -36,7 +36,6 @@ const FormClinicaNovo = () => {
     const { url, options } = USER_PUT("local", id, obj);
     const submit = async () => {
       const { response, json, fetchError } = await request(url, options);
-      console.log(error);
       if (response.ok) {
         setUpdate((update) => update + 1);
         alert(json.message);
@@ -104,4 +103,4 @@ const FormClinicaNovo = () => {
   );
 };
 
-export default FormClinicaNovo;
+export default FormClinicaEdit;

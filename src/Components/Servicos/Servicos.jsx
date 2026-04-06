@@ -5,7 +5,7 @@ import { ServicoStorage } from "./ServicoContext";
 import ServicosContent from "./ServicosContent";
 import useMedia from "../../Hooks/useMedia";
 import { Title, MobileTitle } from "../Title/ContentTitle";
-import ExportService from "../ExportService";
+import ExportServiceBtn from "../ExportarExcel/ExportServiceBtn";
 import { Route, Routes } from "react-router-dom";
 import FormServicoNovo from "./Form/FormServicoNovo";
 import FormServicoEdit from "./Form/FormServicoEdit";
@@ -18,7 +18,7 @@ const Home = () => {
       <section className={style.container}>
         <Title text={"Serviços"} />
         <FilterService />
-        <ExportService />
+        <ExportServiceBtn />
       </section>
       <ServicosContent />
     </>
@@ -29,7 +29,7 @@ const HomeMobile = () => {
     <section className={style.container}>
       <MobileTitle path="/servico/novo" text={"+ Add Serviço"} />
       <FilterService />
-      <ExportService />
+      <ExportServiceBtn />
       <ServicoMobile />
     </section>
   );

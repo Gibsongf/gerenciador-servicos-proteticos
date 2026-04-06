@@ -3,36 +3,63 @@ import { Input, InputTelefone } from "../Form/Input";
 import useForm from "../../Hooks/useForm";
 import style from "../../Styles/Form.module.css";
 import sectionStyle from "../../Styles/Home.module.css";
-import PerfilHeader from "./PerfilHeader";
 import { UserFormHeader } from "./FormHeaders";
-//                 "Lab name",
-//                 "",
-//                 "CROTPD 00000",
-//                 "",
-//                 "Tec. Resp.: userName",
-//                 "",
-//                 "Tel: (11) 99999-9999 (whatsapp)",
-//                 "Instagram: @social",
-//                 "",
-//                 "Informações do Pedido",
+import { UserContext } from "../../Context";
+import { USER_ACC_PUT } from "../../Api";
+import useFetch from "../../Hooks/useFetch";
 
 const FormInfoUser = () => {
-  const user = {
-    nome: "userName",
-    user: "11 99999-9999",
-    email: "user@mail.com",
-    labName: "User lab",
-    instagram: "@userInsta",
+  // const userData = {
+  //   fullName: "João Silva",
+  //   email: "joao.silva@email.com",
+  //   labName: "Laboratório Vida",
+  //   crotpd: 123456,
+  //   instagram: "@joaosilva",
+  //   telefone: "11 91234-5678",
+  //   username: "test",
+  // };
+
+  const { userData } = React.useContext(UserContext);
+  const { request, error } = useFetch();
+  const nome = useForm(true, "", userData.fullName);
+  const telefone = useForm(false, "telefone", userData.telefone);
+  const username = useForm(true, "", userData.username);
+  const email = useForm(true, "", userData.email);
+  const labName = useForm(false, "", userData.labName);
+  const instagram = useForm(false, "", userData.instagram);
+  const crotpd = useForm(false, "", userData.crotpd);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const obj = {
+      fullName: nome.value,
+      username: username.value,
+      telefone: telefone.value.replace(/\D/g, ""),
+      email: email.value,
+      labName: labName.value,
+      instagram: instagram.value,
+      crotpd: crotpd.value,
+    };
+    const { url, options } = USER_ACC_PUT(obj, userData._id);
+    const submit = async () => {
+      const { response, json, fetchError } = await request(url, options);
+      if (response.ok) {
+        localStorage.setItem("userData", JSON.stringify(obj));
+
+        alert(json.message);
+        return true;
+      } else if (fetchError) {
+        alert(fetchError);
+      } else {
+        alert(error);
+      }
+
+      return false;
+    };
+    submit();
   };
-  const nome = useForm(true, "", user.nome);
-  const telefone = useForm(false, "telefone", user.telefone);
-  const email = useForm(true, "", user.email);
-  const labName = useForm(false, "", user.labName);
-  const instagram = useForm(false, "", user.instagram);
-  const crotpd = useForm(false, "", user.crotpd);
   return (
     <div className={sectionStyle.container}>
-      <form className={`${style.form} ${style.userForm}`}>
+      <form onSubmit={onSubmit} className={`${style.form} ${style.userForm}`}>
         <UserFormHeader />
         <div className={style.formSelect}>
           <Input
@@ -42,6 +69,15 @@ const FormInfoUser = () => {
             required={true}
             {...nome}
           />
+          <Input
+            label="Username"
+            type="text"
+            name="username"
+            required={true}
+            {...username}
+          />
+        </div>
+        <div className={style.formSelect}>
           <Input
             label="E-mail *"
             type="mail"
@@ -65,6 +101,7 @@ const FormInfoUser = () => {
             {...crotpd}
           />
         </div>
+
         <div className={style.formSelect}>
           <Input
             label="Nome do Laboratório (opcional)"

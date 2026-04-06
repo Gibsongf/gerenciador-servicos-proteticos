@@ -12,12 +12,12 @@ const FilterService = () => {
   const { saveFilter, local, filter, cliente } =
     React.useContext(ServicoContext);
   const mobile = useMedia();
-  const [clienteValue, setCliente] = React.useState("");
+  const [clienteValue, setCliente] = React.useState(undefined);
 
   const onChange = (e) => {
     if (e.target.name === "local") {
-      setCliente("");
-      saveFilter("cliente", "");
+      setCliente(undefined);
+      saveFilter("cliente", undefined);
     } else {
       setCliente(e.target.value);
     }

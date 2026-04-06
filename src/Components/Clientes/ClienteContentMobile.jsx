@@ -22,7 +22,7 @@ const Card = ({ item, i }) => {
           <span>
             Clinica: <p>{item.local.nome}</p>
           </span>
-           <span>
+          <span>
             endereço: <p>{item.local.endereço}</p>
           </span>
           <span>
@@ -46,7 +46,7 @@ const ClienteMobile = () => {
     if (Object.values(filter).length) {
       let match = false;
       for (const [key, val] of Object.entries(filter)) {
-        if (item[key].nome === val) {
+        if (item[key]._id === val) {
           match = true;
         }
       }

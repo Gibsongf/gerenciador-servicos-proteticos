@@ -9,6 +9,7 @@ import BtnAdd from "./ButtonAdd";
 const FilterCliente = () => {
   const { saveFilter, local } = React.useContext(ClienteContext);
   const mobile = useMedia();
+
   return (
     <div className={style.filterContainer}>
       {local && (
