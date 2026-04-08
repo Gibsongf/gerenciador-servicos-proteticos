@@ -17,7 +17,6 @@ const Tr = ({ item }) => {
       <td>{item.nome}</td>
       <td>R$: {item.valor_normal.toFixed(2)}</td>
       <td>R$: {item.valor_reduzido.toFixed(2)}</td>
-      {/* <td className={style.servicoQtd}>{item.serviços.length}</td> */}
 
       <td>
         <EditMenu

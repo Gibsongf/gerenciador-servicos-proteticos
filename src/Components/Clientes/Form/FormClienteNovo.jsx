@@ -57,7 +57,7 @@ const FormClinicaNovo = () => {
     <section className={sectionStyle.container}>
       <h1>Adicionar Cliente</h1>
       <form className={style.form} onSubmit={onSubmit} action="">
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Nome *"
             type="text"
@@ -66,10 +66,10 @@ const FormClinicaNovo = () => {
             {...nome}
           />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <InputTelefone {...telefone} />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <FormSelectLocal
             setCliente={() => ""}
             label={"Clínicas"}

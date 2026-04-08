@@ -27,7 +27,6 @@ const EditMenu = ({ id, editPath, saveInfo, onClickDelete }) => {
           cursor: "pointer",
         }}
         onClick={() => setShow(true)}>
-        {/* ⋮ */}
         ...
       </button>
 

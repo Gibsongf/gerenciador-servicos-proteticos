@@ -59,7 +59,7 @@ const FormProdutoEdit = () => {
     <section className={sectionStyle.container}>
       <h1>Adicionar Produto</h1>
       <form className={style.form} onSubmit={onSubmit} action="">
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Nome *"
             type="text"
@@ -68,7 +68,7 @@ const FormProdutoEdit = () => {
             {...nome}
           />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Valor Normal *"
             type="number"
@@ -77,7 +77,7 @@ const FormProdutoEdit = () => {
             {...normal}
           />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Valor Reduzida"
             type="number"

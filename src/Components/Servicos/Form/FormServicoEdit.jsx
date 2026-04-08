@@ -126,7 +126,7 @@ const FormServicoEdit = () => {
       <h1>Edição de Serviço</h1>
 
       <form className={style.form} onSubmit={onSubmit}>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Paciente"
             type="text"
@@ -143,7 +143,7 @@ const FormServicoEdit = () => {
           />
         </div>
         {/* remove value from cliente when local change with setCliente */}
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <FormSelectLocal
             setCliente={cliente.setValue}
             label={"Clínicas"}

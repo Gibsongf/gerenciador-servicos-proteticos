@@ -58,10 +58,10 @@ const FormInfoUser = () => {
     submit();
   };
   return (
-    <div className={sectionStyle.container}>
+    <section className={sectionStyle.container}>
       <form onSubmit={onSubmit} className={`${style.form} ${style.userForm}`}>
         <UserFormHeader />
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Nome Completo *"
             type="text"
@@ -77,7 +77,7 @@ const FormInfoUser = () => {
             {...username}
           />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="E-mail *"
             type="mail"
@@ -86,7 +86,7 @@ const FormInfoUser = () => {
             {...email}
           />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <InputTelefone
             type="tel"
             name="telefone"
@@ -102,7 +102,7 @@ const FormInfoUser = () => {
           />
         </div>
 
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Nome do Laboratório (opcional)"
             type="text"
@@ -124,7 +124,7 @@ const FormInfoUser = () => {
           </button>
         </div>
       </form>
-    </div>
+    </section>
   );
 };
 

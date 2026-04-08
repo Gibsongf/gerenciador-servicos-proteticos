@@ -22,7 +22,7 @@ const FormResetPassword = () => {
       <form className={style.form}>
         <PasswordFormHeader />
 
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Senha atual"
             type="password"
@@ -31,7 +31,7 @@ const FormResetPassword = () => {
             {...current}
           />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Nova senha"
             type="password"

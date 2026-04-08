@@ -1,4 +1,4 @@
-.formSelect {
+.formDiv {
   display: flex;
   gap: 12px;
 }
@@ -12,13 +12,17 @@
 
 }
 
+.formTitle {
+  margin-bottom: 16px;
+}
+
 .containerProduct {
   max-height: 250px;
   overflow-y: scroll;
 }
 
 @media (max-width:700px) {
-  .formSelect:nth-child(odd) {
+  .formDiv:nth-child(odd) {
     flex-direction: column;
     gap: 4px;
   }
@@ -27,14 +31,14 @@
     max-height: 150px;
   }
 
-  .userForm .formSelect {
+  .userForm .formDiv {
     align-items: flex-end;
 
   }
 }
 
 @media (max-width:400px) {
-  .userForm .formSelect {
+  .userForm .formDiv {
     flex-wrap: wrap;
   }
 }

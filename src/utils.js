@@ -14,3 +14,11 @@ export function removeDuplicate(arr) {
 export function todayDate() {
   return format(new Date(), "yyyy-MM-dd");
 }
+
+export function downloadExcelAction(blob, fileName) {
+  const downloadLink = document.createElement("a");
+  downloadLink.download = fileName;
+  downloadLink.href = URL.createObjectURL(blob);
+  downloadLink.click();
+  URL.revokeObjectURL(downloadLink.href);
+}

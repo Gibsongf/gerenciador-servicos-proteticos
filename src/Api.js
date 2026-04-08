@@ -106,3 +106,16 @@ export function TOKEN_VALIDATE_POST(token) {
   const url = "http://localhost:3000/user/validate";
   return { url, options };
 }
+
+export function EXPORT_MONTH_SERVICE(data) {
+  const params = new URLSearchParams(data);
+
+  const url = `http://localhost:3000/api/exportar?${params.toString()}`;
+  const options = {
+    method: "Get",
+    headers: {
+      Authorization: "Bearer " + localStorage["token"],
+    },
+  };
+  return { url, options };
+}

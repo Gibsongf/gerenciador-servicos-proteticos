@@ -1,5 +1,4 @@
 import React from "react";
-
 import useForm from "../../../Hooks/useForm";
 import { Input } from "../../Form/Input";
 import { FormSelectDentist, FormSelectLocal } from "../../Form/SelectForm";
@@ -77,7 +76,6 @@ const FormServicoNovo = () => {
 
   const onClickAddProduct = (e) => {
     e.preventDefault();
-    console.log(produto);
     setRenderProducts((lst) => [
       ...lst,
       <ProductSelect
@@ -107,7 +105,7 @@ const FormServicoNovo = () => {
       <h1>Adicionar Serviço</h1>
 
       <form ref={formRef} className={style.form} onSubmit={onSubmit}>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Paciente"
             type="text"
@@ -124,7 +122,7 @@ const FormServicoNovo = () => {
           />
         </div>
         {/* remove value from cliente when local change with setCliente */}
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <FormSelectLocal
             setCliente={cliente.setValue}
             label={"Clínicas"}

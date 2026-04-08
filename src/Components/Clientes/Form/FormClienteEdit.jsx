@@ -59,7 +59,7 @@ const FormClienteEdit = () => {
     <section className={sectionStyle.container}>
       <h1>Edição de Cliente</h1>
       <form className={style.form} onSubmit={onSubmit}>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Nome *"
             type="text"
@@ -68,10 +68,10 @@ const FormClienteEdit = () => {
             {...nome}
           />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <InputTelefone {...telefone} />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <FormSelectLocal
             setCliente={() => ""}
             label={"Clínicas"}

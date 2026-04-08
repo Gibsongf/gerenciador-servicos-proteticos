@@ -56,20 +56,20 @@ export const InputTelefone = ({ value, onChange, error, onBlur }) => {
     </div>
   );
 };
-export const InputRememberMe = ({ value, onChange, onBlur }) => {
+export const InputCheckbox = ({ value, onChange, onBlur, label, name }) => {
   return (
     // <div className={styles.container}>
-    <label htmlFor={"remember"} className={styles.labelCheckbox}>
+    <label htmlFor={name} className={styles.labelCheckbox}>
       <input
-        id={"remember"}
-        name={"remember"}
+        id={name}
+        name={name}
         className={styles.inputCheckbox}
         type={"checkbox"}
         value={value}
         onChange={onChange}
         onBlur={onBlur}
       />
-      Lembrar de mim
+      {label}
     </label>
     // </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, InputRememberMe } from "../Form/Input";
+import { Input, InputCheckbox } from "../Form/Input";
 import useForm from "../../Hooks/useForm";
 import style from "../../Styles/Login.module.css";
 import ToothIcon from "../svg/ToothIcon";
@@ -52,7 +52,11 @@ const Login = () => {
             {...password}
           />
           <div className={style.reset}>
-            <InputRememberMe {...remember} />
+            <InputCheckbox
+              label="Lembrar de mim"
+              name="remember"
+              {...remember}
+            />
             <Link to={"/esqueceu"}>Esqueceu a senha?</Link>
           </div>
           {error && <p className={style.error}>{error}</p>}

@@ -60,7 +60,7 @@ const FormClinicaEdit = () => {
     <section className={sectionStyle.container}>
       <h1>Edição de Clínica</h1>
       <form className={style.form} onSubmit={onSubmit} action="">
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Nome *"
             type="text"
@@ -76,7 +76,7 @@ const FormClinicaEdit = () => {
             {...endereço}
           />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="CEP"
             type="code"
@@ -87,7 +87,7 @@ const FormClinicaEdit = () => {
           />
           <InputTelefone {...telefone} />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <SelectTabela onChange={tabela.onChange} value={tabela.value} />
         </div>
         <div className={style.btnContainer}>

@@ -42,11 +42,11 @@ const FormProdutoNovo = () => {
 
       return false;
     };
-    const result = submit();
-    console.log(result);
-    // if (submit()) {
-    //   nav("/produto");
-    // }
+    submit().then((result) => {
+      if (result) {
+        nav("/produto");
+      }
+    });
   };
   const onCancel = (e) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ const FormProdutoNovo = () => {
     <section className={sectionStyle.container}>
       <h1>Adicionar Produto</h1>
       <form className={style.form} onSubmit={onSubmit} action="">
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Nome *"
             type="text"
@@ -65,7 +65,7 @@ const FormProdutoNovo = () => {
             {...nome}
           />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Valor Normal *"
             type="number"
@@ -74,7 +74,7 @@ const FormProdutoNovo = () => {
             {...normal}
           />
         </div>
-        <div className={style.formSelect}>
+        <div className={style.formDiv}>
           <Input
             label="Valor Reduzida"
             type="number"
