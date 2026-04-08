@@ -146,6 +146,7 @@
 
 .footer a {
   color: var(--main-color);
+  cursor: pointer;
 }
 
 a {

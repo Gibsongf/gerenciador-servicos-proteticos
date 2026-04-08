@@ -88,3 +88,20 @@
 
   }
 }
+
+@media (max-width:500px) {
+  .exit svg {
+    fill: red;
+  }
+
+  .buttonActive svg {
+    height: 20px;
+    width: 20px;
+  }
+
+  .config svg {
+    height: 10px;
+    width: 10px;
+
+  }
+}

@@ -12,6 +12,7 @@ const Card = ({ item, i }) => {
     "cliente",
     "Cliente",
   );
+  if (!Object.keys(item).length) return "";
   return (
     <>
       <div className={style.card}>

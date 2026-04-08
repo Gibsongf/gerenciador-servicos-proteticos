@@ -17,6 +17,10 @@ const Login = () => {
     e.preventDefault();
     userLogin(username.value, password.value);
   };
+  const guest = (e) => {
+    e.preventDefault();
+    userLogin("test", "test");
+  };
   React.useEffect(() => {
     if (login === true) {
       nav("/conta");
@@ -69,7 +73,7 @@ const Login = () => {
         </form>
         <div className={style.footer}>
           <p>
-            Não tem conta? <Link>Entre como visitante</Link>
+            Não tem conta? <a onClick={guest}>Entre como visitante</a>
           </p>
         </div>
       </div>

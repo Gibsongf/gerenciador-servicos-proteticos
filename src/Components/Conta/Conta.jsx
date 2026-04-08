@@ -10,7 +10,7 @@ const Conta = () => {
     <div className={sectionStyle.container}>
       <PerfilHeader />
       <FormInfoUser />
-      <FormResetPassword />
+      {/* <FormResetPassword /> */}
     </div>
   );
 };
