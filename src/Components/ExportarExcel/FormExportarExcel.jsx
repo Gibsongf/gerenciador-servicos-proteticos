@@ -36,6 +36,8 @@ const FormExportarExcel = () => {
         if (response.status === 200) {
           const blob = await response.blob();
           downloadExcelAction(blob, fileName);
+          alert("Download iniciado");
+          nav("/servico");
           return blob;
         }
       } catch (err) {
