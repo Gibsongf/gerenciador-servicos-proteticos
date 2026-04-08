@@ -4,8 +4,6 @@ import useForm from "../../Hooks/useForm";
 import style from "../../Styles/Login.module.css";
 import ToothIcon from "../svg/ToothIcon";
 import { Link, useNavigate } from "react-router-dom";
-import useFetch from "../../Hooks/useFetch";
-import { USER_LOGIN } from "../../Api";
 import { UserContext } from "../../Context";
 
 const Login = () => {

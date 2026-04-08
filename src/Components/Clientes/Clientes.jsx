@@ -24,7 +24,11 @@ const Home = () => {
 const HomeMobile = () => {
   return (
     <section className={style.container}>
-      <MobileTitle path="/cliente/novo" text={"+ Add Cliente"} />
+      <MobileTitle
+        path="/cliente/novo"
+        title={"Clientes"}
+        text={"+ Add Cliente"}
+      />
       <FilterCliente />
 
       <ClienteMobile />

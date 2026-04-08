@@ -10,7 +10,6 @@
   align-items: center;
   /* opacity: 0; */
   display: flex;
-  /* visibility: hidden; */
   /* transition: opacity 0.3s ease-in; */
 
 }
@@ -27,15 +26,6 @@
   /* transform: scale(0.95) */
 }
 
-.form.active {
-  /* opacity: 1; */
-  /* transform: scale(1); */
-}
-
-.containerModal.active {
-  /* visibility: visible; */
-  /* opacity: 1; */
-}
 
 .btnContainer {
   align-self: flex-end;

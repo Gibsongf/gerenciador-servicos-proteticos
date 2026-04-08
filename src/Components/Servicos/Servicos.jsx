@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <>
       <section className={style.container}>
-        <Title text={"Serviços"} />
+        <Title text="Serviços" />
         <FilterService />
         <ExportServiceBtn />
       </section>
@@ -27,7 +27,7 @@ const Home = () => {
 const HomeMobile = () => {
   return (
     <section className={style.container}>
-      <MobileTitle path="/servico/novo" text={"+ Add Serviço"} />
+      <MobileTitle path="/servico/novo" title="Serviços" text="+ Add Serviço" />
       <FilterService />
       <ExportServiceBtn />
       <ServicoMobile />

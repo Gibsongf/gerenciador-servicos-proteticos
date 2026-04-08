@@ -6,13 +6,13 @@ import sectionStyle from "../../Styles/Home.module.css";
 import { PasswordFormHeader } from "./FormHeaders";
 
 const FormResetPassword = () => {
-  const user = {
-    current: "userName",
-    user: "11 99999-9999",
-    email: "user@mail.com",
-    labName: "User lab",
-    instagram: "@userInsta",
-  };
+  // const user = {
+  //   current: "userName",
+  //   user: "11 99999-9999",
+  //   email: "user@mail.com",
+  //   labName: "User lab",
+  //   instagram: "@userInsta",
+  // };
   const current = useForm("");
   const newPassword = useForm("");
   const confirmPassword = useForm("");

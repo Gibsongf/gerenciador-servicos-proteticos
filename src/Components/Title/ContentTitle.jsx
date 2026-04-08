@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import btnStyle from "../../Styles/Button.module.css";
 
 // select date , sel
-export const MobileTitle = ({ path, text }) => {
+export const MobileTitle = ({ path, title, text }) => {
   return (
     <div className={style.mobileTitle}>
-      <Title text={text} />
+      <Title text={title} />
       <Link className={btnStyle.buttonAdd} to={path}>
         {text}
       </Link>

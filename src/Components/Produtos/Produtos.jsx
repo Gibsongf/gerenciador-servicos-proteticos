@@ -24,7 +24,11 @@ const Home = () => {
 const HomeMobile = () => {
   return (
     <section className={style.container}>
-      <MobileTitle path="/produto/novo" text={"+ Add Produto"} />
+      <MobileTitle
+        path="/produto/novo"
+        title={"Produtos"}
+        text={"+ Add Produto"}
+      />
       <ProdutoMobile />
     </section>
   );

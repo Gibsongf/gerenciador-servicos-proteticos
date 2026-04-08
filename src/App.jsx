@@ -8,7 +8,7 @@ import Produtos from "./Components/Produtos/Produtos";
 import Header from "./Components/Header";
 import "./App.css";
 import Conta from "./Components/Conta/Conta";
-import ExportarExcel from "./Components/ExportarExcel/ExportarExcel";
+import ExportarExcel from "./Components/ExportarExcel/FormExportarExcel";
 import Login from "./Components/Conta/Login";
 import UserData from "./UserContext";
 

@@ -2,7 +2,7 @@ import React from "react";
 import useForm from "../../Hooks/useForm";
 import { FormSelectDentist, FormSelectLocal } from "../Form/SelectForm";
 import formStyle from "../../Styles/Form.module.css";
-import { Input, InputCheckbox, InputTelefone } from "../Form/Input";
+import { Input } from "../Form/Input";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import { UserContext } from "../../Context";

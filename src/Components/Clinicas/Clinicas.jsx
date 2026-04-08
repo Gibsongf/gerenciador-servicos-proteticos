@@ -24,7 +24,11 @@ const Home = () => {
 const HomeMobile = () => {
   return (
     <section className={style.container}>
-      <MobileTitle path="/clinica/novo" text={"+ Add Clínica"} />
+      <MobileTitle
+        path="/clinica/novo"
+        title={"Clínicas"}
+        text={"+ Add Clínica"}
+      />
       <ClinicaMobile />
     </section>
   );

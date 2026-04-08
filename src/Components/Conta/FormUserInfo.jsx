@@ -9,16 +9,6 @@ import { USER_ACC_PUT } from "../../Api";
 import useFetch from "../../Hooks/useFetch";
 
 const FormInfoUser = () => {
-  // const userData = {
-  //   fullName: "João Silva",
-  //   email: "joao.silva@email.com",
-  //   labName: "Laboratório Vida",
-  //   crotpd: 123456,
-  //   instagram: "@joaosilva",
-  //   telefone: "11 91234-5678",
-  //   username: "test",
-  // };
-
   const { userData } = React.useContext(UserContext);
   const { request, error } = useFetch();
   const nome = useForm(true, "", userData.fullName);
