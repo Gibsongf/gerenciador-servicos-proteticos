@@ -1,6 +1,4 @@
-// let apiUrl = "https://gerenciador-servicos-protetico-api.vercel.app/";
 let apiUrl = "https://gerenciador-servicos-protetico-api.onrender.com";
-// import { loginData } from "./TODO/loginData";
 
 export function GET_LIST_CONTENT(category) {
   const options = {

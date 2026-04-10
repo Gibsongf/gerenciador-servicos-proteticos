@@ -11,9 +11,9 @@ const FilterProduto = () => {
   const mobile = useMedia();
   return (
     <div className={style.filterContainer}>
-      {local && (
+      {/* {local && (
         <SelectClinic mobile={mobile} saveFilter={saveFilter} local={local} />
-      )}
+      )} */}
 
       <BtnAdd />
     </div>

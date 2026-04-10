@@ -49,7 +49,7 @@ td:first-child {
   color: #333;
 }
 
-/* Coluna Clínica com cor teal */
+/* Coluna com cor teal */
 td:nth-child(2) {
   color: #17a2b8;
   font-weight: 600;
@@ -63,9 +63,3 @@ td:last-child {
   font-weight: bold;
   border-left: 1px solid #ddd;
 }
-
-/* @media (max-width:900px) {
-  td:nth-child(4) {
-    display: none;
-  }
-} */

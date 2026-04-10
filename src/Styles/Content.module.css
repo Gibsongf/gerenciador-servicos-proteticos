@@ -4,7 +4,6 @@
   grid-column: 2/-1;
   min-height: 450px;
   border-radius: 8px;
-  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
   margin: 8px 12px;
   max-height: 50vh;
   opacity: 0;
@@ -24,9 +23,7 @@
   text-align: left;
 }
 
-/* .servicoQtd{
-  text-align: center;
-} */
+
 svg {
   width: 24px;
 }
