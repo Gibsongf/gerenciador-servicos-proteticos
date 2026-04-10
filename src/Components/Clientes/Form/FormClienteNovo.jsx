@@ -45,9 +45,11 @@ const FormClinicaNovo = () => {
 
       return false;
     };
-    if (submit()) {
-      nav("/cliente");
-    }
+    submit().then((result) => {
+      if (result) {
+        nav("/cliente");
+      }
+    });
   };
   const onCancel = (e) => {
     e.preventDefault();

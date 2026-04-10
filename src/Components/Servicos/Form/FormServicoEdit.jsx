@@ -63,9 +63,11 @@ const FormServicoEdit = () => {
 
       return false;
     };
-    if (submit()) {
-      nav("/servico");
-    }
+    submit().then((result) => {
+      if (result) {
+        nav("/servico");
+      }
+    });
   };
 
   const onCancel = (e) => {

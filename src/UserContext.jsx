@@ -70,7 +70,7 @@ const UserData = ({ children }) => {
         setLogin(false);
       }
     }
-    autoLogin();
+    // autoLogin();
   }, [userLogout]);
 
   const getUserData = () => {

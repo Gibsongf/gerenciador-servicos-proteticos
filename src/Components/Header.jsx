@@ -9,7 +9,7 @@ import { UserContext } from "../Context";
 
 const Header = () => {
   const { login } = React.useContext(UserContext);
-  if (!login) return "";
+  // if (!login) return "";
   return (
     <header className={style.container}>
       <Link to={"/servico"} className={style.logoContainer}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import MenuNav from "./Components/Nav/MenuNav";
 import Servicos from "./Components/Servicos/Servicos";
 import Clientes from "./Components/Clientes/Clientes";
@@ -13,6 +13,13 @@ import Login from "./Components/Conta/Login";
 import UserData from "./UserContext";
 
 function App() {
+  const nav = useNavigate();
+  React.useEffect(() => {
+    const token = localStorage["token"];
+    if (!token) {
+      nav("/login");
+    }
+  }, [nav]);
   return (
     <UserData>
       <Routes>

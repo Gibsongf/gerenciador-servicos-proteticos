@@ -41,6 +41,7 @@ const FormServicoNovo = () => {
     const { url, options } = USER_POST("servico", obj);
     const submit = async () => {
       const { response, json } = await request(url, options);
+      console.log(json, response);
       if (response.ok) {
         setUpdate((update) => update + 1);
         alert(json.message);
@@ -50,9 +51,11 @@ const FormServicoNovo = () => {
 
       return false;
     };
-    if (submit()) {
-      nav("/servico");
-    }
+    submit().then((result) => {
+      if (result) {
+        nav("/servico");
+      }
+    });
   };
   const onCancel = (e) => {
     e.preventDefault();

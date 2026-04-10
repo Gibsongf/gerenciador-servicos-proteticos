@@ -48,9 +48,11 @@ const FormClinicaEdit = () => {
 
       return false;
     };
-    if (submit()) {
-      nav("/clinica");
-    }
+    submit().then((result) => {
+      if (result) {
+        nav("/clinica");
+      }
+    });
   };
   const onCancel = (e) => {
     e.preventDefault();

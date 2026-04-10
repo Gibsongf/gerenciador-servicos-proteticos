@@ -1,4 +1,5 @@
-let apiUrl = "http://localhost:3000/api/";
+// let apiUrl = "https://gerenciador-servicos-protetico-api.vercel.app/";
+let apiUrl = "https://gerenciador-servicos-protetico-api.onrender.com/";
 // import { loginData } from "./TODO/loginData";
 
 export function GET_LIST_CONTENT(category) {
@@ -9,7 +10,7 @@ export function GET_LIST_CONTENT(category) {
       Authorization: "Bearer " + localStorage["token"],
     },
   };
-  const url = apiUrl + category + "/todos";
+  const url = apiUrl + "api/" + category + "/todos";
   return { url, options };
 }
 
@@ -34,7 +35,7 @@ export function USER_POST(category, body) {
     },
     body: JSON.stringify(body),
   };
-  const url = apiUrl + category + "/novo";
+  const url = apiUrl + "api/" + category + "/novo";
   return { url, options };
 }
 
@@ -47,7 +48,7 @@ export function USER_PUT(category, id, body) {
     },
     body: JSON.stringify(body),
   };
-  const url = apiUrl + category + "/" + id + "/edit";
+  const url = apiUrl + "api/" + category + "/" + id + "/edit";
   return { url, options };
 }
 
@@ -71,7 +72,7 @@ export function USER_LOGIN(loginData) {
     body: JSON.stringify(loginData),
   };
 
-  const url = "http://localhost:3000/user/login";
+  const url = apiUrl + "api/" + "user/login";
   return { url, options };
 }
 export function USER_ACC_PUT(data, id) {
@@ -83,7 +84,7 @@ export function USER_ACC_PUT(data, id) {
     body: JSON.stringify(data),
   };
 
-  const url = "http://localhost:3000/user/edit/" + id;
+  const url = apiUrl + "user/edit/" + id;
   return { url, options };
 }
 export function GET_USER_DATA(token) {
@@ -93,7 +94,7 @@ export function GET_USER_DATA(token) {
       Authorization: "Bearer " + token,
     },
   };
-  const url = "http://localhost:3000/user/";
+  const url = apiUrl + "user/";
   return { url, options };
 }
 export function TOKEN_VALIDATE_POST(token) {
@@ -103,14 +104,14 @@ export function TOKEN_VALIDATE_POST(token) {
       Authorization: "Bearer " + token,
     },
   };
-  const url = "http://localhost:3000/user/validate";
+  const url = apiUrl + "user/validate";
   return { url, options };
 }
 
 export function EXPORT_MONTH_SERVICE(data) {
   const params = new URLSearchParams(data);
 
-  const url = `http://localhost:3000/api/exportar?${params.toString()}`;
+  const url = `${apiUrl}exportar?${params.toString()}`;
   const options = {
     method: "Get",
     headers: {
