@@ -119,7 +119,7 @@ export function TOKEN_VALIDATE_POST(token) {
 export function EXPORT_MONTH_SERVICE(data) {
   const params = new URLSearchParams(data);
 
-  const url = `${apiUrl}exportar?${params.toString()}`;
+  const url = `${apiUrl}/exportar?${params.toString()}`;
   const options = {
     method: "Get",
     headers: {
