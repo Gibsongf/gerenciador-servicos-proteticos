@@ -4,6 +4,7 @@
 
 A React front-end for dental prosthetic lab management. Handles CRUD operations and exports service orders to Excel.
 
+**Live demo:** https://gerenciador-servicos-proteticos.vercel.app
 ## What it does
 
 - Create, read, update, and delete: services, clients, clinics, and products
