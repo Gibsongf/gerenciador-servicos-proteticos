@@ -4,6 +4,7 @@ import style from "../../Styles/Content.module.css";
 import "../../Styles/Table.css";
 import EditMenu from "../Table/EditMenu";
 import useContentAction from "../../Hooks/useContentAction";
+import Loading from "../svg/Loading";
 const ServiceTR = ({ item, i }) => {
   const { saveService, setUpdate } = React.useContext(ServicoContext);
   const { onClickDelete, onClickEdit } = useContentAction(
@@ -61,7 +62,7 @@ const ServicosContent = () => {
     return <ServiceTR key={i} item={item} i={i} />;
   };
 
-  if (loading) return <div>Loading</div>;
+  if (loading) return <Loading />;
 
   return (
     <div className={style.tableContainer}>

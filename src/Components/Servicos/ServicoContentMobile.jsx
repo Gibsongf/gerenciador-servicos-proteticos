@@ -3,6 +3,7 @@ import { ServicoContext } from "../../Context";
 import style from "../../Styles/ContentMobile.module.css";
 import EditMenu from "../Table/EditMenu";
 import useContentAction from "../../Hooks/useContentAction";
+import Loading from "../svg/Loading";
 const Card = ({ item, i }) => {
   const { saveService, setUpdate } = React.useContext(ServicoContext);
   const { onClickDelete, onClickEdit } = useContentAction(
@@ -68,7 +69,7 @@ const ServicoMobile = () => {
     }
     return <Card key={i} item={item} i={i} />;
   };
-  if (loading) return <div>Loading</div>;
+  if (loading) return <Loading />;
 
   const onClickLoad = () => {
     setPage((p) => p + 5);

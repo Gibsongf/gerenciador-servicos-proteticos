@@ -4,6 +4,7 @@ import style from "../../Styles/Content.module.css";
 import "../../Styles/Table.css";
 import EditMenu from "../Table/EditMenu";
 import useContentAction from "../../Hooks/useContentAction";
+import Loading from "../svg/Loading";
 const ClinicaTR = ({ item, i }) => {
   const { saveClickClinic, setUpdate } = React.useContext(ClinicaContext);
   const { onClickDelete, onClickEdit } = useContentAction(
@@ -52,7 +53,7 @@ const ClinicasContent = () => {
     return <ClinicaTR key={i} item={item} i={i} />;
   };
 
-  if (loading) return <div>Loading</div>;
+  if (loading) return <Loading />;
 
   return (
     <>

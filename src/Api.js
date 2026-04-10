@@ -1,5 +1,5 @@
 // let apiUrl = "https://gerenciador-servicos-protetico-api.vercel.app/";
-let apiUrl = "https://gerenciador-servicos-protetico-api.onrender.com/";
+let apiUrl = "https://gerenciador-servicos-protetico-api.onrender.com";
 // import { loginData } from "./TODO/loginData";
 
 export function GET_LIST_CONTENT(category) {
@@ -10,7 +10,8 @@ export function GET_LIST_CONTENT(category) {
       Authorization: "Bearer " + localStorage["token"],
     },
   };
-  const url = apiUrl + "api/" + category + "/todos";
+  // const url = apiUrl + "api/" + category + "/todos";
+  const url = `${apiUrl}/api/${category}/todos`;
   return { url, options };
 }
 
@@ -22,7 +23,9 @@ export function GET_CONTENT_BY_ID(id, category) {
       Authorization: "Bearer " + localStorage["token"],
     },
   };
-  const url = apiUrl + "servico/" + id;
+  // const url = apiUrl + "servico/" + id;
+  const url = `${apiUrl}/api/${category}/${id}`;
+
   return { url, options };
 }
 
@@ -35,7 +38,7 @@ export function USER_POST(category, body) {
     },
     body: JSON.stringify(body),
   };
-  const url = apiUrl + "api/" + category + "/novo";
+  const url = `${apiUrl}/api/${category}/novo`;
   return { url, options };
 }
 
@@ -48,7 +51,8 @@ export function USER_PUT(category, id, body) {
     },
     body: JSON.stringify(body),
   };
-  const url = apiUrl + "api/" + category + "/" + id + "/edit";
+  const url = `${apiUrl}/api/${category}/${id}/edit`;
+
   return { url, options };
 }
 
@@ -60,7 +64,8 @@ export function USER_DELETE(category, id) {
       Authorization: "Bearer " + localStorage["token"],
     },
   };
-  const url = apiUrl + category + "/" + id;
+  const url = `${apiUrl}/api/${category}/${id}`;
+
   return { url, options };
 }
 export function USER_LOGIN(loginData) {
@@ -72,7 +77,8 @@ export function USER_LOGIN(loginData) {
     body: JSON.stringify(loginData),
   };
 
-  const url = apiUrl + "api/" + "user/login";
+  const url = `${apiUrl}/user/login`;
+
   return { url, options };
 }
 export function USER_ACC_PUT(data, id) {
@@ -84,7 +90,9 @@ export function USER_ACC_PUT(data, id) {
     body: JSON.stringify(data),
   };
 
-  const url = apiUrl + "user/edit/" + id;
+  // const url = apiUrl + "user/edit/" + id;
+  const url = `${apiUrl}/user/edit/${id}`;
+
   return { url, options };
 }
 export function GET_USER_DATA(token) {
@@ -94,7 +102,9 @@ export function GET_USER_DATA(token) {
       Authorization: "Bearer " + token,
     },
   };
-  const url = apiUrl + "user/";
+  // const url = apiUrl + "user/";
+  const url = `${apiUrl}/user/`;
+
   return { url, options };
 }
 export function TOKEN_VALIDATE_POST(token) {

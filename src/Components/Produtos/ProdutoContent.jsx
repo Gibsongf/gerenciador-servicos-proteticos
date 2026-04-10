@@ -3,6 +3,7 @@ import { ProdutoContext } from "../../Context";
 import style from "../../Styles/Content.module.css";
 import EditMenu from "../Table/EditMenu";
 import useContentAction from "../../Hooks/useContentAction";
+import Loading from "../svg/Loading";
 const Tr = ({ item }) => {
   const { saveInfo, setUpdate } = React.useContext(ProdutoContext);
   const { onClickDelete, onClickEdit } = useContentAction(
@@ -47,7 +48,7 @@ const ProdutosContent = () => {
     return <Tr key={i} item={item} i={i} />;
   };
 
-  if (loading) return <div>Loading</div>;
+  if (loading) return <Loading />;
 
   return (
     <>

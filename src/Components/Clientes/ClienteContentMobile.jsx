@@ -3,6 +3,7 @@ import { ClienteContext } from "../../Context";
 import style from "../../Styles/ContentMobile.module.css";
 import EditMenu from "../Table/EditMenu";
 import useContentAction from "../../Hooks/useContentAction";
+import Loading from "../svg/Loading";
 const Card = ({ item, i }) => {
   const { saveInfo, setUpdate } = React.useContext(ClienteContext);
   const { onClickDelete, onClickEdit } = useContentAction(
@@ -59,7 +60,7 @@ const ClienteMobile = () => {
     return <Card key={i} item={item} i={i} />;
   };
 
-  if (loading) return <div>Loading</div>;
+  if (loading) return <Loading />;
 
   return (
     <div className={style.cardContainer}>
