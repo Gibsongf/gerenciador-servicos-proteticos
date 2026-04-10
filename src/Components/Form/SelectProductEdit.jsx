@@ -55,12 +55,15 @@ export const ProductSelectEdit = ({
           <option disabled={true} value="">
             Selecione Produtos
           </option>
-          {data &&
+          {data ? (
             data.all.map((item, i) => (
               <option key={i} value={item._id} id={item._id}>
                 {item.nome}
               </option>
-            ))}
+            ))
+          ) : (
+            <option>Carregando...</option>
+          )}
         </select>
       </div>
       <div>

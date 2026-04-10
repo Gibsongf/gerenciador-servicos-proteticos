@@ -37,7 +37,7 @@ export const FormSelectDentist = ({
             <option disabled={true} value="">
               Selecione um Dentista
             </option>
-            {data &&
+            {data ? (
               data.all.map((item, i) => {
                 if (item.local._id === localFilter)
                   return (
@@ -45,7 +45,10 @@ export const FormSelectDentist = ({
                       {item.nome}
                     </option>
                   );
-              })}
+              })
+            ) : (
+              <option>Carregando...</option>
+            )}
           </>
         ) : (
           <option disable="true" value="">
@@ -97,12 +100,15 @@ export const FormSelectLocal = ({
         <option disabled={true} value="">
           Selecione um Local
         </option>
-        {data &&
+        {data ? (
           data.all.map((item, i) => (
             <option key={i} value={item._id}>
               {item.nome}
             </option>
-          ))}
+          ))
+        ) : (
+          <option>Carregando...</option>
+        )}
       </select>
       {error && <p className={style.error}>{error}</p>}
     </div>
