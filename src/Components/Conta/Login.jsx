@@ -53,14 +53,14 @@ const Login = () => {
             required={true}
             {...password}
           />
-          <div className={style.reset}>
+          {/* <div className={style.reset}>
             <InputCheckbox
               label="Lembrar de mim"
               name="remember"
               {...remember}
             />
             <Link to={"/esqueceu"}>Esqueceu a senha?</Link>
-          </div>
+          </div> */}
           {error && <p className={style.error}>{error}</p>}
 
           {loading ? (

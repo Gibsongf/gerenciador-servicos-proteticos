@@ -1,7 +1,4 @@
 .container {
-  /* grid-template-columns: 1; */
-  /* temporary */
-  /* height: 70vh; */
   padding: 24px 32px;
   border-right: 1px solid rgb(0, 0, 0, 0.1);
   color: var(--p-txt-color);
@@ -92,26 +89,24 @@ li svg {
 
   /* from side bar to the bottom */
   .container {
-    grid-row: 2;
-    grid-column: 1 / -1;
     padding: 0px;
-    position: sticky;
-    bottom: 0;
+    position: fixed;
+    bottom: 0px;
     z-index: 100;
+    width: 100%;
   }
 
   .list-container {
     flex-direction: row;
     justify-content: space-evenly;
-    padding: 4px 0px;
-    gap: 12px;
+    padding: 0px;
+    gap: 8px;
   }
 
 
   .link {
     display: flex;
     flex-direction: column;
-
     max-height: fit-content;
     padding: 4px 8px;
     gap: 0px;
@@ -134,18 +129,21 @@ li svg {
   .link {
     max-height: min-content;
     padding: 0px;
-    /* gap: 2px; */
+
+  }
+
+  li p {
+    font-size: 0.8rem;
 
   }
 
   li svg {
-    height: 24px;
-    font-size: 0.8rem;
+    height: 20px;
 
   }
 
   .list-container {
     flex-direction: row;
-    /* gap: 4px; */
+    gap: 4px;
   }
 }

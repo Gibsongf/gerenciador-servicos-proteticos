@@ -21,6 +21,13 @@
   overflow-y: scroll;
 }
 
+.form input:focus,
+.form input:hover {
+  border-color: var(--main-color);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 150, 151, 0.1);
+}
+
 @media (max-width:700px) {
   .formDiv:nth-child(odd) {
     flex-direction: column;

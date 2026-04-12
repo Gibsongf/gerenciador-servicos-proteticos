@@ -2,7 +2,7 @@
   background-color: #FFF;
   padding: 8px;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 10px;
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 16px;
@@ -66,4 +66,25 @@
 
 .btnLoadMore:disabled {
   background-color: var(--main-color-hover);
+}
+
+
+@media (max-width:400px) {
+  .card {
+    padding: 8px;
+  }
+
+  .card span {
+    flex-wrap: wrap;
+  }
+
+
+}
+
+@media (max-width:300px) {
+  .card span {
+    flex-wrap: wrap;
+  }
+
+
 }

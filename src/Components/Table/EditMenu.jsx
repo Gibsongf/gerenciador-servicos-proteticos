@@ -19,14 +19,7 @@ const EditMenu = ({ id, editPath, saveInfo, onClickDelete }) => {
   }, [ref]);
   return (
     <div className={styles.container}>
-      <button
-        style={{
-          fontWeight: "bold",
-          fontSize: "1.2rem",
-          border: "none",
-          cursor: "pointer",
-        }}
-        onClick={() => setShow(true)}>
+      <button className={styles.btnActiveEdit} onClick={() => setShow(true)}>
         ...
       </button>
 

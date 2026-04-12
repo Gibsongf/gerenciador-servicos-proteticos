@@ -97,6 +97,10 @@
     font-size: 1.2rem;
 
   }
+
+  .logoContainer p {
+    font-size: 0.7rem;
+  }
 }
 
 @media (max-width:400px) {

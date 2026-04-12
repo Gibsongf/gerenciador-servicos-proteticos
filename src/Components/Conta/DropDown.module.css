@@ -50,6 +50,14 @@
   font-size: 1.2rem;
 }
 
+.config:hover,
+.config:focus,
+.config:hover svg,
+.config:focus svg {
+  color: var(--main-color-hover);
+  fill: var(--main-color-hover)
+}
+
 .config svg {
   height: 20px;
   width: 20px;
@@ -59,6 +67,15 @@
 .exit {
   margin-top: 4px;
   color: red;
+}
+
+.exit:hover,
+.exit:focus,
+.exit:hover svg,
+.exit:focus svg {
+  color: #850000;
+  fill: #850000;
+
 }
 
 .exit svg {
@@ -84,20 +101,23 @@
   .links {
     left: -120px;
     top: 40px;
-    padding: 20px 16px;
+    padding: 8px 12px;
 
   }
 }
 
 @media (max-width:500px) {
-  .exit svg {
-    fill: red;
+  .links {
+    top: 40px;
+    padding: 4px 8px;
+
   }
 
   .buttonActive svg {
     height: 20px;
     width: 20px;
   }
+
 
   .config svg {
     height: 10px;
