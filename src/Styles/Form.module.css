@@ -45,7 +45,9 @@
 }
 
 @media (max-width:400px) {
-  .userForm .formDiv {
+
+
+  .formDiv {
     flex-wrap: wrap;
   }
 }
